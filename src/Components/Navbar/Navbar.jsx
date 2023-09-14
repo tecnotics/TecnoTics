@@ -61,9 +61,23 @@ function Navbar() {
             key={index}
             component={Link}
             to={item.link}
-            sx={{ color: "black", margin: "0 10px" }}
+            sx={{
+              color: "black",
+              margin: "0 0px",
+              fontSize: "15px",
+              textTransform: "capitalize",
+              "&:hover": {
+                color: "#007acc",
+              },
+            }}
           >
-            {item.icon}
+            <span
+              style={{
+                marginRight: "4px",
+              }}
+            >
+              {item.icon}
+            </span>
             {item.text}
           </Button>
         ))}
@@ -118,7 +132,13 @@ function Navbar() {
                   to={item.link}
                   onClick={toggleMobileMenu}
                 >
-                  {item.icon}
+                  <span
+                    style={{
+                      marginRight: "5px",
+                    }}
+                  >
+                    {item.icon}
+                  </span>
                   <ListItemText primary={item.text} />
                 </ListItem>
               ))}
