@@ -14,63 +14,100 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
+import HomeIcon from "@mui/icons-material/Home";
+import PeopleIcon from "@mui/icons-material/People";
+import BusinessIcon from "@mui/icons-material/Business";
+import CloudIcon from "@mui/icons-material/Cloud";
+import WorkIcon from "@mui/icons-material/Work";
+import PersonIcon from "@mui/icons-material/Person";
+import ContactMailIcon from "@mui/icons-material/ContactMail";
 
 function Navbar() {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobileOrTablet = useMediaQuery(theme.breakpoints.down("md"));
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  const toggleDrawer = (open) => () => {
-    setDrawerOpen(open);
+  const toggleMobileMenu = () => {
+    setDrawerOpen(!drawerOpen);
   };
 
   const menuItems = [
-    { text: "Inicio", link: "/" },
-    { text: "Outsourcing", link: "/acerca" },
-    { text: "Servicios", link: "/servicios" },
-    { text: "Soluciones", link: "/soluciones" },
+    { text: "Inicio", link: "/", icon: <HomeIcon /> },
+    { text: "Quienes Somos", link: "/quienes-somos", icon: <PeopleIcon /> },
+    { text: "Outsourcing TI", link: "/outsourcing-ti", icon: <BusinessIcon /> },
+    { text: "Servicios Nube", link: "/servicios-nube", icon: <CloudIcon /> },
+    {
+      text: "Soluciones Corporativas",
+      link: "/soluciones-corporativas",
+      icon: <WorkIcon />,
+    },
+    {
+      text: "Clientes",
+      link: "/clientes",
+      icon: <PersonIcon />,
+    },
+    {
+      text: "Contacto",
+      link: "/contacto",
+      icon: <ContactMailIcon />,
+    },
   ];
+
+  const renderMenu = () => {
+    return (
+      <div className="menu">
+        {menuItems.map((item, index) => (
+          <Button
+            key={index}
+            component={Link}
+            to={item.link}
+            sx={{ color: "black", margin: "0 10px" }}
+          >
+            {item.icon}
+            {item.text}
+          </Button>
+        ))}
+      </div>
+    );
+  };
 
   return (
     <div>
-      <AppBar position="static" sx={{ backgroundColor: "#007bff" }}>
+      <AppBar position="static" sx={{ backgroundColor: "#FFF" }}>
         <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1, color: "white" }}>
+          <img
+            src="../../../src/assets/images/favicom.png"
+            alt="Icono"
+            style={{
+              width: "40px",
+              height: "40px",
+              marginRight: "5px",
+            }}
+          />
+          <Typography variant="h6" sx={{ flexGrow: 1, color: "black" }}>
             TecnoTics
           </Typography>
-          {isMobile ? (
+          {isMobileOrTablet ? (
             <IconButton
               edge="start"
               color="inherit"
               aria-label="menu"
-              onClick={toggleDrawer(true)}
+              onClick={toggleMobileMenu}
             >
-              <MenuIcon />
+              <MenuIcon sx={{ color: "black" }} />
             </IconButton>
           ) : (
-            <div className="desktop-menu">
-              {menuItems.map((item, index) => (
-                <Button
-                  key={index}
-                  color="inherit"
-                  component={Link}
-                  to={item.link}
-                  sx={{ color: "white" }}
-                >
-                  {item.text}
-                </Button>
-              ))}
-            </div>
+            renderMenu()
           )}
         </Toolbar>
       </AppBar>
-      {isMobile && (
-        <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+      {isMobileOrTablet && (
+        <Drawer anchor="right" open={drawerOpen} onClose={toggleMobileMenu}>
           <div
-            sx={{ width: 250, backgroundColor: "#007bff" }}
             role="presentation"
-            onClick={toggleDrawer(false)}
-            onKeyDown={toggleDrawer(false)}
+            onClick={toggleMobileMenu}
+            onKeyDown={toggleMobileMenu}
+            style={{ width: 250 }}
           >
             <List>
               {menuItems.map((item, index) => (
@@ -79,8 +116,9 @@ function Navbar() {
                   key={index}
                   component={Link}
                   to={item.link}
-                  onClick={toggleDrawer(false)}
+                  onClick={toggleMobileMenu}
                 >
+                  {item.icon}
                   <ListItemText primary={item.text} />
                 </ListItem>
               ))}
@@ -93,4 +131,3 @@ function Navbar() {
 }
 
 export default Navbar;
-

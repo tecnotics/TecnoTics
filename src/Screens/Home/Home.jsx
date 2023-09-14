@@ -13,14 +13,18 @@ function Home() {
       <Navbar />
       <div className="landing-page">
         <section className="banner-corporativo">
-          <Typography variant="h1">TecnoTics</Typography>
+          <Typography variant="h1">
+            <b>TecnoTics</b>
+          </Typography>
           <Typography variant="subtitle1">Soluciones Corporativas</Typography>
         </section>
         <section className="banner-bienvenida">
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
               <div className="banner-content">
-                <Typography variant="h2">¡Bienvenido a TecnoTics!</Typography>
+                <Typography variant="h2">
+                  <b>¡Bienvenido a TecnoTics!</b>
+                </Typography>
                 <Typography variant="body2">
                   Estamos aquí para impulsar tu éxito en el mundo digital.
                   Descubre cómo podemos ayudarte a transformar tu negocio.
@@ -43,7 +47,7 @@ function Home() {
             </Grid>
           </Grid>
         </section>
-        <section className="servicios" id="servicios">
+        {/* <section className="servicios" id="servicios">
           <div className="servicios-content">
             <Typography variant="h3">Nuestros Servicios</Typography>
             <Grid container spacing={3}>
@@ -71,7 +75,8 @@ function Home() {
               </Grid>
             </Grid>
           </div>
-        </section>
+        </section> */}
+        
         <section className="contacto" id="contacto">
           <div className="contacto-content">
             <Typography variant="h2">Contáctanos</Typography>
