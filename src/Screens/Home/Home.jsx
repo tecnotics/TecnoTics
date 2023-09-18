@@ -1,11 +1,12 @@
-import React from "react";
 import Navbar from "../../Components/Navbar/Navbar";
-import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import "./Home.css";
 import Footer from "../../Components/Footer/Footer";
 import Carrousel from "../../Components/Carrousels/Carrousel";
 import CardComponent from "../../Components/Cards/CardComponent";
+import Circuito1 from "../../../src/assets/images/circuito1.jpg";
+import Circuito2 from "../../../src/assets/images/circuito2.jpg";
+import Circuito3 from "../../../src/assets/images/circuito3.jpg";
 
 function Home() {
   return (
@@ -20,21 +21,21 @@ function Home() {
             <Grid item xs={12} sm={4}>
               <CardComponent
                 title="Card 1"
-                image="../../../src/assets/images/circuito1.jpg"
+                image={Circuito1}
                 description="This is the content of Card 1."
               />
             </Grid>
             <Grid item xs={12} sm={4}>
               <CardComponent
                 title="Card 2"
-                image="../../../src/assets/images/circuito2.jpg"
+                image={Circuito2}
                 description="This is the content of Card 2."
               />
             </Grid>
             <Grid item xs={12} sm={4}>
               <CardComponent
                 title="Card 3"
-                image="../../../src/assets/images/circuito3.jpg"
+                image={Circuito3}
                 description="This is the content of Card 3."
               />
             </Grid>

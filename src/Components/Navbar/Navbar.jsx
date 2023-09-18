@@ -22,6 +22,7 @@ import CloudIcon from "@mui/icons-material/Cloud";
 import WorkIcon from "@mui/icons-material/Work";
 import PersonIcon from "@mui/icons-material/Person";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
+import Favicon from"../../../src/assets/icons/favicon.ico"
 
 function Navbar() {
   const theme = useTheme();
@@ -107,7 +108,7 @@ function Navbar() {
         >
           <div style={{ display: "flex", alignItems: "center" }}>
             <img
-              src="../../../src/assets/icons/favicon.ico"
+              src={Favicon}
               alt="Icono"
               style={{
                 width: "40px",

@@ -32,8 +32,8 @@ function Footer() {
   };
 
   const linkStyle = {
-    textDecoration: "none", // Elimina la subraya del enlace
-    color: "#fff", // Cambia el color del texto a blanco para que coincida con el estilo original
+    textDecoration: "none", 
+    color: "#fff", 
   };
 
   const copyrightStyle = {
