@@ -12,7 +12,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 
 function Footer() {
   const footerStyle = {
-    color: "#e8e5de",
+    color: "#fff",
     padding: "20px",
   };
 
@@ -29,6 +29,11 @@ function Footer() {
     display: "grid",
     gridTemplateColumns: "repeat(3, 1fr)",
     gridGap: "20px",
+  };
+
+  const linkStyle = {
+    textDecoration: "none", // Elimina la subraya del enlace
+    color: "#fff", // Cambia el color del texto a blanco para que coincida con el estilo original
   };
 
   const copyrightStyle = {
@@ -49,7 +54,7 @@ function Footer() {
             <PhoneIcon style={iconStyle} />
             <strong>Teléfono</strong>
             <br />
-            +1 (123) 456-7890
+            +57 (4) 4310101
           </Typography>
         </div>
         <div>
@@ -70,23 +75,52 @@ function Footer() {
           <Typography variant="body1" style={sectionStyle}>
             <strong>Redes Sociales</strong>
             <br />
-            <FacebookIcon style={iconStyle} />
-            Facebook
+            <a
+              href="https://www.facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={linkStyle}
+            >
+              <FacebookIcon style={iconStyle} />
+              Facebook
+            </a>
             <br />
-            <TwitterIcon style={iconStyle} />
-            Twitter
+            <a
+              href="https://twitter.com/TecnoTics_"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={linkStyle}
+            >
+              <TwitterIcon style={iconStyle} />
+              Twitter
+            </a>
             <br />
-            <LinkedInIcon style={iconStyle} />
-            LinkedIn
+            <a
+              href="https://www.linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={linkStyle}
+            >
+              <LinkedInIcon style={iconStyle} />
+              LinkedIn
+            </a>
             <br />
-            <InstagramIcon style={iconStyle} />
-            Instagram
+            <a
+              href="https://www.instagram.com/tecnotics_/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={linkStyle}
+            >
+              <InstagramIcon style={iconStyle} />
+              Instagram
+            </a>
           </Typography>
         </div>
       </Toolbar>
       <Typography variant="body1" style={copyrightStyle}>
         <strong>Derechos de Autor</strong>
-        <br />© 2023 Tecnotics. Todos los derechos reservados.
+        <br /> © {new Date().getFullYear()} TecnoTics. Todos los derechos
+        reservados.
       </Typography>
     </AppBar>
   );
