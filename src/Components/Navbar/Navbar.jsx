@@ -11,6 +11,7 @@ import {
   ListItemText,
   useMediaQuery,
   useTheme,
+  CssBaseline,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -64,7 +65,7 @@ function Navbar() {
             sx={{
               color: "black",
               margin: "0 0px",
-              fontSize: "15px",
+              fontSize: "13px",
               textTransform: "capitalize",
               "&:hover": {
                 color: "#007acc",
@@ -74,6 +75,8 @@ function Navbar() {
             <span
               style={{
                 marginRight: "4px",
+                fontSize: "20%",
+                verticalAlign: "middle",
               }}
             >
               {item.icon}
@@ -87,20 +90,35 @@ function Navbar() {
 
   return (
     <div>
-      <AppBar position="static" sx={{ backgroundColor: "#FFF" }}>
-        <Toolbar>
-          <img
-            src="../../../src/assets/images/favicom.png"
-            alt="Icono"
-            style={{
-              width: "40px",
-              height: "40px",
-              marginRight: "5px",
-            }}
-          />
-          <Typography variant="h6" sx={{ flexGrow: 1, color: "black" }}>
-            TecnoTics
-          </Typography>
+      <CssBaseline />
+      <AppBar
+        position="fixed"
+        sx={{
+          backgroundColor: "#FFF",
+          zIndex: theme.zIndex.drawer + 1,
+        }}
+      >
+        <Toolbar
+          sx={{
+            justifyContent: isMobileOrTablet ? "space-between" : "center",
+            display: "flex",
+            justifyContent: "space-around",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <img
+              src="../../../src/assets/images/favicom.png"
+              alt="Icono"
+              style={{
+                width: "40px",
+                height: "40px",
+                marginRight: "5px",
+              }}
+            />
+            <Typography variant="h6" sx={{ color: "black" }}>
+              TecnoTics
+            </Typography>
+          </div>
           {isMobileOrTablet ? (
             <IconButton
               edge="start"
