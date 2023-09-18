@@ -107,7 +107,7 @@ function Navbar() {
         >
           <div style={{ display: "flex", alignItems: "center" }}>
             <img
-              src="../../../src/assets/images/favicom.png"
+              src="../../../src/assets/icons/favicon.ico"
               alt="Icono"
               style={{
                 width: "40px",
