@@ -7,16 +7,20 @@ import CardComponent from "../../Components/Cards/CardComponent";
 import Circuito1 from "../../../src/assets/images/circuito1.jpg";
 import Circuito2 from "../../../src/assets/images/circuito2.jpg";
 import Circuito3 from "../../../src/assets/images/circuito3.jpg";
+import { Typography } from "@mui/material";
 
 function Home() {
   return (
     <>
       <Navbar />
+      <br />
       <div className="landing-page">
         <section className="banner-corporativo">
           <Carrousel />
         </section>
         <section className="card-section">
+          <Typography variant="h4">¿Que hacemos?</Typography>
+          <br />
           <Grid container spacing={2}>
             <Grid item xs={12} sm={4}>
               <CardComponent

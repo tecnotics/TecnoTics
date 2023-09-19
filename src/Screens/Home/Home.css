@@ -1,18 +1,13 @@
-
-
 .banner-corporativo {
-  background-color: #f0f0f0; 
-  padding: 20px; 
+  padding: 0px;
   text-align: center;
 }
 
-
 .card-section {
-  padding: 20px; 
+  padding: 20px;
 }
 
 .card-image {
   max-width: 100%;
   height: auto;
 }
-

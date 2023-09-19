@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Button,
@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
+import Favicon from "../../../src/assets/icons/favicon.ico";
 import HomeIcon from "@mui/icons-material/Home";
 import PeopleIcon from "@mui/icons-material/People";
 import BusinessIcon from "@mui/icons-material/Business";
@@ -22,7 +23,6 @@ import CloudIcon from "@mui/icons-material/Cloud";
 import WorkIcon from "@mui/icons-material/Work";
 import PersonIcon from "@mui/icons-material/Person";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
-import Favicon from"../../../src/assets/icons/favicon.ico"
 
 function Navbar() {
   const theme = useTheme();
@@ -34,60 +34,38 @@ function Navbar() {
   };
 
   const menuItems = [
-    { text: "Inicio", link: "/", icon: <HomeIcon /> },
-    { text: "Quienes Somos", link: "/quienes-somos", icon: <PeopleIcon /> },
-    { text: "Outsourcing TI", link: "/outsourcing-ti", icon: <BusinessIcon /> },
-    { text: "Servicios Nube", link: "/servicios-nube", icon: <CloudIcon /> },
+    { text: "Inicio", link: "/", icon: <HomeIcon fontSize="s" /> },
+    {
+      text: "Quienes Somos",
+      link: "/quienes-somos",
+      icon: <PeopleIcon fontSize="string" />,
+    },
+    {
+      text: "Outsourcing TI",
+      link: "/outsourcing-ti",
+      icon: <BusinessIcon fontSize="string" />,
+    },
+    {
+      text: "Servicios Nube",
+      link: "/servicios-nube",
+      icon: <CloudIcon fontSize="string" />,
+    },
     {
       text: "Soluciones Corporativas",
       link: "/soluciones-corporativas",
-      icon: <WorkIcon />,
+      icon: <WorkIcon fontSize="string" />,
     },
     {
       text: "Clientes",
       link: "/clientes",
-      icon: <PersonIcon />,
+      icon: <PersonIcon fontSize="string" />,
     },
     {
       text: "Contacto",
       link: "/contacto",
-      icon: <ContactMailIcon />,
+      icon: <ContactMailIcon fontSize="string" />,
     },
   ];
-
-  const renderMenu = () => {
-    return (
-      <div className="menu">
-        {menuItems.map((item, index) => (
-          <Button
-            key={index}
-            component={Link}
-            to={item.link}
-            sx={{
-              color: "black",
-              margin: "0 0px",
-              fontSize: "13px",
-              textTransform: "capitalize",
-              "&:hover": {
-                color: "#007acc",
-              },
-            }}
-          >
-            <span
-              style={{
-                marginRight: "4px",
-                fontSize: "20%",
-                verticalAlign: "middle",
-              }}
-            >
-              {item.icon}
-            </span>
-            {item.text}
-          </Button>
-        ))}
-      </div>
-    );
-  };
 
   return (
     <div>
@@ -97,13 +75,13 @@ function Navbar() {
         sx={{
           backgroundColor: "#FFF",
           zIndex: theme.zIndex.drawer + 1,
+          marginBottom: "20px",
         }}
       >
         <Toolbar
           sx={{
-            justifyContent: isMobileOrTablet ? "space-between" : "center",
+            justifyContent: "space-between",
             display: "flex",
-            justifyContent: "space-around",
           }}
         >
           <div style={{ display: "flex", alignItems: "center" }}>
@@ -113,7 +91,7 @@ function Navbar() {
               style={{
                 width: "40px",
                 height: "40px",
-                marginRight: "5px",
+                marginLeft: "5px",
               }}
             />
             <Typography variant="h6" sx={{ color: "black" }}>
@@ -130,10 +108,39 @@ function Navbar() {
               <MenuIcon sx={{ color: "black" }} />
             </IconButton>
           ) : (
-            renderMenu()
+            <div className="menu">
+              {menuItems.map((item, index) => (
+                <Button
+                  key={index}
+                  component={Link}
+                  to={item.link}
+                  sx={{
+                    color: "black",
+                    margin: "0 0px",
+                    fontSize: "13px",
+                    textTransform: "capitalize",
+                    "&:hover": {
+                      color: "#007acc",
+                    },
+                  }}
+                >
+                  <span
+                    style={{
+                      marginRight: "4px",
+                      fontSize: "small",
+                      verticalAlign: "middle",
+                    }}
+                  >
+                    {item.icon}
+                  </span>
+                  {item.text}
+                </Button>
+              ))}
+            </div>
           )}
         </Toolbar>
       </AppBar>
+      <div style={{ marginTop: isMobileOrTablet ? "64px" : "0" }}></div>
       {isMobileOrTablet && (
         <Drawer anchor="right" open={drawerOpen} onClose={toggleMobileMenu}>
           <div
@@ -142,6 +149,8 @@ function Navbar() {
             onKeyDown={toggleMobileMenu}
             style={{ width: 250 }}
           >
+            <br />
+            <br />
             <List>
               {menuItems.map((item, index) => (
                 <ListItem

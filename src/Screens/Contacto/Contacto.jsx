@@ -1,7 +1,7 @@
 import { Button, Card, CardContent, TextField } from "@mui/material";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
-import "./Contacto.css"; 
+import "./Contacto.css";
 import {
   LocationOn,
   Phone,
@@ -10,12 +10,14 @@ import {
   Twitter,
   Instagram,
 } from "@mui/icons-material";
-
+import Map from "../../Components/Map/Map";
 
 function Contacto() {
   return (
     <>
       <Navbar />
+      <br />
+      <br />
       <div className="container">
         <h1>Contacto</h1>
 
@@ -70,35 +72,40 @@ function Contacto() {
           </Card>
         </div>
 
-        {/* Formulario de contacto */}
-        <form className="contact-form">
-          <TextField
-            label="Nombre"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            label="Email"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            label="Mensaje"
-            variant="outlined"
-            fullWidth
-            multiline
-            rows={4}
-            margin="normal"
-          />
-          <Button variant="contained" color="primary">
-            Enviar
-          </Button>
-        </form>
+        {/* Formulario y Mapa */}
+        <div className="form-and-map-container">
+          {/* Formulario de contacto */}
+          <form className="contact-form">
+            <TextField
+              label="Nombre"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              label="Email"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              label="Mensaje"
+              variant="outlined"
+              fullWidth
+              multiline
+              rows={4}
+              margin="normal"
+            />
+            <Button variant="contained" color="primary">
+              Enviar
+            </Button>
+          </form>
 
-        {/* Mapa */}
-        <div className="map-container">{/* <Map /> */}</div>
+          {/* Mapa */}
+          <div className="map-container">
+            <Map />
+          </div>
+        </div>
       </div>
       <Footer />
     </>
