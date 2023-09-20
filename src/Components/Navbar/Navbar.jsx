@@ -76,6 +76,7 @@ function Navbar() {
           backgroundColor: "#FFF",
           zIndex: theme.zIndex.drawer + 1,
           marginBottom: "20px",
+          boxShadow: "none",
         }}
       >
         <Toolbar

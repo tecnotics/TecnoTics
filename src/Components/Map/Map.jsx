@@ -1,9 +1,10 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import 'leaflet/dist/leaflet.css'
-import './Map.css'
+import "leaflet/dist/leaflet.css";
+import "./Map.css";
 
 function Map() {
-    return (
+  return (
+    <div className="map-container">
       <MapContainer
         center={[6.20951249495493, -75.57264281813593]}
         zoom={20}
@@ -20,7 +21,8 @@ function Map() {
           </Popup>
         </Marker>
       </MapContainer>
-    );
+    </div>
+  );
 }
 
 export default Map;

@@ -1,13 +1,103 @@
-.banner-corporativo {
+.landing-page {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
   padding: 0px;
-  text-align: center;
 }
 
+/* Style the hero section */
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-image: url("../../../src//assets//images/neuronas.jpg");
+  background-size: cover; /* Ajusta la imagen al tamaño del contenedor */
+  color: #fff;
+  padding: 40px;
+  margin-bottom: 20px;
+
+}
+
+.carousel-wrapper {
+  max-width: 100%; /* Cambia el valor según el tamaño deseado */
+  margin: 0 auto; /* Centra el carrusel en la página */
+}
+
+/* Ajustar el tamaño de las imágenes del carrusel */
+.carousel__slide img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.carousel__slide {
+  position: relative;
+}
+
+
+.carousel__caption {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: #fff;
+}
+
+.carousel__caption-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.carousel__caption-credit {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.carousel__indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: none;
+  margin: 5px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.carousel__indicator.selected {
+  background-color: #555;
+}
+
+/* Style the hero text */
+
+
+.quienes-somos-section {
+  background-color: #f7f7f7; /* Color de fondo */
+  padding: 40px 0; /* Espaciado interno superior e inferior */
+  text-align: center; /* Centrar el contenido del texto */
+}
+
+.quienes-somos-content {
+  max-width: 800px; /* Ancho máximo del contenido */
+  margin: 0 auto; /* Centrar el contenido horizontalmente */
+}
+
+.quienes-somos-content h4 {
+  font-size: 24px; /* Tamaño de fuente para el título */
+  color: #333; /* Color del título */
+  margin-bottom: 20px; /* Espaciado inferior del título */
+}
+
+.quienes-somos-content p {
+  font-size: 16px; /* Tamaño de fuente para el texto */
+  color: #666; /* Color del texto */
+  line-height: 1.6; /* Espaciado entre líneas del texto */
+}
+
+
+/* Style the featured cards section */
 .card-section {
   padding: 20px;
-}
-
-.card-image {
-  max-width: 100%;
-  height: auto;
 }
