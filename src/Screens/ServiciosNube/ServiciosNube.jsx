@@ -1,55 +1,64 @@
-
+import React from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
-import { Card, CardContent, Container, Grid, Typography } from "@mui/material";
-
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Container,
+  Grid,
+  Typography,
+  Button,
+} from "@mui/material";
+import { tecnoTicsServices } from "./DataNube";
+import { motion } from "framer-motion";
+import "./ServiciosNube.css"
 
 function ServiciosNube() {
-
-  const acronisData = {
-    title: "Soluciones de Nube de Acronis",
-    services: [
-      {
-        title: "Respaldo en la Nube",
-        description:
-          "Nuestra solución de respaldo en la nube garantiza la seguridad de tus datos con copias de seguridad automatizadas y recuperación rápida.",
-      },
-      {
-        title: "Almacenamiento en la Nube",
-        description:
-          "Ofrecemos un almacenamiento seguro en la nube para tus archivos y datos, con capacidad escalable según tus necesidades.",
-      },
-      {
-        title: "Protección contra Ransomware",
-        description:
-          "Protege tu negocio contra el ransomware y otras amenazas cibernéticas con nuestras soluciones avanzadas de seguridad.",
-      },
-    ],
-  };
-
   return (
     <>
       <Navbar />
       <br />
       <br />
       <br />
-      <Container>
-        <Typography variant="h2" gutterBottom>
-          {acronisData.title}
+      <br />
+      <Container className="container">
+        <Typography variant="h3">
+          <b>{tecnoTicsServices.title}</b>
         </Typography>
+        <br />
         <Grid container spacing={3}>
-          {acronisData.services.map((service, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Card>
-                <CardContent>
-                  <Typography variant="h5" component="div">
-                    {service.title}
-                  </Typography>
-                  <Typography variant="body2" color="textSecondary">
-                    {service.description}
-                  </Typography>
-                </CardContent>
-              </Card>
+          {tecnoTicsServices.services.map((service, index) => (
+            <Grid item xs={12} sm={6} md={6} lg={6} key={index}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <Card>
+                  <CardMedia
+                    component="img"
+                    alt={service.title}
+                    height="140"
+                    image={service.imageUrl}
+                  />
+                  <CardContent>
+                    <Typography variant="h5" component="div">
+                      {service.title}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary">
+                      {service.description}
+                    </Typography>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      href={service.moreLink}
+                    >
+                      Ver más
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </Grid>
           ))}
         </Grid>

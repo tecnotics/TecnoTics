@@ -1,0 +1,27 @@
+
+.container{
+    padding: 20px;
+}
+
+
+/* Estilo para los elementos de servicio */
+.Card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  height: 100%;
+}
+
+.Card:hover {
+  transform: scale(1.05);
+}
+
+.CardMedia {
+  object-fit: cover;
+  height: 140px;
+}
+
+.CardContent {
+  padding: 16px;
+}

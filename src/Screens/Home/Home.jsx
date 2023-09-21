@@ -69,11 +69,12 @@ function Home() {
             >
               <Typography variant="h4">¿Quiénes Somos?</Typography>
               <p>
-                Somos una empresa comprometida con brindar soluciones
-                innovadoras en el ámbito de la tecnología y la seguridad
-                informática. Nuestra misión es proteger los activos digitales de
-                nuestros clientes y proporcionar herramientas que les permitan
-                alcanzar el éxito en un mundo cada vez más digitalizado.
+                <b>Tecnotics</b> es más que una empresa de tecnología; somos su
+                socio estratégico en la era digital. Con una década de
+                experiencia en la industria y un equipo multidisciplinario de
+                expertos, hemos asumido la misión de impulsar la excelencia
+                técnica, manteniendo un enfoque inquebrantable en la calidad y
+                en el servicio al cliente.
               </p>
               <p>
                 Con años de experiencia en el mercado, nuestro equipo de

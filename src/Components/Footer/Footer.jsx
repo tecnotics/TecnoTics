@@ -12,6 +12,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 
 function Footer() {
   const footerStyle = {
+    backgroundColor: "#00214E",
     color: "#fff",
     padding: "20px",
   };
