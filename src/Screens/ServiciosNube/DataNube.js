@@ -1,6 +1,7 @@
 import chip from "../../assets/images/chip.jpg";
 import servicionube from "../../assets/images/serviciosnube.jpg";
 import serviciocloud from "../../assets/images/servicioscloud.jpg";
+import servicioDNS from "../../assets/images/DNS.jpg"
 
 export const acronisServices = {
   title: "Acronis",
@@ -78,7 +79,7 @@ export const tecnoTicsServices = {
       title: "Servicios DNS",
       description:
         "Gestión, optimización y seguridad de registros DNS para servicios en línea.",
-      imageUrl: chip,
+      imageUrl: servicioDNS,
       moreLink: "/ver-mas-servicio-dns",
     },
     {

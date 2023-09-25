@@ -10,9 +10,13 @@ import Acronis2 from "../../../src/assets/images/Acronis2.jpg";
 import Acronis3 from "../../../src/assets/images/Acronis3.jpg";
 import Acronis4 from "../../../src/assets/images/Acronis4.jpg";
 import Acronis5 from "../../../src/assets/images/Acronis5.jpg";
+import AcronisCard from "../../../src/assets/images/AcronisCard1.webp";
+import AcronisCard2 from "../../../src/assets/images/AcronisCard2.webp";
+import AcronisCard3 from "../../../src/assets/images/AcronisCard3.webp";
 import { Typography } from "@mui/material";
 import Carrousel from "../../Components/Carrousels/Carrousel";
 import "./Home.css"; // Importa tu archivo CSS personalizado
+import Team from "../../Components/Team/Team";
 
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -82,6 +86,8 @@ function Home() {
                 ofrecer las mejores soluciones para proteger la información
                 crítica de su organización.
               </p>
+              <br />
+              <Team />
             </motion.div>
           </div>
         </section>
@@ -102,9 +108,22 @@ function Home() {
                 variants={cardVariants} // Aplica la animación a las tarjetas
               >
                 <CardComponent
-                  title="Card 1"
-                  image={Acronis1}
-                  description="This is the content of Card 1."
+                  title="Acronis Cyber Protect Home Office"
+                  image={AcronisCard}
+                  description="Proteja hasta cinco ordenadores Windowa o macOS, un número ilimitado de dispositivos moviles Android/iOS, asi como sus datos de Microsoft 365."
+                />
+              </motion.div>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={cardVariants}
+              >
+                <CardComponent
+                  title="Acronis Cyber Backup"
+                  image={AcronisCard2}
+                  description="Haga copias de seguridad de un número ilimitado de endpoints,servidores fisicos/virtuales,bases de datos,aplicaciones y cargas de trabajo en la nube. Ediciones disponibles para las necesidades de todas las empresas."
                 />
               </motion.div>
             </Grid>
@@ -115,22 +134,9 @@ function Home() {
                 variants={cardVariants} // Aplica la animación a las tarjetas
               >
                 <CardComponent
-                  title="Card 2"
-                  image={Acronis2}
-                  description="This is the content of Card 2."
-                />
-              </motion.div>
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                variants={cardVariants} // Aplica la animación a las tarjetas
-              >
-                <CardComponent
-                  title="Card 3"
-                  image={Acronis3}
-                  description="This is the content of Card 3."
+                  title="Acronis Cyber Protect Cloud"
+                  image={AcronisCard3}
+                  description="Proporcione una ciberprotección completa a través de una solucion con una integracion de copia de seguridad exclusiva, proteccion antimalware de pila completa y herramientas de seguridad y administracion."
                 />
               </motion.div>
             </Grid>
