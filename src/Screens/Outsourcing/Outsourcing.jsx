@@ -2,7 +2,7 @@ import { Grid, Typography, Container } from "@mui/material";
 import { motion } from "framer-motion";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
-import fondo from "../../assets/images/AcronisCard6.webp"
+import fondo from "../../assets/images/AcronisCard6.webp";
 import "./Outsourcing.css";
 
 const Outsourcing = () => {
@@ -21,7 +21,11 @@ const Outsourcing = () => {
 
   ¡Contáctanos hoy mismo para descubrir cómo podemos ayudarte a llevar tu empresa al siguiente nivel en el mundo digital!`;
 
-  const imageSrc = "/ruta/a/tu/imagen.jpg"; // Ruta de la imagen que deseas mostrar
+
+  const textAnimation = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+  };
 
   return (
     <>
@@ -38,9 +42,14 @@ const Outsourcing = () => {
             </Typography>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Typography className="content" variant="body1">
-              {pageContent}
-            </Typography>
+            <motion.div
+              className="content"
+              variants={textAnimation} 
+              initial="hidden"
+              animate="visible"
+            >
+              <Typography variant="body1">{pageContent}</Typography>
+            </motion.div>
           </Grid>
           <Grid item xs={12} md={6}>
             <motion.img
