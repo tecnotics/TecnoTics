@@ -9,19 +9,19 @@ import avatar4 from "../../assets/images/profile-pic4.png";
 function Team() {
   const teamMembers = [
     {
-      name: "Miembro 1",
+      name: "Alejandro Martinez",
       avatarUrl: avatar1,
     },
     {
-      name: "Miembro 2",
+      name: "Danilo Tabares",
       avatarUrl: avatar2,
     },
     {
-      name: "Miembro 3",
+      name: "Sebastian Ocampo",
       avatarUrl: avatar3,
     },
     {
-      name: "Miembro 3",
+      name: "Jaime Durango",
       avatarUrl: avatar4,
     },
   ];

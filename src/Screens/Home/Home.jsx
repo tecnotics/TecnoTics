@@ -64,7 +64,7 @@ function Home() {
             />
           </motion.div>
         </section>
-        <section className="quienes-somos-section">
+        <section className="quienes-somos-section" >
           <div className="quienes-somos-content">
             <motion.div
               initial="hidden"
@@ -101,11 +101,11 @@ function Home() {
           </motion.div>
           <br />
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={4} >
               <motion.div
                 initial="hidden"
                 animate="visible"
-                variants={cardVariants} // Aplica la animación a las tarjetas
+                variants={cardVariants}
               >
                 <CardComponent
                   title="Acronis Cyber Protect Home Office"
