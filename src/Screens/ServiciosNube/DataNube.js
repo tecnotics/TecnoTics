@@ -1,18 +1,16 @@
-import chip from "../../assets/images/chip.jpg";
-import servicionube from "../../assets/images/serviciosnube.jpg";
 import serviciocloud from "../../assets/images/servicioscloud.jpg";
-import servicioDNS from "../../assets/images/DNS.jpg"
-import servicioVoIP from "../../assets/images/serviciosVoIP.jpg"
-import servicioSeguridad from "../../assets/images/servicioseguridad.jpeg"
-import telefoniaIP from "../../assets/images/TelefoniaIP.jpg"
-import servicioMigracion from "../../assets/images/serviciosmigracion.png"
-import acronisfondo from "../../assets/images/AcronisAbout.webp"
-import acronis1 from "../../assets/images/AcronisCard1.webp"
-import acronis2 from "../../assets/images/AcronisCard2.webp"
-import acronis3 from "../../assets/images/AcronisCard3.webp"
-import acronis4 from "../../assets/images/AcronisCard4.webp"
-import acronis5 from "../../assets/images/AcronisCard5.webp"
-import acronis6 from "../../assets/images/AcronisCard6.webp"
+import servicioDNS from "../../assets/images/DNS.jpg";
+import servicioVoIP from "../../assets/images/serviciosVoIP.jpg";
+import servicioSeguridad from "../../assets/images/servicioseguridad.jpeg";
+import telefoniaIP from "../../assets/images/TelefoniaIP.jpg";
+import servicioMigracion from "../../assets/images/serviciosmigracion.png";
+import acronisfondo from "../../assets/images/AcronisAbout.webp";
+import acronis1 from "../../assets/images/AcronisCard1.webp";
+import acronis2 from "../../assets/images/AcronisCard2.webp";
+import acronis3 from "../../assets/images/AcronisCard3.webp";
+import acronis4 from "../../assets/images/AcronisCard4.webp";
+import acronis5 from "../../assets/images/AcronisCard5.webp";
+import acronis6 from "../../assets/images/AcronisCard6.webp";
 
 export const acronisServices = {
   title: "Acronis",
@@ -68,17 +66,9 @@ export const acronisServices = {
   ],
 };
 
-
 export const tecnoTicsServices = {
   title: "Nuestros Servicios",
   services: [
-    {
-      title: "Servicios en la Nube",
-      description:
-        "Alquiler de Servidores, Filtrado de Internet y Firewall de DNS, Telefonía IP en la Nube.",
-      imageUrl: servicionube,
-      moreLink: "/ver-mas-servicio-nube",
-    },
     {
       title: "Servicios Cloud",
       description:

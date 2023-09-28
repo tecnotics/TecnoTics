@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, useAnimation } from "framer-motion"; // Importa Framer Motion
+import { motion } from "framer-motion";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
@@ -15,16 +15,18 @@ import AcronisCard2 from "../../../src/assets/images/AcronisCard2.webp";
 import AcronisCard3 from "../../../src/assets/images/AcronisCard3.webp";
 import { Typography } from "@mui/material";
 import Carrousel from "../../Components/Carrousels/Carrousel";
-import "./Home.css"; // Importa tu archivo CSS personalizado
+import "./Home.css";
 import Team from "../../Components/Team/Team";
+import MoreInfoButton from "../../Components/MoreInfo/MoreInfo";
+import { useHistory } from "react-router-dom"; // Importa useHistory
 
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const controls = useAnimation();
 
   const handleSlideChange = (index) => {
     setCurrentSlide(index);
   };
+
   const carouselImages = [Acronis1, Acronis2, Acronis3, Acronis4, Acronis5];
 
   // Animación para el encabezado
@@ -51,7 +53,7 @@ function Home() {
             className="carousel-wrapper"
             initial="hidden"
             animate="visible"
-            variants={headerVariants} // Aplica la animación al encabezado
+            variants={headerVariants}
           >
             <Carrousel
               selectedItem={currentSlide}
@@ -60,34 +62,19 @@ function Home() {
               infiniteLoop={true}
               autoPlay={true}
               interval={2000}
-              images={carouselImages} // Pasa las imágenes como prop
+              images={carouselImages}
             />
           </motion.div>
         </section>
-        <section className="quienes-somos-section" >
+        <section className="quienes-somos-section">
           <div className="quienes-somos-content">
             <motion.div
               initial="hidden"
               animate="visible"
-              variants={headerVariants} // Aplica la animación al encabezado
+              variants={headerVariants}
             >
               <Typography variant="h4">¿Quiénes Somos?</Typography>
-              <p>
-                <b>Tecnotics</b> es más que una empresa de tecnología; somos su
-                socio estratégico en la era digital. Con una década de
-                experiencia en la industria y un equipo multidisciplinario de
-                expertos, hemos asumido la misión de impulsar la excelencia
-                técnica, manteniendo un enfoque inquebrantable en la calidad y
-                en el servicio al cliente.
-              </p>
-              <p>
-                Con años de experiencia en el mercado, nuestro equipo de
-                expertos en seguridad cibernética está dedicado a desarrollar y
-                ofrecer las mejores soluciones para proteger la información
-                crítica de su organización.
-              </p>
-              <br />
-              <Team />
+              {/* Resto de tu contenido */}
             </motion.div>
           </div>
         </section>
@@ -95,13 +82,13 @@ function Home() {
           <motion.div
             initial="hidden"
             animate="visible"
-            variants={headerVariants} // Aplica la animación al encabezado
+            variants={headerVariants}
           >
             <Typography variant="h4">¿Qué más hacemos?</Typography>
           </motion.div>
           <br />
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={4} >
+            <Grid item xs={12} sm={4}>
               <motion.div
                 initial="hidden"
                 animate="visible"
@@ -111,6 +98,7 @@ function Home() {
                   title="Acronis Cyber Protect Home Office"
                   image={AcronisCard}
                   description="Proteja hasta cinco ordenadores Windowa o macOS, un número ilimitado de dispositivos moviles Android/iOS, asi como sus datos de Microsoft 365."
+                  linkTo="/ruta-1" 
                 />
               </motion.div>
             </Grid>
@@ -124,6 +112,7 @@ function Home() {
                   title="Acronis Cyber Backup"
                   image={AcronisCard2}
                   description="Haga copias de seguridad de un número ilimitado de endpoints,servidores fisicos/virtuales,bases de datos,aplicaciones y cargas de trabajo en la nube. Ediciones disponibles para las necesidades de todas las empresas."
+                  linkTo="/ruta-2"
                 />
               </motion.div>
             </Grid>
@@ -131,12 +120,13 @@ function Home() {
               <motion.div
                 initial="hidden"
                 animate="visible"
-                variants={cardVariants} // Aplica la animación a las tarjetas
+                variants={cardVariants}
               >
                 <CardComponent
                   title="Acronis Cyber Protect Cloud"
                   image={AcronisCard3}
                   description="Proporcione una ciberprotección completa a través de una solucion con una integracion de copia de seguridad exclusiva, proteccion antimalware de pila completa y herramientas de seguridad y administracion."
+                  linkTo="/ruta-3" 
                 />
               </motion.div>
             </Grid>
