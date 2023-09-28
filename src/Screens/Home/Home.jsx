@@ -18,7 +18,7 @@ import Carrousel from "../../Components/Carrousels/Carrousel";
 import "./Home.css";
 import Team from "../../Components/Team/Team";
 import MoreInfoButton from "../../Components/MoreInfo/MoreInfo";
-import { useHistory } from "react-router-dom"; // Importa useHistory
+
 
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -74,7 +74,39 @@ function Home() {
               variants={headerVariants}
             >
               <Typography variant="h4">¿Quiénes Somos?</Typography>
-              {/* Resto de tu contenido */}
+              <p>
+                <b>Tecnotics</b> es más que una empresa de tecnología; somos su
+                socio estratégico en la era digital. Con una década de
+                experiencia en la industria y un equipo multidisciplinario de
+                expertos, hemos asumido la misión de impulsar la excelencia
+                técnica, manteniendo un enfoque inquebrantable en la calidad y
+                en el servicio al cliente.
+              </p>
+              <p>
+                Con años de experiencia en el mercado, nuestro equipo de
+                expertos en seguridad cibernética está dedicado a desarrollar y
+                ofrecer las mejores soluciones para proteger la información
+                crítica de su organización.
+              </p>
+              <br />
+              <Typography variant="h4">Nuestra Mision</Typography>
+              <p>
+                Somos una empresa de soluciones corporativas especializadas en
+                tecnología que brinda a nuestros clientes las herramientas y el
+                conocimiento necesarios para optimizar sus procesos y alcanzar
+                sus objetivos de negocio.
+              </p>
+              <br />
+              <Typography variant="h4">Nuestra Vision</Typography>
+              <p>
+                Ser la empresa líder en soluciones corporativas tecnológicas en
+                América Latina, brindando a nuestros clientes la mejor
+                experiencia posible y contribuyendo al desarrollo de la región.
+              </p>
+              <br />
+              <Team />
+              <br />
+              <MoreInfoButton />
             </motion.div>
           </div>
         </section>
@@ -112,7 +144,6 @@ function Home() {
                   title="Acronis Cyber Backup"
                   image={AcronisCard2}
                   description="Haga copias de seguridad de un número ilimitado de endpoints,servidores fisicos/virtuales,bases de datos,aplicaciones y cargas de trabajo en la nube. Ediciones disponibles para las necesidades de todas las empresas."
-                  linkTo="/ruta-2"
                 />
               </motion.div>
             </Grid>
@@ -126,7 +157,6 @@ function Home() {
                   title="Acronis Cyber Protect Cloud"
                   image={AcronisCard3}
                   description="Proporcione una ciberprotección completa a través de una solucion con una integracion de copia de seguridad exclusiva, proteccion antimalware de pila completa y herramientas de seguridad y administracion."
-                  linkTo="/ruta-3" 
                 />
               </motion.div>
             </Grid>
