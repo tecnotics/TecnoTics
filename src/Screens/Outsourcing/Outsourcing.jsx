@@ -15,6 +15,7 @@ import fondo2 from "../../assets/images/AcronisCard5.webp";
 import { CheckCircleOutline as CheckCircleOutlineIcon } from "@mui/icons-material";
 import "./Outsourcing.css";
 import MoreInfoButton from "../../Components/MoreInfo/MoreInfo";
+import { Link, useNavigate } from "react-router-dom"; // Import Link and useNavigate
 
 const BenefitsList = ({ benefits }) => (
   <List>
@@ -73,6 +74,13 @@ const Outsourcing = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 1 } },
   };
 
+   const cardRoutes = ["/ruta1", "/ruta2", "/ruta3", "/ruta4"];
+
+  const handleCardClick = () => {
+    const navigate = useNavigate();
+    navigate("/");
+  };
+
   return (
     <>
       <Navbar />
@@ -81,7 +89,6 @@ const Outsourcing = () => {
       <br />
       <br />
       <Container>
-        {/* <MoreInfoButton/> */}
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Typography className="title" variant="h3">
@@ -96,53 +103,7 @@ const Outsourcing = () => {
               animate="visible"
             >
               <Typography variant="body1" style={{ textAlign: "justify" }}>
-                <div>
-                  <p>
-                    <strong>Nuestra empresa se especializa</strong> en ofrecer
-                    servicios de
-                    <strong>
-                      {" "}
-                      Outsourcing de Tecnología de la Información (TI)
-                    </strong>{" "}
-                    de alta calidad y personalizados para satisfacer las
-                    necesidades específicas de tu negocio. Con un equipo
-                    altamente calificado de expertos en TI, estamos aquí para
-                    ayudarte a optimizar tus operaciones y mejorar la eficiencia
-                    de tu empresa.
-                  </p>
-
-                  <p>
-                    <strong>
-                      Nuestros servicios de outsourcing de TI incluyen:
-                    </strong>
-                  </p>
-                  <ul>
-                    <li>Administración de redes y sistemas.</li>
-                    <li>
-                      Soporte técnico y mantenimiento de hardware y software.
-                    </li>
-                    <li>Desarrollo de software a medida.</li>
-                    <li>Seguridad informática y gestión de riesgos.</li>
-                    <li>Consultoría tecnológica y estrategia de TI.</li>
-                  </ul>
-
-                  <p>
-                    Ya sea que necesites un soporte técnico confiable,
-                    soluciones de seguridad cibernética avanzadas o desarrollo
-                    de software personalizado, estamos preparados para ofrecerte
-                    las mejores soluciones para tu negocio. Nuestro enfoque es
-                    brindarte tranquilidad para que puedas concentrarte en hacer
-                    crecer tu empresa mientras nosotros cuidamos de tus
-                    necesidades tecnológicas.
-                  </p>
-
-                  <p>
-                    ¡Contáctanos hoy mismo para descubrir cómo podemos ayudarte
-                    a llevar tu empresa al siguiente nivel en el mundo digital!
-                  </p>
-                  <br />
-                  <MoreInfoButton />
-                </div>
+                {/* Content */}
               </Typography>
             </motion.div>
           </Grid>
@@ -171,12 +132,18 @@ const Outsourcing = () => {
                     transition: { duration: 0.5, delay: 0.2 * index },
                   }}
                 >
-                  <CardContent className="outsourcing-card-content">
-                    <Typography variant="h6">{service.title}</Typography>
-                    <Typography variant="body2">
-                      {service.description}
-                    </Typography>
-                  </CardContent>
+                  <Link
+                    style={{ textDecoration: "none" }}
+                    to={cardRoutes[index]}
+                    onClick={() => handleCardClick(index)}
+                  >
+                    <CardContent className="outsourcing-card-content">
+                      <Typography variant="h6">{service.title}</Typography>
+                      <Typography variant="body2">
+                        {service.description}
+                      </Typography>
+                    </CardContent>
+                  </Link>
                 </motion.div>
               </Grid>
             ))}

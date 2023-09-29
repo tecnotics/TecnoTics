@@ -5,11 +5,11 @@ import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import Grid from "@mui/material/Grid";
 import CardComponent from "../../Components/Cards/CardComponent";
-import Acronis1 from "../../../src/assets/images/Acronis1.jpg";
-import Acronis2 from "../../../src/assets/images/Acronis2.jpg";
-import Acronis3 from "../../../src/assets/images/Acronis3.jpg";
-import Acronis4 from "../../../src/assets/images/Acronis4.jpg";
-import Acronis5 from "../../../src/assets/images/Acronis5.jpg";
+import Acronis from "../../../src/assets/images/Acronis.png";
+import FlashStart from "../../../src/assets/images/FlashStart.png";
+import Office from "../../../src/assets/images/OFFICE 365.png";
+import Outsourcing from "../../../src/assets/images/Outsourcing Banner.png";
+import Karspersky from "../../../src/assets/images/Karspersky.png"
 import AcronisCard from "../../../src/assets/images/AcronisCard1.webp";
 import AcronisCard2 from "../../../src/assets/images/AcronisCard2.webp";
 import AcronisCard3 from "../../../src/assets/images/AcronisCard3.webp";
@@ -27,7 +27,7 @@ function Home() {
     setCurrentSlide(index);
   };
 
-  const carouselImages = [Acronis1, Acronis2, Acronis3, Acronis4, Acronis5];
+  const carouselImages = [Acronis, FlashStart, Office, Outsourcing, Karspersky];
 
   // Animación para el encabezado
   const headerVariants = {

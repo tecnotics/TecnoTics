@@ -4,39 +4,36 @@
   padding: 0px;
 }
 
-/* Style the hero section */
-.hero-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-image: url("../../../src//assets//images/neuronas.jpg");
-  background-size: cover; /* Ajusta la imagen al tamaño del contenedor */
-  color: #fff;
-  padding: 40px;
-  margin-bottom: 20px;
-}
 
 .carousel-wrapper {
-  max-width: 100%; /* Cambia el valor según el tamaño deseado */
-  margin: 0 auto; /* Centra el carrusel en la página */
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden; 
 }
 
-/* Ajustar el tamaño de las imágenes del carrusel */
+
 .carousel__slide img {
-  width: 100%;
+  max-width: 100%;
   height: auto;
+  display: block; 
+  margin: 0 auto; 
   object-fit: cover;
 }
 
 .carousel__slide {
   position: relative;
+  text-align: center; 
 }
 
 .carousel__caption {
   position: absolute;
   bottom: 20px;
-  left: 20px;
+  left: 0;
+  right: 0;
   color: #fff;
+  background-color: rgba(0, 0, 0, 0.7); /* Agrega un fondo semitransparente para el texto */
+  padding: 10px; /* Añade espacio alrededor del texto para mejorar la legibilidad */
+  text-align: left; /* Alinea el texto a la izquierda */
 }
 
 .carousel__caption-title {
@@ -50,6 +47,11 @@
   font-weight: 400;
   margin: 0;
   opacity: 0.8;
+}
+
+.carousel__indicators {
+  text-align: center;
+  margin-top: 20px; 
 }
 
 .carousel__indicator {
@@ -68,10 +70,9 @@
   background-color: #555;
 }
 
-/* Style the hero text */
 
 .quienes-somos-section {
-  background-color: #f7f7f7; /* Color de fondo */
+  background-color: var(--color-secciones)
   background-size: cover;
   padding: 40px 0; 
   text-align: center; 
@@ -98,3 +99,5 @@
 .card-section {
   padding: 20px;
 }
+
+
