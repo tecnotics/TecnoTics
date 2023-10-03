@@ -70,7 +70,7 @@ export const tecnoTicsServices = {
   title: "Nuestros Servicios",
   services: [
     {
-      title: "Servicios Cloud",
+      title: "Servidores Nube",
       description:
         "Infraestructura de TI sólida y confiable para empresas en servidores en la nube.",
       imageUrl: serviciocloud,

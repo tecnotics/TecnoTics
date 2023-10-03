@@ -46,8 +46,8 @@ function Navbar() {
       icon: <BusinessIcon fontSize="string" />,
     },
     {
-      text: "Servicios Nube",
-      link: "/servicios-nube",
+      text: "Servicios Especializados de TI",
+      link: "/servicios-ti",
       icon: <CloudIcon fontSize="string" />,
     },
     {

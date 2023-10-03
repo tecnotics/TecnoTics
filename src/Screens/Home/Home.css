@@ -4,46 +4,46 @@
   padding: 0px;
 }
 
-
 .carousel-wrapper {
   max-width: 100%;
+  width: 100%;
   margin: 0 auto;
-  overflow: hidden; 
+  overflow: hidden;
 }
-
 
 .carousel__slide img {
   max-width: 100%;
   height: auto;
-  display: block; 
-  margin: 0 auto; 
+  width: 100%;
+  display: block;
+  margin: 0 auto;
   object-fit: cover;
 }
 
 .carousel__slide {
   position: relative;
-  text-align: center; 
+  text-align: center;
 }
 
 .carousel__caption {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 0;
   right: 0;
   color: #fff;
-  background-color: rgba(0, 0, 0, 0.7); /* Agrega un fondo semitransparente para el texto */
-  padding: 10px; /* Añade espacio alrededor del texto para mejorar la legibilidad */
-  text-align: left; /* Alinea el texto a la izquierda */
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  text-align: center;
 }
 
 .carousel__caption-title {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
   margin: 0;
 }
 
 .carousel__caption-credit {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
   margin: 0;
   opacity: 0.8;
@@ -51,13 +51,13 @@
 
 .carousel__indicators {
   text-align: center;
-  margin-top: 20px; 
+  margin-top: 10px;
 }
 
 .carousel__indicator {
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background-color: #ccc;
   border: none;
@@ -70,34 +70,52 @@
   background-color: #555;
 }
 
-
 .quienes-somos-section {
-  background-color: var(--color-secciones)
+  background-color: var(--color-secciones);
   background-size: cover;
-  padding: 40px 0; 
-  text-align: center; 
+  padding: 40px 0;
+  text-align: center;
 }
 
 .quienes-somos-content {
   max-width: 800px;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 
 .quienes-somos-content h4 {
-  font-size: 24px; 
-  color: #333; 
-  margin-bottom: 20px; 
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .quienes-somos-content p {
-  font-size: 16px; 
-  color: #666; 
-  line-height: 1.6; 
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
 }
 
-/* Style the featured cards section */
-.card-section {
-  padding: 20px;
+.tabs-section {
+  padding: 10px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
+@media screen and (max-width: 768px) {
+  .carousel-wrapper {
+    height: auto;
+  }
 
+  .carousel__slide {
+    min-height: 200px;
+  }
+
+  .carousel__slide img {
+    width: 100%;
+    background-color: black;
+    height: 250px;
+    object-fit: contain;
+  }
+}

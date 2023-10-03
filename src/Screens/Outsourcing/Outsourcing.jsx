@@ -2,20 +2,27 @@ import {
   Grid,
   Typography,
   Container,
-  CardContent,
   List,
   ListItem,
   ListItemText,
+  IconButton,
+  Icon,
 } from "@mui/material";
 import { motion } from "framer-motion";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import fondo from "../../assets/images/AcronisCard6.webp";
 import fondo2 from "../../assets/images/AcronisCard5.webp";
-import { CheckCircleOutline as CheckCircleOutlineIcon } from "@mui/icons-material";
+import {
+  CheckCircleOutline as CheckCircleOutlineIcon,
+  LocalLibrary as LocalLibraryIcon,
+  Cloud as CloudIcon,
+  Security as SecurityIcon,
+  Code as CodeIcon,
+} from "@mui/icons-material";
 import "./Outsourcing.css";
 import MoreInfoButton from "../../Components/MoreInfo/MoreInfo";
-import { Link, useNavigate } from "react-router-dom"; 
+import { Link, useNavigate } from "react-router-dom";
 
 const BenefitsList = ({ benefits }) => (
   <List>
@@ -62,24 +69,23 @@ const Outsourcing = () => {
     "Mejora de la eficiencia y productividad.",
   ];
 
-  const cardColors = [
-    "#FFC107", // Amarillo
-    "#03A9F4", // Azul
-    "#8BC34A", // Verde
-    "#FF5722", // Naranja
-  ];
-
   const textAnimation = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 1 } },
   };
 
-   const cardRoutes = ["/ruta1", "/ruta2", "/ruta3", "/ruta4"];
+  const cardRoutes = ["/ruta1", "/ruta2", "/ruta3", "/ruta4"];
 
   const handleCardClick = () => {
     const navigate = useNavigate();
     navigate("/");
   };
+  const iconos = [
+    <LocalLibraryIcon fontSize="string" />,
+    <CloudIcon fontSize="string" />,
+    <SecurityIcon fontSize="string" />,
+    <CodeIcon fontSize="string" />,
+  ];
 
   return (
     <>
@@ -142,15 +148,10 @@ const Outsourcing = () => {
                     crecer tu empresa mientras nosotros cuidamos de tus
                     necesidades tecnológicas.
                   </p>
-
-                  <p>
-                    ¡Contáctanos hoy mismo para descubrir cómo podemos ayudarte
-                    a llevar tu empresa al siguiente nivel en el mundo digital!
-                  </p>
-                  <br />
-                  <MoreInfoButton />
                 </div>
               </Typography>
+              <br />
+              <MoreInfoButton />
             </motion.div>
           </Grid>
           <Grid item xs={12} md={6}>
@@ -163,37 +164,7 @@ const Outsourcing = () => {
               transition={{ duration: 1 }}
             />
           </Grid>
-          <Grid container spacing={3} style={{ margin: "20px 0" }}>
-            {inHouseServices.map((service, index) => (
-              <Grid item xs={12} md={6} key={index}>
-                <motion.div
-                  className="outsourcing-card"
-                  style={{
-                    backgroundColor: cardColors[index % cardColors.length],
-                  }}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                    transition: { duration: 0.5, delay: 0.2 * index },
-                  }}
-                >
-                  <Link
-                    style={{ textDecoration: "none" }}
-                    to={cardRoutes[index]}
-                    onClick={() => handleCardClick(index)}
-                  >
-                    <CardContent className="outsourcing-card-content">
-                      <Typography variant="h6">{service.title}</Typography>
-                      <Typography variant="body2">
-                        {service.description}
-                      </Typography>
-                    </CardContent>
-                  </Link>
-                </motion.div>
-              </Grid>
-            ))}
-          </Grid>
+
           <Grid item xs={12} md={6}>
             <motion.img
               className="image"
@@ -218,6 +189,45 @@ const Outsourcing = () => {
             </motion.div>
           </Grid>
         </Grid>
+        <br />
+        <Grid container spacing={2}>
+          {inHouseServices.map((service, index) => (
+            <Grid key={index} item xs={4}>
+              <IconButton
+                component={Link}
+                to={cardRoutes[index]}
+                onClick={() => handleCardClick(index)}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  padding: 0, // Elimina el espacio interior del botón
+                  backgroundColor: "transparent", // Fondo transparente
+                }}
+              >
+                <Icon style={{ fontSize: "64px", color: "#ff5733" }}>
+                  {iconos[index]}
+                </Icon>
+                <Typography variant="body2" align="center">
+                  <b>{service.title}</b>
+                </Typography>
+                <Typography variant="body2" align="center">
+                  {service.description}
+                </Typography>
+              </IconButton>
+            </Grid>
+          ))}
+        </Grid>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            marginTop: "20px",
+            marginBottom: "20px",
+          }}
+        >
+          <MoreInfoButton />
+        </div>
       </Container>
       <Footer />
     </>

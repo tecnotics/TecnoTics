@@ -13,27 +13,9 @@
 }
 
 .outsourcing-container {
-  background-color: #f9f9f9; /* Fondo del componente */
-  padding: 20px; /* Espacio interno del componente */
-  border-radius: 5px; /* Bordes redondeados del componente */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  background-color: #f9f9f9; 
+  padding: 20px;
+  border-radius: 5px; 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
 }
 
-/* Estilo para las tarjetas de servicios de outsourcing */
-.outsourcing-card {
-  border: 1px solid #ddd; /* Borde de la tarjeta */
-  border-radius: 5px; /* Bordes redondeados */
-  margin-bottom: 10px; /* Espacio entre tarjetas */
-  padding: 10px; /* Espacio interno de la tarjeta */
-  transition: background-color 0.3s ease; /* Transición suave en el cambio de color de fondo */
-}
-
-/* Estilo para el texto dentro de las tarjetas */
-.outsourcing-card-content {
-  color: #333; /* Color del texto */
-}
-
-/* Estilo para cambiar el color de fondo al pasar el ratón sobre la tarjeta */
-.outsourcing-card:hover {
-  background-color: #e0e0e0!important; /* Cambia el fondo al pasar el ratón */
-}
