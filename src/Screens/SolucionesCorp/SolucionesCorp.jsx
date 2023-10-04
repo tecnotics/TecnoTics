@@ -15,8 +15,8 @@ function SolucionesCorp() {
       <Container>
         <Grid container spacing={2} alignItems="center" justifyContent="center">
           <Grid item xs={12}>
-            <Typography variant="h3"gutterBottom>
-              <b>Tecnotics Soluciones Corporativas</b> 
+            <Typography variant="h3" gutterBottom>
+              <b>Tecnotics Soluciones Corporativas</b>
             </Typography>
           </Grid>
           <Grid item xs={12} md={8}>
