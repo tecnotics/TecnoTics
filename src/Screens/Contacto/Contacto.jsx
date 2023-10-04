@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, TextField } from "@mui/material";
+import { Button, Card, CardContent, Grid, TextField, Typography } from "@mui/material";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import "./Contacto.css";
@@ -19,7 +19,11 @@ function Contacto() {
       <br />
       <br />
       <div className="container">
-        <h1>Contacto</h1>
+        <Grid item xs={12}>
+          <Typography variant="h3">
+            <b>Contacto</b>
+          </Typography>
+        </Grid>
 
         {/* Tarjetas (Cards) */}
         <div className="card-container">

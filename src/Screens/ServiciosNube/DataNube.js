@@ -48,7 +48,7 @@ export const acronisServices = {
       description:
         "Protección de datos incomparable con soluciones de copia de seguridad y recuperación de Acronis.",
       imageUrl: acronis4,
-      moreLink: "/ver-mas-servicio-seguridad",
+      moreLink: "/ver-mas-acronis-seguridad",
     },
     {
       title: "Prevención a perdida de datos (DLP)",
