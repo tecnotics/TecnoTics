@@ -86,7 +86,7 @@ function ServiciosDNS() {
           <Grid item xs={12}>
             <Typography variant="body1">
               Con nuestros mejores deseos, <br /> Tecnotics - Soluciones
-              Corporativas
+              Corporativas 
             </Typography>
           </Grid>
         </Grid>

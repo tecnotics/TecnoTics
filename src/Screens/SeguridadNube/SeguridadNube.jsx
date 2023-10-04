@@ -1,9 +1,10 @@
-import { Container, Typography, Grid, Paper } from "@mui/material";
-import Navbar from "../../Components/Navbar/Navbar";
+import { Grid, Typography, Container, Card, CardContent } from "@mui/material";
+import { motion } from "framer-motion";
 import Footer from "../../Components/Footer/Footer";
-import chip from "../../assets/images/chip.jpg"
+import Navbar from "../../Components/Navbar/Navbar";
+import chip from "../../assets/images/chip.jpg";
+import MoreInfoButton from "../../Components/MoreInfo/MoreInfo";
 
-// JSON con el contenido para facilitar su uso
 const contentData = [
   {
     title: "🌐 Bienvenidos al Futuro Seguro con TecnoTics",
@@ -32,7 +33,12 @@ const contentData = [
   },
 ];
 
-function SeguridadNube() {
+const SeguridadNube = () => {
+  const textAnimation = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+  };
+
   return (
     <>
       <Navbar />
@@ -41,32 +47,53 @@ function SeguridadNube() {
       <br />
       <br />
       <Container>
-        <Typography variant="h3" gutterBottom>
-          <b>Seguridad en la Nube</b>
-        </Typography>
-
-        <Grid container spacing={3}>
-          {contentData.map((item, index) => (
-            <Grid key={index} item xs={12} sm={6}>
-              <Paper elevation={3} style={{ padding: "20px" }}>
-                <Typography variant="h6" gutterBottom>
-                  {item.title}
-                </Typography>
-                <Typography variant="body1">{item.text}</Typography>
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  style={{ maxWidth: "100%", marginTop: "20px" }}
-                />
-              </Paper>
-            </Grid>
-          ))}
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <Typography className="title" variant="h3">
+              <b>Seguridad en la Nube</b>
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <motion.div
+              className="content"
+              variants={textAnimation}
+              initial="hidden"
+              animate="visible"
+            >
+              <Grid container spacing={2}>
+                {contentData.map((item, index) => (
+                  <Grid key={index} item xs={12} md={6}>
+                    <Card elevation={3}>
+                      <CardContent>
+                        <Typography variant="h4">{item.title}</Typography>
+                        <Typography variant="body1">{item.text}</Typography>
+                      </CardContent>
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        style={{ maxWidth: "100%" }}
+                      />
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          padding: "16px",
+                        }}
+                      >
+                        <MoreInfoButton />
+                      </div>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
+            </motion.div>
+          </Grid>
         </Grid>
+        <br />
       </Container>
-      <br />
       <Footer />
     </>
   );
-}
+};
 
 export default SeguridadNube;

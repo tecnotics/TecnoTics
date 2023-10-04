@@ -9,20 +9,15 @@ import FlashStart from "../../../src/assets/images/FlashStart.png";
 import Office from "../../../src/assets/images/OFFICE 365.png";
 import Outsourcing from "../../../src/assets/images/Outsourcing Banner.png";
 import Karspersky from "../../../src/assets/images/Karspersky.png";
-import AcronisCard from "../../../src/assets/images/AcronisCard1.webp";
-import AcronisCard2 from "../../../src/assets/images/AcronisCard2.webp";
-import AcronisCard3 from "../../../src/assets/images/AcronisCard3.webp";
-import { Typography, Tab, Tabs, Box } from "@mui/material";
+import { Typography, Tab, Tabs, Box, Button } from "@mui/material";
 import Carrousel from "../../Components/Carrousels/Carrousel";
+import { Link } from "react-router-dom";
 import "./Home.css";
 import MoreInfoButton from "../../Components/MoreInfo/MoreInfo";
-import ServiciosNube from "../ServiciosNube/ServiciosNube";
-import SeguridadNube from "../SeguridadNube/SeguridadNube";
-import Office365 from "../Office365/Office365";
 
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [currentTab, setCurrentTab] = useState(0); // State para el tab actual
+  const [currentTab, setCurrentTab] = useState(0); 
 
   const handleSlideChange = (index) => {
     setCurrentSlide(index);
@@ -30,19 +25,13 @@ function Home() {
 
   const carouselImages = [Acronis, FlashStart, Office, Outsourcing, Karspersky];
 
-  // Animación para el encabezado
+
   const headerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
   };
 
-  // Animación para las tarjetas
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
-
-  // Manejar el cambio de pestañas
+ 
   const handleTabChange = (event, newValue) => {
     setCurrentTab(newValue);
   };
@@ -112,7 +101,6 @@ function Home() {
             </Typography>
           </motion.div>
           <Box display="flex" justifyContent="center">
-            {" "}
             <Tabs
               value={currentTab}
               onChange={handleTabChange}
@@ -127,15 +115,165 @@ function Home() {
           </Box>
           <br />
           <br />
-          {/* Renderizar el contenido basado en el tab actual */}
-          {currentTab === 0 && <Grid container spacing={2}></Grid>}
-          {currentTab === 1 && (
-            <Grid container spacing={2}>
-              <Office365 />
+          {currentTab === 0 && (
+            <Grid
+              className="acronis-tab"
+              container
+              spacing={2}
+              justifyContent="center"
+              alignItems="center"
+              style={{ minHeight: "40vh" }}
+            >
+              <Grid item xs={12} textAlign="center">
+                <Typography variant="h3" style={{ marginBottom: "10px" }}>
+                  <b>Servicio Acronis </b>
+                </Typography>
+                <p>
+                  Ofrecemos soluciones de respaldo y recuperación de datos
+                  líderes en la industria a través de Acronis. Mantén tus datos
+                  seguros y respaldados con nuestra experiencia en Acronis.
+                </p>
+                <p>Nuestros servicios de Acronis incluyen:</p>
+                <ul>
+                  <li>Respaldo automático de datos</li>
+                  <li>Recuperación rápida en caso de desastres</li>
+                  <li>Seguridad avanzada de datos</li>
+                </ul>
+              </Grid>
+              <Grid item xs={12} textAlign="center">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  component={Link}
+                  to="/acronis"
+                >
+                  Ver más sobre Acronis
+                </Button>
+              </Grid>
             </Grid>
           )}
-          {currentTab === 2 && <Grid container spacing={2}></Grid>}
-          {currentTab === 3 && <Grid container spacing={2}></Grid>}
+
+          {currentTab === 1 && (
+            <Grid
+              className="office-tab"
+              container
+              spacing={2}
+              justifyContent="center"
+              alignItems="center"
+              style={{ minHeight: "40vh" }}
+            >
+              <Grid item xs={12} textAlign="center">
+                <Typography variant="h3">
+                  <b>Office 365 </b>
+                </Typography>
+                <p>
+                  Mejora la productividad y colaboración de tu equipo con Office
+                  365. Ofrecemos implementación, soporte y personalización de
+                  Office 365 para tu negocio.
+                </p>
+                <p>Beneficios de Office 365 con nosotros:</p>
+                <ul>
+                  <li>
+                    Acceso a las últimas versiones de aplicaciones de Microsoft
+                    Office
+                  </li>
+                  <li>
+                    Colaboración en tiempo real en documentos y correos
+                    electrónicos
+                  </li>
+                  <li>Soporte técnico experto y personalizado</li>
+                </ul>
+              </Grid>
+              <Grid item xs={12} textAlign="center">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  component={Link}
+                  to="/office365"
+                >
+                  Ver más sobre Office 365
+                </Button>
+              </Grid>
+            </Grid>
+          )}
+
+          {currentTab === 2 && (
+            <Grid
+              className="karspersky-tab"
+              container
+              spacing={2}
+              justifyContent="center"
+              alignItems="center"
+              style={{ minHeight: "40vh" }}
+            >
+              <Grid item xs={12} textAlign="center">
+                <Typography variant="h3">
+                  <b>Karspersky </b>
+                </Typography>
+                <p>
+                  Protege tu infraestructura de TI contra amenazas cibernéticas
+                  con Karspersky. Nuestros expertos en seguridad te ayudarán a
+                  mantener tus sistemas seguros.
+                </p>
+                <p>Características de nuestros servicios de Karspersky:</p>
+                <ul>
+                  <li>Detección avanzada de amenazas</li>
+                  <li>Gestión centralizada de seguridad</li>
+                  <li>
+                    Actualizaciones en tiempo real de definiciones de virus
+                  </li>
+                </ul>
+              </Grid>
+              <Grid item xs={12} textAlign="center">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  component={Link}
+                  to="/kaspersky"
+                >
+                  Ver más sobre Kaspersky
+                </Button>
+              </Grid>
+            </Grid>
+          )}
+
+          {currentTab === 3 && (
+            <Grid
+              className="outsourcing-tab"
+              container
+              spacing={2}
+              justifyContent="center"
+              alignItems="center"
+              style={{ minHeight: "40vh" }}
+            >
+              <Grid item xs={12} textAlign="center">
+                <Typography variant="h3">
+                  <b>Outsourcing </b>
+                </Typography>
+                <p>
+                  Externaliza tus servicios de TI con nosotros. Ofrecemos
+                  soluciones de outsourcing de TI para ayudarte a reducir costos
+                  y mejorar la eficiencia operativa.
+                </p>
+                <p>Beneficios de nuestro servicio de Outsourcing:</p>
+                <ul>
+                  <li>Reducción de costos operativos</li>
+                  <li>Enfoque en tus competencias principales</li>
+                  <li>Soporte técnico y mantenimiento proactivo</li>
+                </ul>
+              </Grid>
+              <Grid item xs={12} textAlign="center">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  component={Link}
+                  to="/outsourcing-ti"
+                >
+                  Ver más sobre Outsourcing
+                </Button>
+              </Grid>
+            </Grid>
+          )}
         </section>
       </div>
       <Footer />

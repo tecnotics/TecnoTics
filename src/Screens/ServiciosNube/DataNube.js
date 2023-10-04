@@ -23,7 +23,7 @@ export const acronisServices = {
       moreLink: "/ver-mas-servicio-ransomware",
     },
     {
-      title: "Administrcion de parches para empresas",
+      title: "Administracion de parches para empresas",
       description:
         "Soluciones de administración automatizada de parches de Acronis para proteger contra amenazas.",
       imageUrl: acronis1,

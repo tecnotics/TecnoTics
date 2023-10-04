@@ -119,3 +119,88 @@
     object-fit: contain;
   }
 }
+
+.image {
+  max-width: 100vh;
+}
+
+.acronis-tab,
+.office-tab,
+.karspersky-tab,
+.outsourcing-tab {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+/* Estilos para pantallas grandes (por ejemplo, escritorios) */
+@media screen and (min-width: 768px) {
+  .acronis-tab {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9)),
+      url("../../../src/assets/images/Acronis4.jpg");
+  }
+
+  .office-tab {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4)),
+      url("../../../src/assets/images/OFFICE\ 365.png");
+  }
+
+  .karspersky-tab {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
+      url("../../../src/assets/images/Karspersky.png");
+  }
+
+  .outsourcing-tab {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
+      url("../../../src/assets/images/fondotecnologia.png");
+  }
+}
+
+/* Estilos para pantallas pequeñas (por ejemplo, dispositivos móviles) */
+@media screen and (max-width: 767px) {
+  .acronis-tab {
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.9)),
+      url("../../../src/assets/images/Acronis4.jpg");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+  }
+
+  .office-tab {
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.4)),
+      url("../../../src/assets/images/OFFICE\ 365.png");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+  }
+
+  .karspersky-tab {
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
+      url("../../../src/assets/images/Karspersky.png");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+  }
+
+  .outsourcing-tab {
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
+      url("../../../src/assets/images/fondotecnologia.png");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+  }
+
+  /* Ajusta el tamaño y estilo del texto para que sea legible en pantallas pequeñas */
+  .acronis-tab h2,
+  .office-tab h2,
+  .karspersky-tab h2,
+  .outsourcing-tab h2 {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+}

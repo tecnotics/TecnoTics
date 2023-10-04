@@ -34,7 +34,7 @@ function QuienesSomos() {
         initial="hidden"
         animate="visible"
       >
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           <Grid item xs={12}>
             <Typography variant="h3">
               <b>Quiénes Somos</b>

@@ -29,12 +29,11 @@ function ServiciosNube() {
       <br />
       <br />
       <Container className="container">
-        <Typography variant="h3">
-          <b>Servicios</b>
-        </Typography>
-        <br />
-
-        {/* Pestañas para TecnoTics y ACRONIS */}
+        <Grid item xs={12}>
+          <Typography variant="h3" gutterBottom>
+            <b>Servicios TI</b>
+          </Typography>
+        </Grid>
         <Tabs
           value={activeTab}
           onChange={handleTabChange}
