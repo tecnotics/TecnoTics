@@ -11,6 +11,7 @@ import ServiciosDNS from "../Screens/ServiciosDNS/ServiciosDNS";
 import MigracionNube from "../Screens/MigracionNube/MigracionNube";
 import AcronisRansomware from "../Screens/AcronisRansomware/AcronisRansomware";
 import AcronisParcheEmpresas from "../Screens/AcronisParcheEmpresas/AcronisParcheEmpresas";
+import ServidoresNube from "../Screens/ServidoresNube/ServidoresNube";
 
 export default function Rutas() {
   return (
@@ -35,6 +36,7 @@ export default function Rutas() {
           path="/ver-mas-servicio-parches"
           element={<AcronisParcheEmpresas />}
         />
+        <Route path="/ver-mas-servidor-nube" element={<ServidoresNube />} />
       </Routes>
     </BrowserRouter>
   );

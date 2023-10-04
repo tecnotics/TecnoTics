@@ -74,7 +74,7 @@ export const tecnoTicsServices = {
       description:
         "Infraestructura de TI sólida y confiable para empresas en servidores en la nube.",
       imageUrl: serviciocloud,
-      moreLink: "/ver-mas-servicio-cloud",
+      moreLink: "/ver-mas-servidor-nube",
     },
     {
       title: "Servicios DNS",

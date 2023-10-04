@@ -6,7 +6,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Grid from "@mui/material/Grid";
 import Acronis from "../../../src/assets/images/Acronis.png";
 import FlashStart from "../../../src/assets/images/FlashStart.png";
-import Office from "../../../src/assets/images/OFFICE 365.png";
+import Office from "../../../src/assets/images/OFFICE365.png";
 import Outsourcing from "../../../src/assets/images/Outsourcing Banner.png";
 import Karspersky from "../../../src/assets/images/Karspersky.png";
 import { Typography, Tab, Tabs, Box, Button } from "@mui/material";
