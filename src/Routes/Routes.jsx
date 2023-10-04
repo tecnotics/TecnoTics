@@ -12,29 +12,29 @@ import MigracionNube from "../Screens/MigracionNube/MigracionNube";
 import AcronisRansomware from "../Screens/AcronisRansomware/AcronisRansomware";
 import AcronisParcheEmpresas from "../Screens/AcronisParcheEmpresas/AcronisParcheEmpresas";
 
+const routes = [
+  { path: "/", element: <Home /> },
+  { path: "/clientes", element: <Clientes /> },
+  { path: "/contacto", element: <Contacto /> },
+  { path: "/soluciones-corporativas", element: <SolucionesCorp /> },
+  { path: "/servicios-ti", element: <ServiciosNube /> },
+  { path: "/outsourcing-ti", element: <Outsourcing /> },
+  { path: "/quienes-somos", element: <QuienesSomos /> },
+  { path: "/ver-mas-servicio-seguridad", element: <SeguridadNube /> },
+  { path: "/ver-mas-servicio-dns", element: <ServiciosDNS /> },
+  { path: "/ver-mas-servicio-migracion", element: <MigracionNube /> },
+  { path: "/ver-mas-servicio-ransomware", element: <AcronisRansomware /> },
+  { path: "/ver-mas-servicio-parches", element: <AcronisParcheEmpresas /> },
+];
+
 export default function Rutas() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        {routes.map((route, index) => (
+          <Route key={index} path={route.path} element={route.element} />
+        ))}
         <Route path="*" element={<Home />} />
-        <Route path="/clientes" element={<Clientes />} />
-        <Route path="/contacto" element={<Contacto />} />
-        <Route path="/soluciones-corporativas" element={<SolucionesCorp />} />
-        <Route path="/servicios-ti" element={<ServiciosNube />} />
-        <Route path="/outsourcing-ti" element={<Outsourcing />} />
-        <Route path="/quienes-somos" element={<QuienesSomos />} />
-        <Route path="/ver-mas-servicio-seguridad" element={<SeguridadNube />} />
-        <Route path="/ver-mas-servicio-dns" element={<ServiciosDNS />} />
-        <Route path="/ver-mas-servicio-migracion" element={<MigracionNube />} />
-        <Route
-          path="/ver-mas-servicio-ransomware"
-          element={<AcronisRansomware />}
-        />
-        <Route
-          path="/ver-mas-servicio-parches"
-          element={<AcronisParcheEmpresas />}
-        />
       </Routes>
     </BrowserRouter>
   );
