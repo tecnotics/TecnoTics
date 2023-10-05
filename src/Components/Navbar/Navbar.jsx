@@ -41,12 +41,12 @@ function Navbar() {
       icon: <PeopleIcon fontSize="string" />,
     },
     {
-      text: "Outsourcing TI",
+      text: "Servicios Especializados de TI",
       link: "/outsourcing-ti",
       icon: <BusinessIcon fontSize="string" />,
     },
     {
-      text: "Servicios Especializados de TI",
+      text: "Servicios Cloud",
       link: "/servicios-ti",
       icon: <CloudIcon fontSize="string" />,
     },
@@ -100,12 +100,7 @@ function Navbar() {
             </Typography>
           </div>
           {isMobileOrTablet ? (
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              onClick={toggleMobileMenu}
-            >
+            <IconButton edge="start" color="inherit" aria-label="menu" onClick={toggleMobileMenu}>
               <MenuIcon sx={{ color: "black" }} />
             </IconButton>
           ) : (

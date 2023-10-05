@@ -17,7 +17,7 @@ import MoreInfoButton from "../../Components/MoreInfo/MoreInfo";
 
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [currentTab, setCurrentTab] = useState(0); 
+  const [currentTab, setCurrentTab] = useState(0);
 
   const handleSlideChange = (index) => {
     setCurrentSlide(index);
@@ -25,13 +25,11 @@ function Home() {
 
   const carouselImages = [Acronis, FlashStart, Office, Outsourcing, Karspersky];
 
-
   const headerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
   };
 
- 
   const handleTabChange = (event, newValue) => {
     setCurrentTab(newValue);
   };
@@ -63,27 +61,21 @@ function Home() {
         </section>
         <section className="quienes-somos-section">
           <div className="quienes-somos-content">
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              variants={headerVariants}
-            >
+            <motion.div initial="hidden" animate="visible" variants={headerVariants}>
               <Typography variant="h4">
                 <b>¿Quiénes Somos? </b>
               </Typography>
               <p>
-                <b>Tecnotics</b> es más que una empresa de tecnología; somos su
-                socio estratégico en la era digital. Con una década de
-                experiencia en la industria y un equipo multidisciplinario de
-                expertos, hemos asumido la misión de impulsar la excelencia
-                técnica, manteniendo un enfoque inquebrantable en la calidad y
-                en el servicio al cliente.
+                <b>Tecnotics</b> es más que una empresa de tecnología; somos su socio estratégico en
+                la era digital. Con una década de experiencia en la industria y un equipo
+                multidisciplinario de expertos, hemos asumido la misión de impulsar la excelencia
+                técnica, manteniendo un enfoque inquebrantable en la calidad y en el servicio al
+                cliente.
               </p>
               <p>
-                Con años de experiencia en el mercado, nuestro equipo de
-                expertos en seguridad cibernética está dedicado a desarrollar y
-                ofrecer las mejores soluciones para proteger la información
-                crítica de su organización.
+                Con años de experiencia en el mercado, nuestro equipo de expertos en seguridad
+                cibernética está dedicado a desarrollar y ofrecer las mejores soluciones para
+                proteger la información crítica de su organización.
               </p>
               <br />
               <MoreInfoButton />
@@ -91,11 +83,7 @@ function Home() {
           </div>
         </section>
         <section className="tabs-section">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={headerVariants}
-          >
+          <motion.div initial="hidden" animate="visible" variants={headerVariants}>
             <Typography variant="h4">
               <b>¿Qué más hacemos? </b>
             </Typography>
@@ -129,9 +117,9 @@ function Home() {
                   <b>Servicio Acronis </b>
                 </Typography>
                 <p>
-                  Ofrecemos soluciones de respaldo y recuperación de datos
-                  líderes en la industria a través de Acronis. Mantén tus datos
-                  seguros y respaldados con nuestra experiencia en Acronis.
+                  Ofrecemos soluciones de respaldo y recuperación de datos líderes en la industria a
+                  través de Acronis. Mantén tus datos seguros y respaldados con nuestra experiencia
+                  en Acronis.
                 </p>
                 <p>Nuestros servicios de Acronis incluyen:</p>
                 <ul>
@@ -141,12 +129,7 @@ function Home() {
                 </ul>
               </Grid>
               <Grid item xs={12} textAlign="center">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  component={Link}
-                  to="/acronis"
-                >
+                <Button variant="contained" color="primary" component={Link} to="/acronis">
                   Ver más sobre Acronis
                 </Button>
               </Grid>
@@ -167,30 +150,18 @@ function Home() {
                   <b>Office 365 </b>
                 </Typography>
                 <p>
-                  Mejora la productividad y colaboración de tu equipo con Office
-                  365. Ofrecemos implementación, soporte y personalización de
-                  Office 365 para tu negocio.
+                  Mejora la productividad y colaboración de tu equipo con Office 365. Ofrecemos
+                  implementación, soporte y personalización de Office 365 para tu negocio.
                 </p>
                 <p>Beneficios de Office 365 con nosotros:</p>
                 <ul>
-                  <li>
-                    Acceso a las últimas versiones de aplicaciones de Microsoft
-                    Office
-                  </li>
-                  <li>
-                    Colaboración en tiempo real en documentos y correos
-                    electrónicos
-                  </li>
+                  <li>Acceso a las últimas versiones de aplicaciones de Microsoft Office</li>
+                  <li>Colaboración en tiempo real en documentos y correos electrónicos</li>
                   <li>Soporte técnico experto y personalizado</li>
                 </ul>
               </Grid>
               <Grid item xs={12} textAlign="center">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  component={Link}
-                  to="/office365"
-                >
+                <Button variant="contained" color="primary" component={Link} to="/office365">
                   Ver más sobre Office 365
                 </Button>
               </Grid>
@@ -211,26 +182,18 @@ function Home() {
                   <b>Karspersky </b>
                 </Typography>
                 <p>
-                  Protege tu infraestructura de TI contra amenazas cibernéticas
-                  con Karspersky. Nuestros expertos en seguridad te ayudarán a
-                  mantener tus sistemas seguros.
+                  Protege tu infraestructura de TI contra amenazas cibernéticas con Karspersky.
+                  Nuestros expertos en seguridad te ayudarán a mantener tus sistemas seguros.
                 </p>
                 <p>Características de nuestros servicios de Karspersky:</p>
                 <ul>
                   <li>Detección avanzada de amenazas</li>
                   <li>Gestión centralizada de seguridad</li>
-                  <li>
-                    Actualizaciones en tiempo real de definiciones de virus
-                  </li>
+                  <li>Actualizaciones en tiempo real de definiciones de virus</li>
                 </ul>
               </Grid>
               <Grid item xs={12} textAlign="center">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  component={Link}
-                  to="/kaspersky"
-                >
+                <Button variant="contained" color="primary" component={Link} to="/kaspersky">
                   Ver más sobre Kaspersky
                 </Button>
               </Grid>
@@ -251,9 +214,8 @@ function Home() {
                   <b>Outsourcing </b>
                 </Typography>
                 <p>
-                  Externaliza tus servicios de TI con nosotros. Ofrecemos
-                  soluciones de outsourcing de TI para ayudarte a reducir costos
-                  y mejorar la eficiencia operativa.
+                  Externaliza tus servicios de TI con nosotros. Ofrecemos soluciones de outsourcing
+                  de TI para ayudarte a reducir costos y mejorar la eficiencia operativa.
                 </p>
                 <p>Beneficios de nuestro servicio de Outsourcing:</p>
                 <ul>
@@ -263,12 +225,7 @@ function Home() {
                 </ul>
               </Grid>
               <Grid item xs={12} textAlign="center">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  component={Link}
-                  to="/outsourcing-ti"
-                >
+                <Button variant="contained" color="primary" component={Link} to="/outsourcing-ti">
                   Ver más sobre Outsourcing
                 </Button>
               </Grid>
