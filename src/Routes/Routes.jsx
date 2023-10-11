@@ -19,6 +19,7 @@ import AcronisRecuperacionTI from "../Screens/AcronisRecuperacionTI/AcronisRecup
 import AcronisCopiaSeguridad from "../Screens/AcronisCopiaSeguridad/AcronisCopiaSeguridad";
 import AcronisPerdidaDatos from "../Screens/AcronisPerdidaDatos/AcronisPerdidaDatos";
 import AcronisSectorPublico from "../Screens/AcronisSectorPublico/AcronisSectorPublico";
+import ServerCards from "../Screens/ServidoresNube/ServidoresCardsContainer";
 
 export default function Rutas() {
   return (
@@ -56,7 +57,7 @@ export default function Rutas() {
           path="/ver-mas-servicio-parches"
           element={<AcronisParcheEmpresas />}
         />
-        <Route path="/ver-mas-servidor-nube" element={<ServidoresNube />} />
+        <Route path="/ver-mas-servidor-nube" element={<ServerCards />} />
         <Route path="/ver-mas-servicio-voip" element={<ServiciosVoLP />} />
         <Route path="/ver-mas-servicio-telefonia" element={<TelefoniaIP />} />
       </Routes>

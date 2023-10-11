@@ -31,7 +31,7 @@ function ServiciosNube() {
       <Container className="container">
         <Grid item xs={12}>
           <Typography variant="h3" gutterBottom>
-            <b>Servicios TI</b>
+            <b>Servicios Cloud</b>
           </Typography>
         </Grid>
         <Tabs

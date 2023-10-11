@@ -2,43 +2,21 @@ import React, { useState, useEffect } from "react";
 import {
   Container,
   Typography,
-  Grid,
   Paper,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  TextField,
+  Button,
+  ButtonGroup,
   Checkbox,
   FormControlLabel,
+  TextField,
+  Select,
+  MenuItem,
+  Alert,
+  AlertTitle,
+  InputLabel,
 } from "@mui/material";
 import Navbar from "../../Components/Navbar/Navbar";
-import Footer from "../../Components/Footer/Footer";
 
-function ServidoresNube() {
-  const servidores = [
-    {
-      id: "servidor1",
-      nombre: "Servidor 1",
-      precioPorGB: 0.1,
-      precioPorGBSSD: 0.2, // Precio por GB de SSD
-      info: "Información sobre Servidor 1",
-      locations: ["Datacenter A", "Datacenter B"],
-      memoryOptions: ["16 GB", "32 GB", "64 GB"],
-    },
-    {
-      id: "servidor2",
-      nombre: "Servidor 2",
-      precioPorGB: 0.15,
-      precioPorGBSSD: 0.25, // Precio por GB de SSD
-      info: "Información sobre Servidor 2",
-      locations: ["Datacenter A", "Datacenter C"],
-      memoryOptions: ["32 GB", "64 GB", "128 GB"],
-    },
-    // Agrega más servidores con propiedades similares
-  ];
-
-  const [tipoServidor, setTipoServidor] = useState("");
+function ServidoresNube({ servidor }) {
   const [almacenamiento, setAlmacenamiento] = useState(0);
   const [location, setLocation] = useState("");
   const [memory, setMemory] = useState("");
@@ -46,171 +24,213 @@ function ServidoresNube() {
   const [ssdSize, setSSDSize] = useState(0);
   const [operatingSystem, setOperatingSystem] = useState("");
   const [precioTotal, setPrecioTotal] = useState(0);
-  const [servidorSeleccionado, setServidorSeleccionado] = useState(null);
+  const [servidorSeleccionado, setServidorSeleccionado] = useState(servidor);
+  const [mostrarAlerta, setMostrarAlerta] = useState(false);
+  const [tipoAlerta, setTipoAlerta] = useState("success");
+  const [mensajeAlerta, setMensajeAlerta] = useState("");
+  const [errorFormulario, setErrorFormulario] = useState(false);
+
+  const configuracion = {
+    ubicaciones: {
+      Atlanta: 100,
+      Miami: 120,
+      Chicago: 130,
+      Tampa: 140,
+      Dallas: 150,
+    },
+    memorias: {
+      "32 GB": 200,
+      "64 GB": 350,
+      "128GB": 450,
+    },
+    sistemasOperativos: {
+      Linux: 0,
+      Windows: 100,
+    },
+  };
 
   const calcularPrecioTotal = () => {
-    const servidor = servidores.find(
-      (servidor) => servidor.id === tipoServidor
-    );
-
-    if (servidor) {
-      let precioCalculado = almacenamiento * servidor.precioPorGB;
-
-      // Considerar el tamaño de la SSD
-      if (ssd) {
-        precioCalculado += ssdSize * servidor.precioPorGBSSD; // Precio por GB de SSD
-      }
-
-      // Resto de los cálculos basados en las opciones seleccionadas por el usuario
-      // Ejemplo: Location y Memory
-      if (location === "Datacenter A") {
-        precioCalculado += 100; // Precio adicional por Datacenter A
-      } else if (location === "Datacenter B") {
-        precioCalculado += 120; // Precio adicional por Datacenter B
-      } else if (location === "Datacenter C") {
-        precioCalculado += 130; // Precio adicional por Datacenter C
-      }
-
-      if (memory === "32 GB") {
-        precioCalculado += 200; // Precio adicional por 32 GB de memoria
-      } else if (memory === "64 GB") {
-        precioCalculado += 350; // Precio adicional por 64 GB de memoria
-      }
-
-      // Resto de los cálculos basados en las opciones seleccionadas por el usuario
-      // Ejemplo: Sistema Operativo
-      if (operatingSystem === "Linux") {
-        precioCalculado += 0; // Linux puede ser gratuito
-      } else if (operatingSystem === "Windows") {
-        precioCalculado += 100; // Precio adicional por Windows
-      }
-
-      setPrecioTotal(precioCalculado);
-      setServidorSeleccionado(servidor);
-    } else {
+    if (!servidorSeleccionado) {
       setPrecioTotal(0);
-      setServidorSeleccionado(null);
+      return;
     }
+
+    let precioCalculado = almacenamiento * servidorSeleccionado.precioPorGB;
+
+    if (ssd) {
+      precioCalculado += ssdSize * servidorSeleccionado.precioPorGBSSD;
+    }
+
+    if (configuracion.ubicaciones[location]) {
+      precioCalculado += configuracion.ubicaciones[location];
+    }
+
+    if (configuracion.memorias[memory]) {
+      precioCalculado += configuracion.memorias[memory];
+    }
+
+    if (configuracion.sistemasOperativos[operatingSystem]) {
+      precioCalculado += configuracion.sistemasOperativos[operatingSystem];
+    }
+
+    setPrecioTotal(precioCalculado);
+  };
+
+  const enviarInformacion = () => {
+    const camposVacios =
+      almacenamiento <= 0 || location === "" || memory === "" || (ssd && ssdSize <= 0);
+
+    if (camposVacios) {
+      setErrorFormulario(true);
+      setMostrarAlerta(true);
+      setTipoAlerta("error");
+      setMensajeAlerta("Por favor, complete todos los campos requeridos.");
+      return;
+    }
+
+    setTimeout(() => {
+      setMostrarAlerta(true);
+      setTipoAlerta("success");
+      setMensajeAlerta("La información se envió correctamente.");
+    }, 1000);
   };
 
   useEffect(() => {
+    setServidorSeleccionado(servidor);
+  }, [servidor]);
+
+  useEffect(() => {
     calcularPrecioTotal();
-  }, [
-    tipoServidor,
-    almacenamiento,
-    ssd,
-    ssdSize,
-    location,
-    memory,
-    operatingSystem,
-  ]);
+  }, [almacenamiento, location, memory, ssd, ssdSize, operatingSystem, servidorSeleccionado]);
+
+  if (!servidorSeleccionado) {
+    return (
+      <Container>
+        <Typography variant="h3" gutterBottom>
+          <b>Selecciona un servidor para continuar</b>
+        </Typography>
+      </Container>
+    );
+  }
 
   return (
     <>
       <Navbar />
-      <br />
-      <br />
-      <br />
-      <br />
       <Container>
         <Typography variant="h3" gutterBottom>
           <b>Cotizador de Servidores</b>
         </Typography>
-        <FormControl fullWidth>
-          <InputLabel>Tipo de Servidor</InputLabel>
-          <Select
-            value={tipoServidor}
-            onChange={(e) => setTipoServidor(e.target.value)}
-          >
-            {servidores.map((servidor) => (
-              <MenuItem key={servidor.id} value={servidor.id}>
-                {servidor.nombre}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        <FormControl fullWidth>
-          <InputLabel>Almacenamiento (GB)</InputLabel>
-          <TextField
-            type="number"
-            value={almacenamiento}
-            onChange={(e) => setAlmacenamiento(parseInt(e.target.value))}
-          />
-        </FormControl>
-        <FormControl fullWidth>
-          <InputLabel>Location</InputLabel>
-          <Select
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          >
-            {servidorSeleccionado &&
-              servidorSeleccionado.locations.map((loc) => (
-                <MenuItem key={loc} value={loc}>
-                  {loc}
-                </MenuItem>
-              ))}
-          </Select>
-        </FormControl>
-        <FormControl fullWidth>
-          <InputLabel>Memory</InputLabel>
-          <Select value={memory} onChange={(e) => setMemory(e.target.value)}>
-            {servidorSeleccionado &&
-              servidorSeleccionado.memoryOptions.map((mem) => (
-                <MenuItem key={mem} value={mem}>
-                  {mem}
-                </MenuItem>
-              ))}
-          </Select>
-        </FormControl>
+
+        <ButtonGroup fullWidth variant="outlined">
+          <Button>{servidorSeleccionado.nombre}</Button>
+        </ButtonGroup>
+        <TextField
+          fullWidth
+          type="number"
+          label="Almacenamiento (GB)"
+          value={almacenamiento}
+          onChange={(e) => setAlmacenamiento(parseInt(e.target.value))}
+          style={{ marginTop: "20px" }}
+        />
         <FormControlLabel
-          control={
-            <Checkbox
-              checked={ssd}
-              onChange={(e) => setSSD(e.target.checked)}
-            />
-          }
+          control={<Checkbox checked={ssd} onChange={(e) => setSSD(e.target.checked)} />}
           label="SSD"
+          style={{ marginTop: "20px" }}
         />
         {ssd && (
-            <FormControl fullWidth>
-              <InputLabel>Tamaño de la SSD (GB)</InputLabel>
-            <TextField
-              type="number"
-              value={ssdSize}
-              onChange={(e) => setSSDSize(parseInt(e.target.value))}
-            />
-          </FormControl>
+          <TextField
+            fullWidth
+            type="number"
+            label="Tamaño de la SSD (GB)"
+            value={ssdSize}
+            onChange={(e) => setSSDSize(parseInt(e.target.value))}
+            style={{ marginTop: "20px" }}
+          />
         )}
-        <FormControl fullWidth>
-          <InputLabel>Sistema Operativo</InputLabel>
-          <Select
-            value={operatingSystem}
-            onChange={(e) => setOperatingSystem(e.target.value)}
-          >
-            <MenuItem value="Linux">Linux</MenuItem>
-            <MenuItem value="Windows">Windows</MenuItem>
-          </Select>
-        </FormControl>
-        <Typography variant="h6" gutterBottom>
-          Precio Total: ${precioTotal}
-        </Typography>
+        <InputLabel htmlFor="location">Location</InputLabel>
+        <Select
+          fullWidth
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          label="Location"
+          inputProps={{
+            name: "location",
+            id: "location",
+          }}
+        >
+          {servidorSeleccionado.locations.map((loc) => (
+            <MenuItem key={loc} value={loc}>
+              {loc}
+            </MenuItem>
+          ))}
+        </Select>
+        <InputLabel htmlFor="memory">Memory</InputLabel>
+        <Select
+          fullWidth
+          value={memory}
+          onChange={(e) => setMemory(e.target.value)}
+          label="Memory"
+          inputProps={{
+            name: "memory",
+            id: "memory",
+          }}
+        >
+          {servidorSeleccionado.memoryOptions.map((mem) => (
+            <MenuItem key={mem} value={mem}>
+              {mem}
+            </MenuItem>
+          ))}
+        </Select>
+        <InputLabel htmlFor="operatingSystem">Sistema Operativo</InputLabel>
+        <Select
+          fullWidth
+          value={operatingSystem}
+          onChange={(e) => setOperatingSystem(e.target.value)}
+          label="Sistema Operativo"
+          inputProps={{
+            name: "operatingSystem",
+            id: "operatingSystem",
+          }}
+        >
+          <MenuItem value="Linux">Linux</MenuItem>
+          <MenuItem value="Windows">Windows</MenuItem>
+        </Select>
         {servidorSeleccionado && (
           <Paper elevation={3} style={{ padding: "20px", marginTop: "20px" }}>
             <Typography variant="h5">Información del Servidor</Typography>
-            <Typography variant="body1">
-              Nombre: {servidorSeleccionado.nombre}
-            </Typography>
-            <Typography variant="body1">
-              Precio por GB: ${servidorSeleccionado.precioPorGB}
-            </Typography>
-            <Typography variant="body1">
-              Información Adicional: {servidorSeleccionado.info}
+            <img
+              src={servidorSeleccionado.image}
+              alt=""
+              style={{ objectFit: "contain", height: "200px", width: "100%" }}
+            />
+            <Typography variant="body1">{servidorSeleccionado.nombre}</Typography>
+            <Typography variant="body1">{servidorSeleccionado.info}</Typography>
+            <Typography variant="body1">Almacenamiento: {almacenamiento} (GB)</Typography>
+            <Typography variant="body1">SSD: {ssdSize} (GB)</Typography>
+            <Typography variant="body1">Locacion: {location}</Typography>
+            <Typography variant="body1">Memoria: {memory}</Typography>
+            <Typography variant="body1">Sistema Operativo: {operatingSystem}</Typography>
+            <Typography variant="h6" gutterBottom style={{ marginTop: "20px" }}>
+              Precio Total: ${precioTotal}
             </Typography>
           </Paper>
         )}
+
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={enviarInformacion}
+          style={{ marginTop: "20px" }}
+        >
+          Enviar Información
+        </Button>
+        {mostrarAlerta && (
+          <Alert severity={tipoAlerta} onClose={() => setMostrarAlerta(false)}>
+            <AlertTitle>{tipoAlerta === "success" ? "Éxito" : "Error"}</AlertTitle>
+            {mensajeAlerta}
+          </Alert>
+        )}
       </Container>
-      <br />
-      <Footer />
     </>
   );
 }
