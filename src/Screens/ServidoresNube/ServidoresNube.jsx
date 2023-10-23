@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   Container,
   Typography,
   Paper,
   Button,
   ButtonGroup,
-  Checkbox,
-  FormControlLabel,
   TextField,
-  Select,
-  MenuItem,
   Alert,
   AlertTitle,
   InputLabel,
@@ -17,31 +13,40 @@ import {
 import Navbar from "../../Components/Navbar/Navbar";
 
 function ServidoresNube({ servidor }) {
-  const [almacenamiento, setAlmacenamiento] = useState(0);
   const [location, setLocation] = useState("");
   const [memory, setMemory] = useState("");
   const [ssd, setSSD] = useState(false);
   const [ssdSize, setSSDSize] = useState(0);
   const [operatingSystem, setOperatingSystem] = useState("");
-  const [precioTotal, setPrecioTotal] = useState(0);
   const [servidorSeleccionado, setServidorSeleccionado] = useState(servidor);
+  const [precioTotal, setPrecioTotal] = useState();
+  const [correo, setCorreo] = useState();
   const [mostrarAlerta, setMostrarAlerta] = useState(false);
   const [tipoAlerta, setTipoAlerta] = useState("success");
   const [mensajeAlerta, setMensajeAlerta] = useState("");
   const [errorFormulario, setErrorFormulario] = useState(false);
-
+  const tamañosDisponibles = ["256 GB", "512 GB", "1 TB", "2 TB"];
+  const [storageType, setStorageType] = useState("ssd");
+  const preciosSSD = [320, 640, 1280, 25600];
+  const preciosSATA = [320, 640, 1280, 25600];
+  const [primaryHardDriveSize, setPrimaryHardDriveSize] = useState("");
+  const [primaryHardDrivePrice, setPrimaryHardDrivePrice] = useState(preciosSSD[0]);
+  const [secondHardDriveSize, setSecondHardDriveSize] = useState("");
+  const [secondHardDrivePrice, setSecondHardDrivePrice] = useState(preciosSSD[0]);
+  const [thirdHardDriveSize, setThirdHardDriveSize] = useState("");
+  const [thirdHardDrivePrice, setThirdHardDrivePrice] = useState(preciosSSD[0]);
   const configuracion = {
     ubicaciones: {
-      Atlanta: 100,
-      Miami: 120,
-      Chicago: 130,
-      Tampa: 140,
-      Dallas: 150,
+      Atlanta: 0,
+      Miami: 0,
+      Chicago: 0,
+      Tampa: 0,
+      Dallas: 0,
     },
     memorias: {
-      "32 GB": 200,
-      "64 GB": 350,
-      "128GB": 450,
+      "32 GB": 40,
+      "64 GB": 80,
+      "128GB": 120,
     },
     sistemasOperativos: {
       Linux: 0,
@@ -55,11 +60,8 @@ function ServidoresNube({ servidor }) {
       return;
     }
 
-    let precioCalculado = almacenamiento * servidorSeleccionado.precioPorGB;
+    let precioCalculado = servidorSeleccionado.precio;
 
-    if (ssd) {
-      precioCalculado += ssdSize * servidorSeleccionado.precioPorGBSSD;
-    }
 
     if (configuracion.ubicaciones[location]) {
       precioCalculado += configuracion.ubicaciones[location];
@@ -72,13 +74,26 @@ function ServidoresNube({ servidor }) {
     if (configuracion.sistemasOperativos[operatingSystem]) {
       precioCalculado += configuracion.sistemasOperativos[operatingSystem];
     }
+    if (primaryHardDriveSize) {
+      precioCalculado += primaryHardDrivePrice;
+    }
 
-    setPrecioTotal(precioCalculado);
+    if (secondHardDriveSize) {
+      precioCalculado += secondHardDrivePrice;
+    }
+
+    if (thirdHardDriveSize) {
+      precioCalculado += thirdHardDrivePrice;
+    }
+
+    const precioNumerico = parseFloat(precioCalculado);
+    const precioFormateado = isNaN(precioNumerico) ? " Valor no válido" : precioNumerico.toFixed(2);
+
+    setPrecioTotal(precioFormateado);
   };
 
   const enviarInformacion = () => {
-    const camposVacios =
-      almacenamiento <= 0 || location === "" || memory === "" || (ssd && ssdSize <= 0);
+    const camposVacios = location <= 0 || memory === "" || (ssd && ssdSize <= 0);
 
     if (camposVacios) {
       setErrorFormulario(true);
@@ -88,11 +103,50 @@ function ServidoresNube({ servidor }) {
       return;
     }
 
-    setTimeout(() => {
-      setMostrarAlerta(true);
-      setTipoAlerta("success");
-      setMensajeAlerta("La información se envió correctamente.");
-    }, 1000);
+    const formData = {
+      destinatario: "danielalejandrosalgadoleon@gmail.com",
+      asunto: "Cotizacion de Servidor",
+      mensaje: `Detalles de la Cotización:
+      - Correo Electrónico: ${correo}
+      - Memoria: ${memory}
+      - Tamaño de la SSD: ${ssdSize} GB
+      - Ubicación: ${location}
+      - Sistema Operativo: ${operatingSystem}
+      - Primary Hard Drive: ${primaryHardDriveSize}
+      - Second Hard Drive: ${secondHardDriveSize}
+      - Third Hard Drive: ${thirdHardDriveSize}
+      `,
+    };
+
+    console.log(formData);
+
+    fetch("http://localhost:3000/correo/enviar_correo", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Error en la respuesta del servidor");
+        }
+      })
+      .then((data) => {
+        setMostrarAlerta(true);
+        setTipoAlerta("success");
+        setMensajeAlerta(data.message);
+      })
+      .catch((error) => {
+        console.log(error);
+        setMostrarAlerta(true);
+        setTipoAlerta("error");
+        setMensajeAlerta(
+          "Hubo un error al enviar el correo electrónico. Por favor, inténtalo de nuevo."
+        );
+      });
   };
 
   useEffect(() => {
@@ -101,7 +155,17 @@ function ServidoresNube({ servidor }) {
 
   useEffect(() => {
     calcularPrecioTotal();
-  }, [almacenamiento, location, memory, ssd, ssdSize, operatingSystem, servidorSeleccionado]);
+  }, [
+    location,
+    memory,
+    ssd,
+    ssdSize,
+    operatingSystem,
+    servidorSeleccionado,
+    primaryHardDriveSize,
+    secondHardDriveSize,
+    thirdHardDrivePrice,
+  ]);
 
   if (!servidorSeleccionado) {
     return (
@@ -120,81 +184,166 @@ function ServidoresNube({ servidor }) {
         <Typography variant="h3" gutterBottom>
           <b>Cotizador de Servidores</b>
         </Typography>
-
         <ButtonGroup fullWidth variant="outlined">
           <Button>{servidorSeleccionado.nombre}</Button>
         </ButtonGroup>
+
+        <Typography variant="body1" gutterBottom>
+          <b>Primary Hard Drive </b>
+        </Typography>
+        <ButtonGroup fullWidth>
+          {tamañosDisponibles.map((tamaño, index) => (
+            <Button
+              key={tamaño}
+              variant={
+                storageType === "ssd" && primaryHardDriveSize === tamaño ? "contained" : "outlined"
+              }
+              onClick={() => {
+                setStorageType("ssd");
+                setSSDSize(tamañosDisponibles[index]);
+                setPrimaryHardDriveSize(tamañosDisponibles[index]);
+                setPrimaryHardDrivePrice(preciosSSD[index]);
+              }}
+            >
+              {tamaño} SSD (${preciosSSD[index]})
+            </Button>
+          ))}
+          {tamañosDisponibles.map((tamaño, index) => (
+            <Button
+              key={tamaño}
+              variant={
+                !ssd && storageType === "sata" && ssdSize === tamañosDisponibles[index]
+                  ? "contained"
+                  : "outlined"
+              }
+              onClick={() => {
+                setStorageType("sata");
+                setSSDSize(tamañosDisponibles[index]);
+                setPrimaryHardDriveSize(tamañosDisponibles[index]);
+                setPrimaryHardDrivePrice(preciosSATA[index]);
+              }}
+            >
+              {tamaño} SATA (${preciosSATA[index]})
+            </Button>
+          ))}
+        </ButtonGroup>
+        <Typography variant="body1" gutterBottom>
+          <b>Second Hard Drive </b>
+        </Typography>
+        <ButtonGroup fullWidth>
+          {tamañosDisponibles.map((tamaño, index) => (
+            <Button
+              key={tamaño}
+              variant={
+                storageType === "ssd" && secondHardDriveSize === tamaño ? "contained" : "outlined"
+              }
+              onClick={() => {
+                setStorageType("ssd");
+                setSecondHardDriveSize(tamaño);
+                setSecondHardDrivePrice(preciosSSD[index]);
+              }}
+            >
+              {tamaño} SSD (${preciosSSD[index]})
+            </Button>
+          ))}
+          {tamañosDisponibles.map((tamaño, index) => (
+            <Button
+              key={tamaño}
+              variant={
+                storageType === "sata" && secondHardDriveSize === tamaño ? "contained" : "outlined"
+              }
+              onClick={() => {
+                setStorageType("sata");
+                setSecondHardDriveSize(tamaño);
+                setSecondHardDrivePrice(preciosSATA[index]);
+              }}
+            >
+              {tamaño} SATA (${preciosSATA[index]})
+            </Button>
+          ))}
+        </ButtonGroup>
+        <Typography variant="body1" gutterBottom>
+          <b>Third Hard Drive </b>
+        </Typography>
+        <ButtonGroup fullWidth>
+          {tamañosDisponibles.map((tamaño, index) => (
+            <Button
+              key={tamaño}
+              variant={
+                storageType === "ssd" && thirdHardDriveSize === tamaño ? "contained" : "outlined"
+              }
+              onClick={() => {
+                setStorageType("ssd");
+                setThirdHardDriveSize(tamaño);
+                setThirdHardDrivePrice(preciosSSD[index]);
+              }}
+            >
+              {tamaño} SSD (${preciosSSD[index]})
+            </Button>
+          ))}
+          {tamañosDisponibles.map((tamaño, index) => (
+            <Button
+              key={tamaño}
+              variant={
+                storageType === "sata" && thirdHardDriveSize === tamaño ? "contained" : "outlined"
+              }
+              onClick={() => {
+                setStorageType("sata");
+                setThirdHardDriveSize(tamaño);
+                setThirdHardDrivePrice(preciosSATA[index]);
+              }}
+            >
+              {tamaño} SATA (${preciosSATA[index]})
+            </Button>
+          ))}
+        </ButtonGroup>
+        <InputLabel htmlFor="location">Correo electrónico</InputLabel>
         <TextField
           fullWidth
-          type="number"
-          label="Almacenamiento (GB)"
-          value={almacenamiento}
-          onChange={(e) => setAlmacenamiento(parseInt(e.target.value))}
-          style={{ marginTop: "20px" }}
+          type="email"
+          label="Correo electrónico"
+          value={correo}
+          onChange={(e) => setCorreo(e.target.value)}
         />
-        <FormControlLabel
-          control={<Checkbox checked={ssd} onChange={(e) => setSSD(e.target.checked)} />}
-          label="SSD"
-          style={{ marginTop: "20px" }}
-        />
-        {ssd && (
-          <TextField
-            fullWidth
-            type="number"
-            label="Tamaño de la SSD (GB)"
-            value={ssdSize}
-            onChange={(e) => setSSDSize(parseInt(e.target.value))}
-            style={{ marginTop: "20px" }}
-          />
-        )}
         <InputLabel htmlFor="location">Location</InputLabel>
-        <Select
-          fullWidth
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-          label="Location"
-          inputProps={{
-            name: "location",
-            id: "location",
-          }}
-        >
-          {servidorSeleccionado.locations.map((loc) => (
-            <MenuItem key={loc} value={loc}>
-              {loc}
-            </MenuItem>
+        <ButtonGroup fullWidth>
+          {Object.keys(configuracion.ubicaciones).map((loc) => (
+            <Button
+              key={loc}
+              variant={location === loc ? "contained" : "outlined"}
+              onClick={() => setLocation(loc)}
+            >
+              {loc} (${configuracion.ubicaciones[loc]})
+            </Button>
           ))}
-        </Select>
+        </ButtonGroup>
         <InputLabel htmlFor="memory">Memory</InputLabel>
-        <Select
-          fullWidth
-          value={memory}
-          onChange={(e) => setMemory(e.target.value)}
-          label="Memory"
-          inputProps={{
-            name: "memory",
-            id: "memory",
-          }}
-        >
-          {servidorSeleccionado.memoryOptions.map((mem) => (
-            <MenuItem key={mem} value={mem}>
-              {mem}
-            </MenuItem>
+        <ButtonGroup fullWidth>
+          {Object.keys(configuracion.memorias).map((mem) => (
+            <Button
+              key={mem}
+              variant={memory === mem ? "contained" : "outlined"}
+              onClick={() => setMemory(mem)}
+            >
+              {mem} (${configuracion.memorias[mem]})
+            </Button>
           ))}
-        </Select>
+        </ButtonGroup>
         <InputLabel htmlFor="operatingSystem">Sistema Operativo</InputLabel>
-        <Select
-          fullWidth
-          value={operatingSystem}
-          onChange={(e) => setOperatingSystem(e.target.value)}
-          label="Sistema Operativo"
-          inputProps={{
-            name: "operatingSystem",
-            id: "operatingSystem",
-          }}
-        >
-          <MenuItem value="Linux">Linux</MenuItem>
-          <MenuItem value="Windows">Windows</MenuItem>
-        </Select>
+        <ButtonGroup fullWidth>
+          <Button
+            variant={operatingSystem === "Linux" ? "contained" : "outlined"}
+            onClick={() => setOperatingSystem("Linux")}
+          >
+            Linux (${configuracion.sistemasOperativos.Linux})
+          </Button>
+          <Button
+            variant={operatingSystem === "Windows" ? "contained" : "outlined"}
+            onClick={() => setOperatingSystem("Windows")}
+          >
+            Windows (${configuracion.sistemasOperativos.Windows})
+          </Button>
+        </ButtonGroup>
         {servidorSeleccionado && (
           <Paper elevation={3} style={{ padding: "20px", marginTop: "20px" }}>
             <Typography variant="h5">Información del Servidor</Typography>
@@ -204,12 +353,14 @@ function ServidoresNube({ servidor }) {
               style={{ objectFit: "contain", height: "200px", width: "100%" }}
             />
             <Typography variant="body1">{servidorSeleccionado.nombre}</Typography>
-            <Typography variant="body1">{servidorSeleccionado.info}</Typography>
-            <Typography variant="body1">Almacenamiento: {almacenamiento} (GB)</Typography>
-            <Typography variant="body1">SSD: {ssdSize} (GB)</Typography>
+            <Typography variant="body1">Memory: {memory} (GB)</Typography>
             <Typography variant="body1">Locacion: {location}</Typography>
-            <Typography variant="body1">Memoria: {memory}</Typography>
             <Typography variant="body1">Sistema Operativo: {operatingSystem}</Typography>
+            <Typography variant="body1">
+              Primary Hard Drive: {primaryHardDrivePrice} (GB)
+            </Typography>
+            <Typography variant="body1">Second Hard Drive: {secondHardDriveSize} (GB)</Typography>
+            <Typography variant="body1">Third Hard Drive: {thirdHardDriveSize} (GB)</Typography>
             <Typography variant="h6" gutterBottom style={{ marginTop: "20px" }}>
               Precio Total: ${precioTotal}
             </Typography>

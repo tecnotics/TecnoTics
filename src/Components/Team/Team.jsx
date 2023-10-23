@@ -50,26 +50,26 @@ function Team() {
   };
 
   const modalStyle = {
-    maxWidth: "80%", // Ancho máximo del modal
+    maxWidth: "80%", 
     margin: "auto",
-    marginTop: "10vh", // Margen superior para centrar verticalmente
+    marginTop: "10vh", 
     textAlign: "center",
-    backgroundColor: "white", // Fondo blanco
-    padding: "20px", // Aumenta el espacio alrededor del contenido
-    borderRadius: "8px", // Agrega esquinas redondeadas
+    backgroundColor: "white", 
+    borderRadius: "8px",
+    padding: "15px"
   };
 
   const avatarStyle = {
     width: "100%",
-    maxWidth: "250px", // Ancho máximo de la foto
-    height: "auto", // Altura ajustada automáticamente para mantener la relación de aspecto
+    maxWidth: "250px", 
+    height: "auto",
     margin: "0 auto",
   };
 
   return (
     <div>
-      <Typography variant="h4" gutterBottom>
-        Nuestro Equipo
+      <Typography variant="h5" gutterBottom>
+        <b>Nuestro Equipo</b>
       </Typography>
       <Grid container spacing={2}>
         {teamMembers.map((member, index) => (
@@ -78,7 +78,7 @@ function Team() {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.5 }}
-              onClick={() => openModal(member)} // Agregar evento onClick para abrir el modal
+              onClick={() => openModal(member)}
               style={{ cursor: "pointer" }}
             >
               <Card>
@@ -92,7 +92,7 @@ function Team() {
                     />
                   </div>
                   <Typography variant="subtitle1" align="center">
-                    {member.name}
+                    <b>{member.name}</b>
                   </Typography>
                   <Typography variant="body2" align="center">
                     {member.position}
@@ -113,9 +113,7 @@ function Team() {
             style={avatarStyle}
           />
           <Typography variant="h6">{selectedMember?.name}</Typography>
-          <Typography variant="subtitle1">
-            {selectedMember?.position}
-          </Typography>
+          <Typography variant="subtitle1">{selectedMember?.position}</Typography>
           <Typography variant="body2">{selectedMember?.info}</Typography>
         </div>
       </Modal>

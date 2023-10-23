@@ -34,6 +34,7 @@ function Home() {
     setCurrentTab(newValue);
   };
 
+
   return (
     <>
       <Navbar />
@@ -81,6 +82,10 @@ function Home() {
               <MoreInfoButton />
             </motion.div>
           </div>
+        </section>
+
+        <section>
+  
         </section>
         <section className="tabs-section">
           <motion.div initial="hidden" animate="visible" variants={headerVariants}>

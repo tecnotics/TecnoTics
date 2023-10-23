@@ -15,6 +15,7 @@ import {
 import { tecnoTicsServices, acronisServices } from "./DataNube";
 import { motion } from "framer-motion";
 import "./ServiciosNube.css";
+import ServiciosCloudBanner from "../../assets/images/ServiciosCloudBanner.png"
 
 function ServiciosNube() {
   const [activeTab, setActiveTab] = useState(0);
@@ -29,11 +30,7 @@ function ServiciosNube() {
       <br />
       <br />
       <Container className="container">
-        <Grid item xs={12}>
-          <Typography variant="h3" gutterBottom>
-            <b>Servicios Cloud</b>
-          </Typography>
-        </Grid>
+        <img src={ServiciosCloudBanner} alt="Banner" style={{ width: "100%" }} />
         <Tabs
           value={activeTab}
           onChange={handleTabChange}
@@ -74,11 +71,7 @@ function ServiciosNube() {
                       <Typography variant="body2" color="textSecondary">
                         {service.description}
                       </Typography>
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        href={service.moreLink}
-                      >
+                      <Button variant="contained" color="primary" href={service.moreLink}>
                         Ver más
                       </Button>
                     </CardContent>
@@ -116,11 +109,7 @@ function ServiciosNube() {
                       <Typography variant="body2" color="textSecondary">
                         {service.description}
                       </Typography>
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        href={service.moreLink}
-                      >
+                      <Button variant="contained" color="primary" href={service.moreLink}>
                         Ver más
                       </Button>
                     </CardContent>

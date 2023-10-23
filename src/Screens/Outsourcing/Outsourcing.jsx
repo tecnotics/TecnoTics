@@ -7,6 +7,8 @@ import {
   ListItemText,
   IconButton,
   Icon,
+  CardContent,
+  Card,
 } from "@mui/material";
 import { motion } from "framer-motion";
 import Footer from "../../Components/Footer/Footer";
@@ -19,10 +21,12 @@ import {
   Cloud as CloudIcon,
   Security as SecurityIcon,
   Code as CodeIcon,
+  Laptop as LaptopMacIcon,
 } from "@mui/icons-material";
 import "./Outsourcing.css";
 import MoreInfoButton from "../../Components/MoreInfo/MoreInfo";
 import { Link, useNavigate } from "react-router-dom";
+import ServiciosEspTi from "../../assets/images/ServiciosEspTi.png"
 
 const BenefitsList = ({ benefits }) => (
   <List>
@@ -36,7 +40,6 @@ const BenefitsList = ({ benefits }) => (
 );
 
 const Outsourcing = () => {
-  const pageTitle = "Outsourcing de TI";
 
   const inHouseServices = [
     {
@@ -51,14 +54,30 @@ const Outsourcing = () => {
     },
     {
       title: "Medio Tiempo",
-      description:
-        "También brindamos opciones de medio tiempo para adaptarnos a tu presupuesto.",
+      description: "También brindamos opciones de medio tiempo para adaptarnos a tu presupuesto.",
     },
     {
       title: "Bolsa de Horas",
       description:
         "Flexibilidad adicional con una bolsa de horas que puedes utilizar según tus necesidades.",
     },
+  ];
+
+  const serviciosTI = {
+    servicios: [
+      "Administración de redes y sistemas.",
+      "Soporte técnico y mantenimiento de hardware y software.",
+      "Desarrollo de software a medida.",
+      "Seguridad informática y gestión de riesgos.",
+      "Consultoría tecnológica y estrategia de TI.",
+    ],
+  };
+
+  const cardColors = [
+    "#FFC107", 
+    "#03A9F4", 
+    "#8BC34A", 
+    "#FF5722", 
   ];
 
   const outsourcingBenefits = [
@@ -80,11 +99,13 @@ const Outsourcing = () => {
     const navigate = useNavigate();
     navigate("/");
   };
+
   const iconos = [
     <LocalLibraryIcon fontSize="string" />,
     <CloudIcon fontSize="string" />,
     <SecurityIcon fontSize="string" />,
     <CodeIcon fontSize="string" />,
+    <LaptopMacIcon fontSize="string" />,
   ];
 
   return (
@@ -95,12 +116,8 @@ const Outsourcing = () => {
       <br />
       <br />
       <Container>
+        <img src={ServiciosEspTi} alt="Banner" style={{ width: "100%" }} />
         <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <Typography className="title" variant="h3">
-              <b>{pageTitle}</b>
-            </Typography>
-          </Grid>
           <Grid item xs={12} md={6}>
             <motion.div
               className="content"
@@ -111,47 +128,53 @@ const Outsourcing = () => {
               <Typography variant="body1" style={{ textAlign: "justify" }}>
                 <div>
                   <p>
-                    <strong>Nuestra empresa se especializa</strong> en ofrecer
-                    servicios de
-                    <strong>
-                      {" "}
-                      Outsourcing de Tecnología de la Información (TI)
-                    </strong>{" "}
-                    de alta calidad y personalizados para satisfacer las
-                    necesidades específicas de tu negocio. Con un equipo
-                    altamente calificado de expertos en TI, estamos aquí para
-                    ayudarte a optimizar tus operaciones y mejorar la eficiencia
-                    de tu empresa.
+                    <strong>Nuestra empresa se especializa</strong> en ofrecer servicios de
+                    <strong> Outsourcing de Tecnología de la Información (TI)</strong> de alta
+                    calidad y personalizados para satisfacer las necesidades específicas de tu
+                    negocio. Con un equipo altamente calificado de expertos en TI, estamos aquí para
+                    ayudarte a optimizar tus operaciones y mejorar la eficiencia de tu empresa.
                   </p>
 
                   <p>
-                    <strong>
-                      Nuestros servicios de outsourcing de TI incluyen:
-                    </strong>
+                    <strong>Nuestros servicios de outsourcing de TI incluyen:</strong>
                   </p>
-                  <ul>
-                    <li>Administración de redes y sistemas.</li>
-                    <li>
-                      Soporte técnico y mantenimiento de hardware y software.
-                    </li>
-                    <li>Desarrollo de software a medida.</li>
-                    <li>Seguridad informática y gestión de riesgos.</li>
-                    <li>Consultoría tecnológica y estrategia de TI.</li>
-                  </ul>
-
+                  <br />
+                  <Grid container spacing={2}>
+                    {serviciosTI.servicios.map((servicio, index) => (
+                      <Grid key={index} item xs={4}>
+                        <IconButton
+                          component={Link}
+                          to={cardRoutes[index]}
+                          onClick={() => handleCardClick(index)}
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            padding: 0,
+                            backgroundColor: "transparent",
+                          }}
+                        >
+                          <Icon style={{ fontSize: "44px", color: "#ff5733" }}>
+                            {iconos[index]}
+                          </Icon>
+                          <Typography variant="body2" align="center">
+                            <b>{servicio} </b>
+                          </Typography>
+                        </IconButton>
+                      </Grid>
+                    ))}
+                  </Grid>
+                  <br />
                   <p>
-                    Ya sea que necesites un soporte técnico confiable,
-                    soluciones de seguridad cibernética avanzadas o desarrollo
-                    de software personalizado, estamos preparados para ofrecerte
-                    las mejores soluciones para tu negocio. Nuestro enfoque es
-                    brindarte tranquilidad para que puedas concentrarte en hacer
-                    crecer tu empresa mientras nosotros cuidamos de tus
-                    necesidades tecnológicas.
+                    Ya sea que necesites un soporte técnico confiable, soluciones de seguridad
+                    cibernética avanzadas o desarrollo de software personalizado, estamos preparados
+                    para ofrecerte las mejores soluciones para tu negocio. Nuestro enfoque es
+                    brindarte tranquilidad para que puedas concentrarte en hacer crecer tu empresa
+                    mientras nosotros cuidamos de tus necesidades tecnológicas.
                   </p>
                 </div>
               </Typography>
               <br />
-              <MoreInfoButton />
             </motion.div>
           </Grid>
           <Grid item xs={12} md={6}>
@@ -190,31 +213,32 @@ const Outsourcing = () => {
           </Grid>
         </Grid>
         <br />
-        <Grid container spacing={2}>
+
+        <Grid container spacing={3} style={{ margin: "20px 0" }}>
           {inHouseServices.map((service, index) => (
-            <Grid key={index} item xs={4}>
-              <IconButton
-                component={Link}
-                to={cardRoutes[index]}
-                onClick={() => handleCardClick(index)}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: 0, // Elimina el espacio interior del botón
-                  backgroundColor: "transparent", // Fondo transparente
+            <Grid item xs={12} md={6} key={index}>
+              <motion.div
+                className="outsourcing-card"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.5, delay: 0.2 * index },
                 }}
               >
-                <Icon style={{ fontSize: "64px", color: "#ff5733" }}>
-                  {iconos[index]}
-                </Icon>
-                <Typography variant="body2" align="center">
-                  <b>{service.title}</b>
-                </Typography>
-                <Typography variant="body2" align="center">
-                  {service.description}
-                </Typography>
-              </IconButton>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  to={cardRoutes[index]}
+                  onClick={() => handleCardClick(index)}
+                >
+                  <Card style={{ backgroundColor: cardColors[index % cardColors.length] }}>
+                    <CardContent className="outsourcing-card-content">
+                      <Typography variant="h6">{service.title}</Typography>
+                      <Typography variant="body2">{service.description}</Typography>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </motion.div>
             </Grid>
           ))}
         </Grid>

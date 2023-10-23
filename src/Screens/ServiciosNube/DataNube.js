@@ -77,16 +77,20 @@ export const tecnoTicsServices = {
       moreLink: "/ver-mas-servidor-nube",
     },
     {
+      title: "Servidores VPS",
+      description: "Servidores VPS de maxima calidad y eficiencia",
+      imageUrl: serviciocloud,
+      moreLink: "/ver-mas-servidor-vps"
+    },
+    {
       title: "Servicios DNS",
-      description:
-        "Gestión, optimización y seguridad de registros DNS para servicios en línea.",
+      description: "Gestión, optimización y seguridad de registros DNS para servicios en línea.",
       imageUrl: servicioDNS,
       moreLink: "/ver-mas-servicio-dns",
     },
     {
       title: "Telefonía IP",
-      description:
-        "Modernización de comunicaciones empresariales con telefonía IP en la nube.",
+      description: "Modernización de comunicaciones empresariales con telefonía IP en la nube.",
       imageUrl: telefoniaIP,
       moreLink: "/ver-mas-servicio-telefonia",
     },
