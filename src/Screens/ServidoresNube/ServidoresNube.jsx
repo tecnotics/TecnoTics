@@ -62,7 +62,6 @@ function ServidoresNube({ servidor }) {
 
     let precioCalculado = servidorSeleccionado.precio;
 
-
     if (configuracion.ubicaciones[location]) {
       precioCalculado += configuracion.ubicaciones[location];
     }
@@ -104,17 +103,20 @@ function ServidoresNube({ servidor }) {
     }
 
     const formData = {
-      destinatario: "danielalejandrosalgadoleon@gmail.com",
+      destinatario: "Alejandro@tecnotics.com",
       asunto: "Cotizacion de Servidor",
       mensaje: `Detalles de la Cotización:
+      - Nombre del Servidor: ${servidorSeleccionado.nombre}
       - Correo Electrónico: ${correo}
       - Memoria: ${memory}
-      - Tamaño de la SSD: ${ssdSize} GB
+      - Tamaño de la SSD: ${ssdSize} 
       - Ubicación: ${location}
       - Sistema Operativo: ${operatingSystem}
       - Primary Hard Drive: ${primaryHardDriveSize}
-      - Second Hard Drive: ${secondHardDriveSize}
-      - Third Hard Drive: ${thirdHardDriveSize}
+      - Second Hard Drive: ${
+        secondHardDriveSize ? secondHardDriveSize : "NO LLEVA UN SEGUNDO DISCO"
+      }
+      - Third Hard Drive: ${thirdHardDriveSize ? thirdHardDriveSize : "NO LEVA UN TERCER DISCO"}
       `,
     };
 
@@ -181,6 +183,7 @@ function ServidoresNube({ servidor }) {
     <>
       <Navbar />
       <Container>
+      
         <Typography variant="h3" gutterBottom>
           <b>Cotizador de Servidores</b>
         </Typography>

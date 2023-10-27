@@ -20,6 +20,9 @@ import AcronisPerdidaDatos from "../Screens/AcronisPerdidaDatos/AcronisPerdidaDa
 import AcronisSectorPublico from "../Screens/AcronisSectorPublico/AcronisSectorPublico";
 import ServerCards from "../Screens/ServidoresNube/ServidoresCardsContainer";
 import ServerVPSCards from "../Screens/ServidoresVPS/ServidoresVPSContainer";
+import RegistroUsuario from "../Screens/Clientes/RegistroUsuario";
+import RecuperarContraseña from "../Screens/Clientes/RecuperarContraseña";
+import Soporte from "../Screens/Clientes/Soporte";
 
 export default function Rutas() {
   return (
@@ -28,6 +31,9 @@ export default function Rutas() {
         <Route path="/" element={<Home />} />
         <Route path="*" element={<Home />} />
         <Route path="/clientes" element={<Clientes />} />
+        <Route path="/RegistrarUsuario" element={<RegistroUsuario />} />
+        <Route path="/RecuperarContraseña" element={<RecuperarContraseña />} />
+        <Route path="/Soporte" element={<Soporte />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/soluciones-corporativas" element={<SolucionesCorp />} />
         <Route path="/servicios-ti" element={<ServiciosNube />} />

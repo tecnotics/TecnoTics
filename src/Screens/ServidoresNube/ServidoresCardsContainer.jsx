@@ -11,7 +11,7 @@ import amd from "../../assets/images/amd.png";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import ServidoresNube from "./ServidoresNube";
-
+import ServidoresDedicados from "../../assets/images/ServidoresDedicados.png";
 
 const servidores = [
   {
@@ -56,10 +56,7 @@ const servidores = [
   },
 ];
 
-
 export default function ServerCards() {
-
-
   const headerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
@@ -78,10 +75,21 @@ export default function ServerCards() {
       <br />
       <br />
       <Container>
+        <img src={ServidoresDedicados} alt="Banner" style={{ width: "100%" }} />
+        <br />
+        <br />
         <Grid container spacing={3} justifyContent="center" alignItems="center">
           <Grid item xs={12}>
-            <Typography variant="h3" gutterBottom>
-              <b>Servidores Dedicados</b>
+            <Typography variant="h5" gutterBottom style={{ textAlign: "center" }}>
+              <b>¿Qué son los Servidores Dedicados?</b>
+            </Typography>
+            <br />
+            <Typography variant="body1" gutterBottom style={{ textAlign: "justify" }}>
+              Un servidor dedicado es una máquina física que se utiliza exclusivamente para alojar
+              aplicaciones, sitios web o servicios específicos para una sola entidad, en lugar de
+              compartir recursos con otros usuarios, como ocurre en el alojamiento compartido o en
+              servidores virtuales. En otras palabras, un servidor dedicado es dedicado a una única
+              organización o individuo.
             </Typography>
           </Grid>
           {servidores.map((servidor) => (
@@ -124,7 +132,6 @@ export default function ServerCards() {
           ))}
         </Grid>
         <br />
-    
       </Container>
       <br />
       {selectedServer && <ServidoresNube servidor={selectedServer} />}
