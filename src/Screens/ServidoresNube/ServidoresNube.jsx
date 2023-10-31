@@ -1,40 +1,31 @@
 import { useState, useEffect } from "react";
-import {
-  Container,
-  Typography,
-  Paper,
-  Button,
-  ButtonGroup,
-  TextField,
-  Alert,
-  AlertTitle,
-  InputLabel,
-} from "@mui/material";
+import { Container, Typography, Paper, Button, ButtonGroup, TextField } from "@mui/material";
 import Navbar from "../../Components/Navbar/Navbar";
+import Swal from "sweetalert2";
 
 function ServidoresNube({ servidor }) {
-  const [location, setLocation] = useState("");
-  const [memory, setMemory] = useState("");
+  const [location, setLocation] = useState("Atlanta");
+  const [memory, setMemory] = useState("32 GB");
   const [ssd, setSSD] = useState(false);
   const [ssdSize, setSSDSize] = useState(0);
   const [operatingSystem, setOperatingSystem] = useState("");
+  const [operatingSystemVersion, setOperatingSystemVersion] = useState("");
   const [servidorSeleccionado, setServidorSeleccionado] = useState(servidor);
   const [precioTotal, setPrecioTotal] = useState();
   const [correo, setCorreo] = useState();
-  const [mostrarAlerta, setMostrarAlerta] = useState(false);
-  const [tipoAlerta, setTipoAlerta] = useState("success");
-  const [mensajeAlerta, setMensajeAlerta] = useState("");
-  const [errorFormulario, setErrorFormulario] = useState(false);
-  const tamañosDisponibles = ["256 GB", "512 GB", "1 TB", "2 TB"];
+  const tamañosSSD = ["None", "480 GB", "960 GB", "1.92 TB", "3.84 TB", "7.68 TB"];
+  const tamañosSATA = ["1 TB", "2 TB", "6 TB", "8 TB", "10 TB", "12 TB"];
   const [storageType, setStorageType] = useState("ssd");
-  const preciosSSD = [320, 640, 1280, 25600];
-  const preciosSATA = [320, 640, 1280, 25600];
-  const [primaryHardDriveSize, setPrimaryHardDriveSize] = useState("");
+  const preciosSSD = [0, 12, 50, 100, 200];
+  const preciosSATA = [0, 6, 12, 18, 25, 37, 43];
+  const [backup, setBackup] = useState("500 GB");
+  const [primaryHardDriveSize, setPrimaryHardDriveSize] = useState("480 GB");
   const [primaryHardDrivePrice, setPrimaryHardDrivePrice] = useState(preciosSSD[0]);
   const [secondHardDriveSize, setSecondHardDriveSize] = useState("");
   const [secondHardDrivePrice, setSecondHardDrivePrice] = useState(preciosSSD[0]);
   const [thirdHardDriveSize, setThirdHardDriveSize] = useState("");
   const [thirdHardDrivePrice, setThirdHardDrivePrice] = useState(preciosSSD[0]);
+
   const configuracion = {
     ubicaciones: {
       Atlanta: 0,
@@ -44,13 +35,40 @@ function ServidoresNube({ servidor }) {
       Dallas: 0,
     },
     memorias: {
-      "32 GB": 40,
+      "32 GB": 0,
       "64 GB": 80,
       "128GB": 120,
     },
     sistemasOperativos: {
-      Linux: 0,
-      Windows: 100,
+      Linux: {
+        Almalinux: 0,
+        Centos: 0,
+        Cloudlinux: 0,
+        RockyLinux: 0,
+        Ubuntu: 0,
+        ESXi: 0,
+        Debian: 0,
+        RedHat: 0,
+        XenServer: 0,
+        FreeBSD: 0,
+        Proxmox: 0,
+      },
+      Windows: {
+        "Windows Standar": 27,
+        "Windows Datacenter": 187,
+      },
+    },
+    Backups: {
+      "500 GB": 39,
+      "1000 GB": 79,
+      "1500 GB": 119,
+      "2000 GB": 159,
+      "3000 GB": 29,
+      "4000 GB": 239,
+      "5000 GB": 279,
+      "6000 GB": 279,
+      "7000 GB": 279,
+      "8000 GB": 279,
     },
   };
 
@@ -70,20 +88,19 @@ function ServidoresNube({ servidor }) {
       precioCalculado += configuracion.memorias[memory];
     }
 
-    if (configuracion.sistemasOperativos[operatingSystem]) {
-      precioCalculado += configuracion.sistemasOperativos[operatingSystem];
-    }
-    if (primaryHardDriveSize) {
-      precioCalculado += primaryHardDrivePrice;
+    if (operatingSystem === "Linux") {
+      if (configuracion.sistemasOperativos.Linux[operatingSystemVersion]) {
+        precioCalculado += configuracion.sistemasOperativos.Linux[operatingSystemVersion];
+      }
+    } else if (operatingSystem === "Windows") {
+      if (configuracion.sistemasOperativos.Windows[operatingSystemVersion]) {
+        precioCalculado += configuracion.sistemasOperativos.Windows[operatingSystemVersion];
+      }
     }
 
-    if (secondHardDriveSize) {
-      precioCalculado += secondHardDrivePrice;
-    }
-
-    if (thirdHardDriveSize) {
-      precioCalculado += thirdHardDrivePrice;
-    }
+    precioCalculado += primaryHardDrivePrice;
+    precioCalculado += secondHardDrivePrice;
+    precioCalculado += thirdHardDrivePrice;
 
     const precioNumerico = parseFloat(precioCalculado);
     const precioFormateado = isNaN(precioNumerico) ? " Valor no válido" : precioNumerico.toFixed(2);
@@ -95,10 +112,11 @@ function ServidoresNube({ servidor }) {
     const camposVacios = location <= 0 || memory === "" || (ssd && ssdSize <= 0);
 
     if (camposVacios) {
-      setErrorFormulario(true);
-      setMostrarAlerta(true);
-      setTipoAlerta("error");
-      setMensajeAlerta("Por favor, complete todos los campos requeridos.");
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Por favor, complete todos los campos requeridos.",
+      });
       return;
     }
 
@@ -109,14 +127,16 @@ function ServidoresNube({ servidor }) {
       - Nombre del Servidor: ${servidorSeleccionado.nombre}
       - Correo Electrónico: ${correo}
       - Memoria: ${memory}
-      - Tamaño de la SSD: ${ssdSize} 
       - Ubicación: ${location}
       - Sistema Operativo: ${operatingSystem}
+      - Version del Sistema Operativo: ${operatingSystemVersion}
+      - Tipo de Disco: ${storageType}
+      - Daily Backup: ${backup}
       - Primary Hard Drive: ${primaryHardDriveSize}
       - Second Hard Drive: ${
-        secondHardDriveSize ? secondHardDriveSize : "NO LLEVA UN SEGUNDO DISCO"
+        secondHardDriveSize ? secondHardDriveSize : "No lleva un segundo disco"
       }
-      - Third Hard Drive: ${thirdHardDriveSize ? thirdHardDriveSize : "NO LEVA UN TERCER DISCO"}
+      - Third Hard Drive: ${thirdHardDriveSize ? thirdHardDriveSize : "No lleva un tercer disco"}
       `,
     };
 
@@ -137,17 +157,19 @@ function ServidoresNube({ servidor }) {
         }
       })
       .then((data) => {
-        setMostrarAlerta(true);
-        setTipoAlerta("success");
-        setMensajeAlerta(data.message);
+        Swal.fire({
+          icon: "success",
+          title: "Éxito",
+          text: data.message,
+        });
       })
       .catch((error) => {
         console.log(error);
-        setMostrarAlerta(true);
-        setTipoAlerta("error");
-        setMensajeAlerta(
-          "Hubo un error al enviar el correo electrónico. Por favor, inténtalo de nuevo."
-        );
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Hubo un error al enviar el correo electrónico. Por favor, inténtalo de nuevo.",
+        });
       });
   };
 
@@ -167,6 +189,7 @@ function ServidoresNube({ servidor }) {
     primaryHardDriveSize,
     secondHardDriveSize,
     thirdHardDrivePrice,
+    operatingSystemVersion,
   ]);
 
   if (!servidorSeleccionado) {
@@ -183,8 +206,7 @@ function ServidoresNube({ servidor }) {
     <>
       <Navbar />
       <Container>
-      
-        <Typography variant="h3" gutterBottom>
+        <Typography variant="h3" gutterBottom style={{ textAlign: "center" }}>
           <b>Cotizador de Servidores</b>
         </Typography>
         <ButtonGroup fullWidth variant="outlined">
@@ -195,34 +217,36 @@ function ServidoresNube({ servidor }) {
           <b>Primary Hard Drive </b>
         </Typography>
         <ButtonGroup fullWidth>
-          {tamañosDisponibles.map((tamaño, index) => (
+          {tamañosSSD
+            .filter((tamaño) => tamaño !== "None")
+            .map((tamaño, index) => (
+              <Button
+                key={tamaño}
+                variant={
+                  storageType === "ssd" && primaryHardDriveSize === tamaño
+                    ? "contained"
+                    : "outlined"
+                }
+                onClick={() => {
+                  setStorageType("ssd");
+                  setPrimaryHardDriveSize(tamaño);
+                  setPrimaryHardDrivePrice(preciosSSD[index]);
+                }}
+              >
+                {tamaño} SSD (${preciosSSD[index]})
+              </Button>
+            ))}
+          {tamañosSATA.map((tamaño, index) => (
             <Button
               key={tamaño}
               variant={
-                storageType === "ssd" && primaryHardDriveSize === tamaño ? "contained" : "outlined"
-              }
-              onClick={() => {
-                setStorageType("ssd");
-                setSSDSize(tamañosDisponibles[index]);
-                setPrimaryHardDriveSize(tamañosDisponibles[index]);
-                setPrimaryHardDrivePrice(preciosSSD[index]);
-              }}
-            >
-              {tamaño} SSD (${preciosSSD[index]})
-            </Button>
-          ))}
-          {tamañosDisponibles.map((tamaño, index) => (
-            <Button
-              key={tamaño}
-              variant={
-                !ssd && storageType === "sata" && ssdSize === tamañosDisponibles[index]
+                !ssd && storageType === "sata" && primaryHardDriveSize === tamaño
                   ? "contained"
                   : "outlined"
               }
               onClick={() => {
                 setStorageType("sata");
-                setSSDSize(tamañosDisponibles[index]);
-                setPrimaryHardDriveSize(tamañosDisponibles[index]);
+                setPrimaryHardDriveSize(tamaño);
                 setPrimaryHardDrivePrice(preciosSATA[index]);
               }}
             >
@@ -234,7 +258,7 @@ function ServidoresNube({ servidor }) {
           <b>Second Hard Drive </b>
         </Typography>
         <ButtonGroup fullWidth>
-          {tamañosDisponibles.map((tamaño, index) => (
+          {tamañosSSD.map((tamaño, index) => (
             <Button
               key={tamaño}
               variant={
@@ -249,7 +273,7 @@ function ServidoresNube({ servidor }) {
               {tamaño} SSD (${preciosSSD[index]})
             </Button>
           ))}
-          {tamañosDisponibles.map((tamaño, index) => (
+          {tamañosSATA.map((tamaño, index) => (
             <Button
               key={tamaño}
               variant={
@@ -269,7 +293,7 @@ function ServidoresNube({ servidor }) {
           <b>Third Hard Drive </b>
         </Typography>
         <ButtonGroup fullWidth>
-          {tamañosDisponibles.map((tamaño, index) => (
+          {tamañosSSD.map((tamaño, index) => (
             <Button
               key={tamaño}
               variant={
@@ -284,7 +308,7 @@ function ServidoresNube({ servidor }) {
               {tamaño} SSD (${preciosSSD[index]})
             </Button>
           ))}
-          {tamañosDisponibles.map((tamaño, index) => (
+          {tamañosSATA.map((tamaño, index) => (
             <Button
               key={tamaño}
               variant={
@@ -300,15 +324,9 @@ function ServidoresNube({ servidor }) {
             </Button>
           ))}
         </ButtonGroup>
-        <InputLabel htmlFor="location">Correo electrónico</InputLabel>
-        <TextField
-          fullWidth
-          type="email"
-          label="Correo electrónico"
-          value={correo}
-          onChange={(e) => setCorreo(e.target.value)}
-        />
-        <InputLabel htmlFor="location">Location</InputLabel>
+        <Typography variant="body1" gutterBottom>
+          <b>Ubicacion</b>
+        </Typography>
         <ButtonGroup fullWidth>
           {Object.keys(configuracion.ubicaciones).map((loc) => (
             <Button
@@ -320,7 +338,9 @@ function ServidoresNube({ servidor }) {
             </Button>
           ))}
         </ButtonGroup>
-        <InputLabel htmlFor="memory">Memory</InputLabel>
+        <Typography variant="body1" gutterBottom>
+          <b>Memory (RAM) </b>
+        </Typography>
         <ButtonGroup fullWidth>
           {Object.keys(configuracion.memorias).map((mem) => (
             <Button
@@ -332,36 +352,95 @@ function ServidoresNube({ servidor }) {
             </Button>
           ))}
         </ButtonGroup>
-        <InputLabel htmlFor="operatingSystem">Sistema Operativo</InputLabel>
+        <Typography variant="body3" gutterBottom>
+          <b>Sistema operativo </b>
+        </Typography>
+        <br />
+        <br />
+        <Typography variant="body1" gutterBottom>
+          <b>Linux </b>
+        </Typography>
         <ButtonGroup fullWidth>
-          <Button
-            variant={operatingSystem === "Linux" ? "contained" : "outlined"}
-            onClick={() => setOperatingSystem("Linux")}
-          >
-            Linux (${configuracion.sistemasOperativos.Linux})
-          </Button>
-          <Button
-            variant={operatingSystem === "Windows" ? "contained" : "outlined"}
-            onClick={() => setOperatingSystem("Windows")}
-          >
-            Windows (${configuracion.sistemasOperativos.Windows})
-          </Button>
+          {Object.keys(configuracion.sistemasOperativos.Linux).map((version) => (
+            <Button
+              key={version}
+              variant={
+                operatingSystem === "Linux" && operatingSystemVersion === version
+                  ? "contained"
+                  : "outlined"
+              }
+              onClick={() => {
+                setOperatingSystem("Linux");
+                setOperatingSystemVersion(version);
+              }}
+            >
+              {version} (${configuracion.sistemasOperativos.Linux[version]})
+            </Button>
+          ))}
         </ButtonGroup>
+        <br />
+        <br />
+        <Typography variant="body1" gutterBottom>
+          <b>Windows </b>
+        </Typography>
+        <ButtonGroup fullWidth>
+          {Object.keys(configuracion.sistemasOperativos.Windows).map((version) => (
+            <Button
+              key={version}
+              variant={
+                operatingSystem === "Windows" && operatingSystemVersion === version
+                  ? "contained"
+                  : "outlined"
+              }
+              onClick={() => {
+                setOperatingSystem("Windows");
+                setOperatingSystemVersion(version);
+              }}
+            >
+              {version} (${configuracion.sistemasOperativos.Windows[version]})
+            </Button>
+          ))}
+        </ButtonGroup>
+        <br />
+        <br />
+        <Typography variant="body1" gutterBottom>
+          <b>Daily Backup & Rapid Restore</b>
+        </Typography>
+        <ButtonGroup fullWidth>
+          {Object.keys(configuracion.Backups).map((i) => (
+            <Button
+              key={i}
+              variant={backup === i? "contained" : "outlined"}
+              onClick={() => setBackup(i)}
+            >
+               {i} (${configuracion.Backups[i]})
+            </Button>
+          ))}
+        </ButtonGroup>
+
         {servidorSeleccionado && (
           <Paper elevation={3} style={{ padding: "20px", marginTop: "20px" }}>
-            <Typography variant="h5">Información del Servidor</Typography>
+            <Typography variant="h5" style={{ textAlign: "center" }}>
+              <b>Información del Servidor </b>
+            </Typography>
+            <br />
             <img
               src={servidorSeleccionado.image}
               alt=""
               style={{ objectFit: "contain", height: "200px", width: "100%" }}
             />
-            <Typography variant="body1">{servidorSeleccionado.nombre}</Typography>
+            <br />
+            <br />
+            <Typography variant="body1" style={{ textAlign: "center" }}>
+              <b>{servidorSeleccionado.nombre}</b>
+            </Typography>
             <Typography variant="body1">Memory: {memory} (GB)</Typography>
             <Typography variant="body1">Locacion: {location}</Typography>
-            <Typography variant="body1">Sistema Operativo: {operatingSystem}</Typography>
             <Typography variant="body1">
-              Primary Hard Drive: {primaryHardDrivePrice} (GB)
+              Sistema Operativo: {operatingSystem} ({operatingSystemVersion})
             </Typography>
+            <Typography variant="body1">Daily Backup: {backup}</Typography>
+            <Typography variant="body1">Primary Hard Drive: {primaryHardDriveSize}(GB)</Typography>
             <Typography variant="body1">Second Hard Drive: {secondHardDriveSize} (GB)</Typography>
             <Typography variant="body1">Third Hard Drive: {thirdHardDriveSize} (GB)</Typography>
             <Typography variant="h6" gutterBottom style={{ marginTop: "20px" }}>
@@ -369,7 +448,17 @@ function ServidoresNube({ servidor }) {
             </Typography>
           </Paper>
         )}
-
+        <br />
+        <Typography variant="body1" gutterBottom>
+          <b>Correo</b>
+        </Typography>
+        <TextField
+          fullWidth
+          type="email"
+          label="Correo electrónico"
+          value={correo}
+          onChange={(e) => setCorreo(e.target.value)}
+        />
         <Button
           variant="contained"
           color="primary"
@@ -378,12 +467,6 @@ function ServidoresNube({ servidor }) {
         >
           Enviar Información
         </Button>
-        {mostrarAlerta && (
-          <Alert severity={tipoAlerta} onClose={() => setMostrarAlerta(false)}>
-            <AlertTitle>{tipoAlerta === "success" ? "Éxito" : "Error"}</AlertTitle>
-            {mensajeAlerta}
-          </Alert>
-        )}
       </Container>
     </>
   );

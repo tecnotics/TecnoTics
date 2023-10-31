@@ -18,8 +18,6 @@ const servidores = [
     id: "4-CORE-XEON",
     image: intel,
     nombre: "4-CORE-XEON",
-    precioPorGBSSD: 0.2,
-    info: "Información sobre Servidor 1",
     locations: ["Atlanta", "Miami", "Chicago", "Tampa", "Dallas"],
     memoryOptions: ["16 GB", "32 GB", "64 GB"],
     precio: 40,
@@ -28,8 +26,6 @@ const servidores = [
     id: "6-CORE-RYZEN",
     image: amd,
     nombre: "6-CORE-RYZEN",
-    precioPorGBSSD: 0.8,
-    info: "Información sobre Servidor 2",
     locations: ["Atlanta", "Miami", "Chicago", "Tampa", "Dallas"],
     memoryOptions: ["32 GB", "64 GB", "128 GB"],
     precio: 99,
@@ -38,8 +34,6 @@ const servidores = [
     id: "16-CORE-EPYC",
     image: amd,
     nombre: "16-CORE-EPYC",
-    precioPorGBSSD: 0.8,
-    info: "Información sobre Servidor 3",
     locations: ["Atlanta", "Miami", "Chicago", "Tampa", "Dallas"],
     memoryOptions: ["16 GB", "32 GB", "64 GB"],
     precio: 149,
@@ -48,8 +42,6 @@ const servidores = [
     id: "32-CORE-XEON",
     image: intel,
     nombre: "32-CORE-XEON",
-    precioPorGBSSD: 0.8,
-    info: "Información sobre Servidor 4",
     locations: ["Atlanta", "Miami", "Chicago", "Tampa", "Dallas"],
     memoryOptions: ["16 GB", "32 GB", "64 GB"],
     precio: 189,
@@ -57,10 +49,6 @@ const servidores = [
 ];
 
 export default function ServerCards() {
-  const headerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-  };
   const [selectedServer, setSelectedServer] = useState(null);
 
   const handleServerSelection = (server) => {
@@ -111,12 +99,6 @@ export default function ServerCards() {
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
                         {servidor.nombre}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {servidor.info}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Precio por GB SSD: ${servidor.precioPorGBSSD}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
                         Locations: {servidor.locations.join(", ")}
