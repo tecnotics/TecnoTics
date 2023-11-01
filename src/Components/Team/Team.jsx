@@ -10,6 +10,7 @@ import avatar1 from "../../assets/images/profile-pic.png";
 import avatar2 from "../../assets/images/profile-pic2.png";
 import avatar3 from "../../assets/images/profile-pic3.png";
 import avatar4 from "../../assets/images/profile-pic4.png";
+import avatar5 from "../../assets/images/profile-pic5.png";
 
 function Team() {
   const [selectedMember, setSelectedMember] = useState(null);
@@ -18,25 +19,32 @@ function Team() {
     {
       name: "Alejandro Martinez",
       avatarUrl: avatar1,
-      position: "Gerente de Proyectos",
+      position: "Director TI",
       info: "Alejandro tiene más de 10 años de experiencia en la gestión de proyectos y liderazgo de equipos.",
+    },
+    {
+      name: "Daniel León",
+      avatarUrl: avatar5,
+      position: "Desarrollador de Software",
+      info: "Daniel tiene  3 años de experiencia siendo desarrollador bajo MERN.",
+
     },
     {
       name: "Danilo Tabares",
       avatarUrl: avatar2,
-      position: "Desarrollador Senior",
-      info: "Danilo es un desarrollador con experiencia en tecnologías web y móviles.",
+      position: "Analista de Infraestructura",
+      info: "Danilo es un Analista con experiencia en ...",
     },
     {
       name: "Sebastian Ocampo",
       avatarUrl: avatar3,
-      position: "Diseñador Gráfico",
+      position: "Analista de Soporte",
       info: "Sebastian es un diseñador con una sólida experiencia en diseño de interfaces de usuario.",
     },
     {
       name: "Jaime Durango",
       avatarUrl: avatar4,
-      position: "Especialista en Marketing",
+      position: "Analista de Soporte",
       info: "Jaime es un experto en marketing digital con un historial comprobado de éxitos en campañas publicitarias.",
     },
   ];
@@ -68,9 +76,10 @@ function Team() {
 
   return (
     <div>
-      <Typography variant="h5" gutterBottom>
+      <Typography variant="h5" style={{textAlign: "center"}} gutterBottom>
         <b>Nuestro Equipo</b>
       </Typography>
+      <br />
       <Grid container spacing={2}>
         {teamMembers.map((member, index) => (
           <Grid item xs={12} sm={6} md={3} key={index}>

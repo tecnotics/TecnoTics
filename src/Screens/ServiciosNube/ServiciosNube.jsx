@@ -15,7 +15,7 @@ import {
 import { tecnoTicsServices, acronisServices } from "./DataNube";
 import { motion } from "framer-motion";
 import "./ServiciosNube.css";
-import ServiciosCloudBanner from "../../assets/images/ServiciosCloudBanner.png"
+import ServiciosCloudBanner from "../../assets/images/ServiciosCloud.png"
 
 function ServiciosNube() {
   const [activeTab, setActiveTab] = useState(0);

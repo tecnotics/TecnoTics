@@ -1,9 +1,10 @@
-import serviciocloud from "../../assets/images/servicioscloud.jpg";
-import servicioDNS from "../../assets/images/DNS.jpg";
-import servicioVoIP from "../../assets/images/serviciosVoIP.jpg";
-import servicioSeguridad from "../../assets/images/servicioseguridad.jpeg";
-import telefoniaIP from "../../assets/images/TelefoniaIP.jpg";
-import servicioMigracion from "../../assets/images/serviciosmigracion.png";
+import serviciocloud from "../../assets/images/Cloud/DALL·E 2023-10-31 16.54.30 - Foto_ Una sala moderna de servidores iluminada con luces azules. En primer plano, un técnico de descendencia asiática revisando un servidor, junto a u.png";
+import serviciovps from "../../assets/images/Cloud/DALL·E 2023-10-31 16.54.34 - Foto_ Un centro de datos con luces azules y blancas reflejando la temática de la nube. En primer plano, un grupo diverso de especialistas_ una mujer d.png";
+import servicioDNS from "../../assets/images/Cloud/DALL·E 2023-11-01 15.41.13 - Create a photo-realistic image showing the services of DNS management, optimization, and security. Imagine a modern, high-tech control room filled wit.png";
+import servicioVoIP from "../../assets/images/Cloud/DALL·E 2023-11-01 15.45.02 - A detailed illustration showcasing various VoIP services to enhance business communications. In the center, there is a user-friendly portal with a sle.png";
+import servicioSeguridad from "../../assets/images/Cloud/DALL·E 2023-11-01 15.46.37 - Photo showcasing advanced online application and data protection in cloud security. The foreground displays a robust firewall system with visible secu.png";
+import telefoniaIP from "../../assets/images/Cloud/DALL·E 2023-11-01 15.43.26 - Photo showcasing a contemporary office setup focused on implementing IP telephony and cloud communication solutions. The image captures a workspace wi.png";
+import servicioMigracion from "../../assets/images/Cloud/DALL·E 2023-11-01 15.48.09 - Photo of a modern and busy tech office environment during a cloud migration project. In the foreground, there is a diverse group of tech professionals.png";
 import acronisfondo from "../../assets/images/AcronisAbout.webp";
 import acronis1 from "../../assets/images/AcronisCard1.webp";
 import acronis2 from "../../assets/images/AcronisCard2.webp";
@@ -79,8 +80,8 @@ export const tecnoTicsServices = {
     {
       title: "Servidores VPS",
       description: "Servidores VPS de maxima calidad y eficiencia",
-      imageUrl: serviciocloud,
-      moreLink: "/ver-mas-servidor-vps"
+      imageUrl: serviciovps,
+      moreLink: "/ver-mas-servidor-vps",
     },
     {
       title: "Servicios DNS",

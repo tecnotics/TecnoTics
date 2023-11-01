@@ -9,7 +9,18 @@ import FlashStart from "../../../src/assets/images/FlashStart.png";
 import Office from "../../../src/assets/images/OFFICE365.png";
 import Outsourcing from "../../../src/assets/images/Outsourcing Banner.png";
 import Karspersky from "../../../src/assets/images/Karspersky.png";
-import { Typography, Tab, Tabs, Box, Button } from "@mui/material";
+import ServidoresNube from "../../../src/assets/images/ServidoresNube.png";
+import ServiciosCloud from "../../../src/assets/images/ServiciosCloud.png";
+import SolucionesCorporativas from "../../../src/assets/images/SolucionesCorporativas.png";
+import Card1 from "../../../src/assets/images/AcronisCard1.webp";
+import Card2 from "../../../src/assets/images/CardOffice.png";
+import Card3 from "../../../src/assets/images/Outsourcing/DALL·E 2023-10-31 17.08.58 - Photo banner for a website with a futuristic city skyline at dusk. Neon lights reflect off modern skyscrapers. Overlayed on the skyline is the text 'O.png";
+import Card4 from "../../../src/assets/images/TI/DALL·E 2023-10-31 17.07.01 - Foto_ Una sala de servidores iluminada con luces azules y verdes. Filas de racks con equipos parpadeantes indican actividad y procesamiento. En primer.png";
+import Card5 from "../../../src/assets/images/TI/DALL·E 2023-11-01 14.31.01 - Close-up photo of a high-quality VPS server within a rack. Light reflects off the server's metallic surface, highlighting its robust and high-quality .png";
+import Card6 from "../../../src/assets/images/TI/DALL·E 2023-11-01 14.33.40 - A photo capturing a group of diverse software developers wearing black hoodies, engaged in their work on Microsoft Office 365. They are seated around .png";
+import Card7 from "../../../src/assets/images/Cloud/DALL·E 2023-11-01 14.56.17 - Illustration depicting the advanced cybersecurity and online threat prevention capabilities of FlashStart for network and device protection. In the ce.png";
+import Card8 from "../../../src/assets/images/Cloud/DALL·E 2023-11-01 15.01.34 - Graphic illustration of 'Karsperski', a green antivirus program, fending off an aggressive ransomware attack in a virtual space. The antivirus is visu.png";
+import { Typography,Button, Card, CardContent, CardMedia } from "@mui/material";
 import Carrousel from "../../Components/Carrousels/Carrousel";
 import { Link } from "react-router-dom";
 import "./Home.css";
@@ -17,21 +28,117 @@ import MoreInfoButton from "../../Components/MoreInfo/MoreInfo";
 
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [currentTab, setCurrentTab] = useState(0);
 
   const handleSlideChange = (index) => {
     setCurrentSlide(index);
   };
 
-  const carouselImages = [Acronis, FlashStart, Office, Outsourcing, Karspersky];
+   const cardsContent = [
+     {
+       title: "Acronis",
+       imageUrl: Card1,
+       content:
+         "Ofrecemos soluciones de respaldo y recuperación de datos líderes en la industria a través de Acronis. Mantén tus datos seguros y respaldados con nuestra experiencia en Acronis",
+       list: ["Soluciones de respaldo", "Recuperación de datos", "Experiencia en Acronis"],
+       link: "/acronis1",
+     },
+     {
+       title: "Office 365",
+       imageUrl: Card2,
+       content:
+         "Office 365 te ofrece una suite de herramientas de productividad en la nube. Descubre sus beneficios para tu negocio.",
+       list: [
+         "Suite de productividad en la nube",
+         "Beneficios para tu negocio",
+         "Colaboración en línea",
+       ],
+       link: "/acronis2",
+     },
+     {
+       title: "Outsourcing",
+       imageUrl: Card3,
+       content:
+         "Nuestros servicios de outsourcing te permiten enfocarte en lo que realmente importa. Deja la tecnología en nuestras manos.",
+       list: ["Enfoque en lo que importa", "Tecnología gestionada", "Eficiencia empresarial"],
+       link: "/acronis3",
+     },
+     {
+       title: "Kaspersky",
+       imageUrl: Card8,
+       content:
+         "Kaspersky ofrece soluciones de seguridad informática de confianza. Protege tus sistemas y datos con nuestras herramientas.",
+       list: [
+         "Seguridad informática confiable",
+         "Protección de sistemas y datos",
+         "Prevención de amenazas",
+       ],
+       link: "/kaspersky",
+     },
+     {
+       title: "FlashStart",
+       imageUrl: Card7,
+       content:
+         "Descubre cómo FlashStart puede ayudarte a proteger tu red y dispositivos contra amenazas en línea. Seguridad cibernética avanzada al alcance de tu mano.",
+       list: [
+         "Protección de red y dispositivos",
+         "Seguridad cibernética avanzada",
+         "Prevención de amenazas en línea",
+       ],
+       link: "/flashstart",
+     },
+     {
+       title: "Servidores Dedicados",
+       imageUrl: Card4,
+       content:
+         "Nuestros servidores dedicados ofrecen rendimiento y confiabilidad excepcionales. Impulsa tu infraestructura de TI con nuestros servidores de alto rendimiento.",
+       list: [
+         "Rendimiento excepcional",
+         "Confiabilidad garantizada",
+         "Infraestructura de TI potenciada",
+       ],
+       link: "/servidores-dedicados",
+     },
+     {
+       title: "Servidores VPS",
+       imageUrl: Card5,
+       content:
+         "Los servidores VPS te brindan flexibilidad y control. Escala recursos según tus necesidades con nuestros servidores virtuales.",
+       list: [
+         "Flexibilidad y control",
+         "Escalabilidad de recursos",
+         "Administración de servidores virtuales",
+       ],
+       link: "/servidores-vps",
+     },
+     {
+       title: "Servicios TI",
+       imageUrl: Card6,
+       content:
+         "Nuestros servicios de TI ofrecen soporte integral para tu empresa. Optimiza tu infraestructura tecnológica con nuestra experiencia.",
+       list: [
+         "Soporte integral de TI",
+         "Optimización de infraestructura",
+         "Experiencia en servicios tecnológicos",
+       ],
+       link: "/servicios-ti",
+     },
+   ];
+
+
+  const carouselImages = [
+    Acronis,
+    FlashStart,
+    Office,
+    Outsourcing,
+    Karspersky,
+    ServidoresNube,
+    ServiciosCloud,
+    SolucionesCorporativas
+  ];
 
   const headerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
-  };
-
-  const handleTabChange = (event, newValue) => {
-    setCurrentTab(newValue);
   };
 
 
@@ -84,158 +191,55 @@ function Home() {
           </div>
         </section>
 
-        <section>
-  
-        </section>
-        <section className="tabs-section">
+        <section></section>
+        <section className="cards-section">
           <motion.div initial="hidden" animate="visible" variants={headerVariants}>
             <Typography variant="h4">
               <b>¿Qué más hacemos? </b>
             </Typography>
+            <br />
           </motion.div>
-          <Box display="flex" justifyContent="center">
-            <Tabs
-              value={currentTab}
-              onChange={handleTabChange}
-              indicatorColor="primary"
-              textColor="primary"
-            >
-              <Tab label="Acronis" />
-              <Tab label="Office 365" />
-              <Tab label="Karspersky" />
-              <Tab label="Outsourcing" />
-            </Tabs>
-          </Box>
-          <br />
-          <br />
-          {currentTab === 0 && (
-            <Grid
-              className="acronis-tab"
-              container
-              spacing={2}
-              justifyContent="center"
-              alignItems="center"
-              style={{ minHeight: "40vh" }}
-            >
-              <Grid item xs={12} textAlign="center">
-                <Typography variant="h3" style={{ marginBottom: "10px" }}>
-                  <b>Servicio Acronis </b>
-                </Typography>
-                <p>
-                  Ofrecemos soluciones de respaldo y recuperación de datos líderes en la industria a
-                  través de Acronis. Mantén tus datos seguros y respaldados con nuestra experiencia
-                  en Acronis.
-                </p>
-                <p>Nuestros servicios de Acronis incluyen:</p>
-                <ul>
-                  <li>Respaldo automático de datos</li>
-                  <li>Recuperación rápida en caso de desastres</li>
-                  <li>Seguridad avanzada de datos</li>
-                </ul>
-              </Grid>
-              <Grid item xs={12} textAlign="center">
-                <Button variant="contained" color="primary" component={Link} to="/acronis">
-                  Ver más sobre Acronis
-                </Button>
-              </Grid>
-            </Grid>
-          )}
+          <Grid container spacing={4}>
+            {cardsContent.map(
+              (card, index) =>
+                index % 4 === 0 && (
+                  <Grid container item spacing={3} key={index}>
+                    {cardsContent.slice(index, index + 4).map((card, subIndex) => (
+                      <Grid item xs={12} sm={6} md={3} key={subIndex}>
+                        <Card className="Card">
+                          <CardMedia
+                            component="img"
+                            alt={card.title}
+                            height="200"
+                            image={card.imageUrl}
+                          />
 
-          {currentTab === 1 && (
-            <Grid
-              className="office-tab"
-              container
-              spacing={2}
-              justifyContent="center"
-              alignItems="center"
-              style={{ minHeight: "40vh" }}
-            >
-              <Grid item xs={12} textAlign="center">
-                <Typography variant="h3">
-                  <b>Office 365 </b>
-                </Typography>
-                <p>
-                  Mejora la productividad y colaboración de tu equipo con Office 365. Ofrecemos
-                  implementación, soporte y personalización de Office 365 para tu negocio.
-                </p>
-                <p>Beneficios de Office 365 con nosotros:</p>
-                <ul>
-                  <li>Acceso a las últimas versiones de aplicaciones de Microsoft Office</li>
-                  <li>Colaboración en tiempo real en documentos y correos electrónicos</li>
-                  <li>Soporte técnico experto y personalizado</li>
-                </ul>
-              </Grid>
-              <Grid item xs={12} textAlign="center">
-                <Button variant="contained" color="primary" component={Link} to="/office365">
-                  Ver más sobre Office 365
-                </Button>
-              </Grid>
-            </Grid>
-          )}
-
-          {currentTab === 2 && (
-            <Grid
-              className="karspersky-tab"
-              container
-              spacing={2}
-              justifyContent="center"
-              alignItems="center"
-              style={{ minHeight: "40vh" }}
-            >
-              <Grid item xs={12} textAlign="center">
-                <Typography variant="h3">
-                  <b>Karspersky </b>
-                </Typography>
-                <p>
-                  Protege tu infraestructura de TI contra amenazas cibernéticas con Karspersky.
-                  Nuestros expertos en seguridad te ayudarán a mantener tus sistemas seguros.
-                </p>
-                <p>Características de nuestros servicios de Karspersky:</p>
-                <ul>
-                  <li>Detección avanzada de amenazas</li>
-                  <li>Gestión centralizada de seguridad</li>
-                  <li>Actualizaciones en tiempo real de definiciones de virus</li>
-                </ul>
-              </Grid>
-              <Grid item xs={12} textAlign="center">
-                <Button variant="contained" color="primary" component={Link} to="/kaspersky">
-                  Ver más sobre Kaspersky
-                </Button>
-              </Grid>
-            </Grid>
-          )}
-
-          {currentTab === 3 && (
-            <Grid
-              className="outsourcing-tab"
-              container
-              spacing={2}
-              justifyContent="center"
-              alignItems="center"
-              style={{ minHeight: "40vh" }}
-            >
-              <Grid item xs={12} textAlign="center">
-                <Typography variant="h3">
-                  <b>Outsourcing </b>
-                </Typography>
-                <p>
-                  Externaliza tus servicios de TI con nosotros. Ofrecemos soluciones de outsourcing
-                  de TI para ayudarte a reducir costos y mejorar la eficiencia operativa.
-                </p>
-                <p>Beneficios de nuestro servicio de Outsourcing:</p>
-                <ul>
-                  <li>Reducción de costos operativos</li>
-                  <li>Enfoque en tus competencias principales</li>
-                  <li>Soporte técnico y mantenimiento proactivo</li>
-                </ul>
-              </Grid>
-              <Grid item xs={12} textAlign="center">
-                <Button variant="contained" color="primary" component={Link} to="/outsourcing-ti">
-                  Ver más sobre Outsourcing
-                </Button>
-              </Grid>
-            </Grid>
-          )}
+                          <CardContent>
+                            <Typography variant="h4">
+                              <b>{card.title}</b>
+                            </Typography>
+                            <p>{card.content}</p>
+                            <ul>
+                              {card.list.map((item, listIndex) => (
+                                <li key={listIndex}>{item}</li>
+                              ))}
+                            </ul>
+                            <Button
+                              variant="contained"
+                              color="primary"
+                              component={Link}
+                              to={card.link}
+                            >
+                              Ver más
+                            </Button>
+                          </CardContent>
+                        </Card>
+                      </Grid>
+                    ))}
+                  </Grid>
+                )
+            )}
+          </Grid>
         </section>
       </div>
       <Footer />

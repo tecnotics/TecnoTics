@@ -36,9 +36,16 @@ function QuienesSomos() {
         animate="visible"
       >
         <Grid container spacing={2}>
-            <img src={QuienesSomosBanner} alt="Banner" style={{ width: "100%" }} />
-          <Grid item xs={12}>
-          </Grid>
+          <img
+            src={QuienesSomosBanner}
+            alt="Banner"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
+          <Grid item xs={12}></Grid>
           <Grid item xs={12}>
             <div style={{ marginBottom: "20px" }}>
               <Typography variant="h4" style={sectionTitleStyle}>

@@ -251,7 +251,7 @@ function ServidoresNube({ servidor }) {
               }}
             >
               {tamaño} SATA (${preciosSATA[index]})
-            </Button>
+            </Button>   
           ))}
         </ButtonGroup>
         <Typography variant="body1" gutterBottom>
