@@ -123,7 +123,7 @@ function ServidoresNube({ servidor }) {
     }
 
     const formData = {
-      destinatario: "desarrollo@tecnotics.com",
+      destinatario: "Alejandro@tecnotics.com",
       asunto: "Cotizacion de Servidor",
       mensaje: `Detalles de la Cotización:
       - Nombre del Servidor: ${servidorSeleccionado.nombre}
