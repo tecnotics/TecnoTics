@@ -3,6 +3,7 @@ import { Container, Typography, Paper, Button, ButtonGroup, TextField } from "@m
 import Navbar from "../../Components/Navbar/Navbar";
 import Swal from "sweetalert2";
 
+
 function ServidoresNube({ servidor }) {
   const [location, setLocation] = useState("Atlanta");
   const [memory, setMemory] = useState("32 GB");
@@ -25,6 +26,7 @@ function ServidoresNube({ servidor }) {
   const [secondHardDrivePrice, setSecondHardDrivePrice] = useState(preciosSSD[0]);
   const [thirdHardDriveSize, setThirdHardDriveSize] = useState("");
   const [thirdHardDrivePrice, setThirdHardDrivePrice] = useState(preciosSSD[0]);
+  const urlBackend = import.meta.env.VITE_URL_BACKEND;
 
   const configuracion = {
     ubicaciones: {
@@ -121,7 +123,7 @@ function ServidoresNube({ servidor }) {
     }
 
     const formData = {
-      destinatario: "Alejandro@tecnotics.com",
+      destinatario: "desarrollo@tecnotics.com",
       asunto: "Cotizacion de Servidor",
       mensaje: `Detalles de la Cotización:
       - Nombre del Servidor: ${servidorSeleccionado.nombre}
@@ -142,7 +144,7 @@ function ServidoresNube({ servidor }) {
 
     console.log(formData);
 
-    fetch("http://localhost:3000/correo/enviar_correo", {
+    fetch(`${urlBackend}/correo/enviar_correo`, {
       headers: {
         "Content-Type": "application/json",
       },
