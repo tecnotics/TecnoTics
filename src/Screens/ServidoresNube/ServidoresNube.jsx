@@ -3,7 +3,6 @@ import { Container, Typography, Paper, Button, ButtonGroup, TextField } from "@m
 import Navbar from "../../Components/Navbar/Navbar";
 import Swal from "sweetalert2";
 
-
 function ServidoresNube({ servidor }) {
   const [location, setLocation] = useState("Atlanta");
   const [memory, setMemory] = useState("32 GB");
@@ -123,7 +122,7 @@ function ServidoresNube({ servidor }) {
     }
 
     const formData = {
-      destinatario: "Alejandro@tecnotics.com",
+      destinatario: ["Alejandro@tecnotics.com",correo],
       asunto: "Cotizacion de Servidor",
       mensaje: `Detalles de la Cotización:
       - Nombre del Servidor: ${servidorSeleccionado.nombre}
@@ -253,7 +252,7 @@ function ServidoresNube({ servidor }) {
               }}
             >
               {tamaño} SATA (${preciosSATA[index]})
-            </Button>   
+            </Button>
           ))}
         </ButtonGroup>
         <Typography variant="body1" gutterBottom>
@@ -412,10 +411,10 @@ function ServidoresNube({ servidor }) {
           {Object.keys(configuracion.Backups).map((i) => (
             <Button
               key={i}
-              variant={backup === i? "contained" : "outlined"}
+              variant={backup === i ? "contained" : "outlined"}
               onClick={() => setBackup(i)}
             >
-               {i} (${configuracion.Backups[i]})
+              {i} (${configuracion.Backups[i]})
             </Button>
           ))}
         </ButtonGroup>

@@ -1,73 +1,84 @@
-import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
-import Container from "@mui/material/Container";
+import { Container, Grid, Typography, Card, CardContent } from "@mui/material";
+import CloudQueueIcon from "@mui/icons-material/CloudQueue";
+import SecurityIcon from "@mui/icons-material/Security";
+import MemoryIcon from "@mui/icons-material/Memory";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
+import MoreInfoButton from "../../Components/MoreInfo/MoreInfo";
+import Soluciones from "../../assets/images/SLNCR.png";
 
 function SolucionesCorp() {
   return (
     <div>
       <Navbar />
-      <br />
-      <br />
-      <br />
-      <br />
-      <Container>
-        <Grid container spacing={2} alignItems="center" justifyContent="center">
-          <Grid item xs={12}>
-            <Typography variant="h3" gutterBottom>
-              <b>Tecnotics Soluciones Corporativas</b>
-            </Typography>
+
+      <Container sx={{ marginTop: 8 }}>
+        <img src={Soluciones} alt="Banner" style={{ width: "100%" }} />
+        <Grid container spacing={4} alignItems="center" justifyContent="center">
+          {/* Aquí inicia la primera fila de Cards */}
+          <Grid item xs={12} md={6}>
+            <Card variant="outlined" sx={{ mb: 2 }}>
+              <CardContent>
+                <Typography variant="h5" gutterBottom>
+                  <CloudQueueIcon color="primary" /> Bienvenidos a la Era Digital con Tecnotics
+                </Typography>
+                <Typography variant="body1" paragraph>
+                  En Tecnotics Soluciones Corporativas, creemos en aprovechar lo mejor de la
+                  tecnología para ofrecerte soluciones de vanguardia...
+                </Typography>
+              </CardContent>
+            </Card>
           </Grid>
-          <Grid item xs={12} md={8}>
-            <Typography variant="body1" paragraph>
-              🌐 Bienvenidos a la Era Digital con Tecnotics
-            </Typography>
-            <Typography variant="body1" paragraph>
-              En Tecnotics Soluciones Corporativas, creemos en aprovechar lo
-              mejor de la tecnología para ofrecerte soluciones de vanguardia.
-              Con nuestra infraestructura en la nube y servidores dedicados,
-              aseguramos un desempeño sin precedentes para tu negocio.
-            </Typography>
-            <Typography variant="body1" paragraph>
-              🔗 Servidores Dedicados de Alta Calidad
-            </Typography>
-            <Typography variant="body1" paragraph>
-              Nuestros servidores dedicados son reconocidos por su rendimiento
-              insuperable, confiabilidad y seguridad de primer nivel. Equipados
-              con hardware de última generación y una conectividad ultrarrápida,
-              tu negocio se beneficiará de una infraestructura robusta y de alta
-              disponibilidad.
-            </Typography>
-            <Typography variant="body1" paragraph>
-              💼 Configuración Personalizada para tus Necesidades
-            </Typography>
-            <Typography variant="body1" paragraph>
-              Ofrecemos opciones de configuración a medida, adaptadas a las
-              especificidades de tu empresa. Desde las capacidades del CPU, RAM,
-              almacenamiento y más, trabajamos de cerca contigo para diseñar una
-              solución que se alinee perfectamente con tus objetivos.
-            </Typography>
-            <Typography variant="body1" paragraph>
-              🔒 Protección y Seguridad Garantizada
-            </Typography>
-            <Typography variant="body1" paragraph>
-              Con nuestros servidores dedicados, la integridad de tus datos es
-              nuestra prioridad. Implementamos medidas avanzadas de seguridad,
-              incluida la protección contra DDoS y sistemas de monitoreo las 24
-              horas del día, asegurando que tu información esté segura y
-              protegida en todo momento.
-            </Typography>
-            <Typography variant="body1" paragraph>
-              🌟 Soporte Técnico Inigualable
-            </Typography>
-            <Typography variant="body1" paragraph>
-              Nuestro equipo técnico está siempre listo para asistirte. Con
-              expertos dedicados y un servicio ágil, garantizamos una respuesta
-              eficiente ante cualquier desafío o inquietud que puedas enfrentar.
-            </Typography>
+
+          <Grid item xs={12} md={6}>
+            <Card variant="outlined" sx={{ mb: 2 }}>
+              <CardContent>
+                <Typography variant="h5" gutterBottom>
+                  <SecurityIcon color="primary" /> Protección y Seguridad Garantizada
+                </Typography>
+                <Typography variant="body1" paragraph>
+                  Con nuestros servidores dedicados, la integridad de tus datos es nuestra
+                  prioridad...
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          {/* Aquí inicia la segunda fila de Cards */}
+          <Grid item xs={12} md={6}>
+            <Card variant="outlined" sx={{ mb: 2 }}>
+              <CardContent>
+                <Typography variant="h5" gutterBottom>
+                  <MemoryIcon color="primary" /> Configuración Personalizada para tus Necesidades
+                </Typography>
+                <Typography variant="body1" paragraph>
+                  Ofrecemos opciones de configuración a medida, adaptadas a las especificidades de
+                  tu empresa...
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid item xs={12} md={6}>
+            <Card variant="outlined">
+              <CardContent>
+                <Typography variant="h5" gutterBottom>
+                  <SupportAgentIcon color="primary" /> Soporte Técnico Inigualable
+                </Typography>
+                <Typography variant="body1" paragraph>
+                  Nuestro equipo técnico está siempre listo para asistirte...
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          <Grid container justifyContent="center" sx={{ mt: 4 }}>
+            <MoreInfoButton />
           </Grid>
         </Grid>
+        <br />
+        <br />
       </Container>
       <Footer />
     </div>

@@ -26,7 +26,7 @@ import {
 import "./Outsourcing.css";
 import MoreInfoButton from "../../Components/MoreInfo/MoreInfo";
 import { Link, useNavigate } from "react-router-dom";
-import ServiciosEspTi from "../../assets/images/ServiciosEspTi.png"
+import ServiciosETI from "../../assets/images/ServiciosETI.png";
 
 const BenefitsList = ({ benefits }) => (
   <List>
@@ -40,7 +40,6 @@ const BenefitsList = ({ benefits }) => (
 );
 
 const Outsourcing = () => {
-
   const inHouseServices = [
     {
       title: "In-House",
@@ -73,12 +72,7 @@ const Outsourcing = () => {
     ],
   };
 
-  const cardColors = [
-    "#FFC107", 
-    "#03A9F4", 
-    "#8BC34A", 
-    "#FF5722", 
-  ];
+  const cardColors = ["#FFC107", "#03A9F4", "#8BC34A", "#FF5722"];
 
   const outsourcingBenefits = [
     "Reducción de costos operativos.",
@@ -116,7 +110,9 @@ const Outsourcing = () => {
       <br />
       <br />
       <Container>
-        <img src={ServiciosEspTi} alt="Banner" style={{ width: "100%" }} />
+        <img src={ServiciosETI} alt="Banner" style={{ width: "100%" }} />
+        <br />
+        <br />
         <Grid container spacing={3}>
           <Grid item xs={12} md={6}>
             <motion.div

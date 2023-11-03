@@ -13,7 +13,7 @@ import intel from "../../assets/images/Intellogo.png";
 import amd from "../../assets/images/amd.png";
 import Footer from "../../Components/Footer/Footer";
 import ServidoresNube from "../ServidoresNube/ServidoresNube";
-import ServidoresDedicados from "../../assets/images/ServidoresDedicados.png";
+import ServidoresVps from "../../assets/images/ServidoresVPS.png";
 
 const servidoresvps = [
   {
@@ -59,7 +59,7 @@ export default function ServerVPSCards() {
       <br />
       <br />
       <Container>
-        <img src={ServidoresDedicados} alt="Banner" style={{ width: "100%" }} />
+        <img src={ServidoresVps} alt="Banner" style={{ width: "100%" }} />
         <br />
         <br />
 

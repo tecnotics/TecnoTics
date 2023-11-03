@@ -39,13 +39,13 @@ function Team() {
       name: "Sebastian Ocampo",
       avatarUrl: avatar3,
       position: "Analista de Soporte",
-      info: "Sebastian es un diseñador con una sólida experiencia en diseño de interfaces de usuario.",
+      info: "Sebastian es un Analista de soporte con mas de 5 años de experiencia en calidad de soporte.",
     },
     {
       name: "Jaime Durango",
       avatarUrl: avatar4,
       position: "Analista de Soporte",
-      info: "Jaime es un experto en marketing digital con un historial comprobado de éxitos en campañas publicitarias.",
+      info: "Jaime es un experto en Soporte TI.",
     },
   ];
 

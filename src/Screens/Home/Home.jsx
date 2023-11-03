@@ -20,6 +20,7 @@ import Card5 from "../../../src/assets/images/TI/DALL·E 2023-11-01 14.31.01 - C
 import Card6 from "../../../src/assets/images/TI/DALL·E 2023-11-01 14.33.40 - A photo capturing a group of diverse software developers wearing black hoodies, engaged in their work on Microsoft Office 365. They are seated around .png";
 import Card7 from "../../../src/assets/images/Cloud/DALL·E 2023-11-01 14.56.17 - Illustration depicting the advanced cybersecurity and online threat prevention capabilities of FlashStart for network and device protection. In the ce.png";
 import Card8 from "../../../src/assets/images/Cloud/DALL·E 2023-11-01 15.01.34 - Graphic illustration of 'Karsperski', a green antivirus program, fending off an aggressive ransomware attack in a virtual space. The antivirus is visu.png";
+import Vanguardia from "../../assets/images/Vanguard.png"
 import { Typography,Button, Card, CardContent, CardMedia } from "@mui/material";
 import Carrousel from "../../Components/Carrousels/Carrousel";
 import { Link } from "react-router-dom";
@@ -34,6 +35,42 @@ function Home() {
   };
 
    const cardsContent = [
+     {
+       title: "Servidores Dedicados",
+       imageUrl: Card4,
+       content:
+         "Nuestros servidores dedicados ofrecen rendimiento y confiabilidad excepcionales. Impulsa tu infraestructura de TI con nuestros servidores de alto rendimiento.",
+       list: [
+         "Rendimiento excepcional",
+         "Confiabilidad garantizada",
+         "Infraestructura de TI potenciada",
+       ],
+       link: "/ver-mas-servidor-nube",
+     },
+     {
+       title: "Servidores VPS",
+       imageUrl: Card5,
+       content:
+         "Los servidores VPS te brindan flexibilidad y control. Escala recursos según tus necesidades con nuestros servidores virtuales.",
+       list: [
+         "Flexibilidad y control",
+         "Escalabilidad de recursos",
+         "Administración de servidores virtuales",
+       ],
+       link: "/ver-mas-servidor-vps",
+     },
+     {
+       title: "Servicios TI",
+       imageUrl: Card6,
+       content:
+         "Nuestros servicios de TI ofrecen soporte integral para tu empresa. Optimiza tu infraestructura tecnológica con nuestra experiencia.",
+       list: [
+         "Soporte integral de TI",
+         "Optimización de infraestructura",
+         "Experiencia en servicios tecnológicos",
+       ],
+       link: "/servicios-ti",
+     },
      {
        title: "Acronis",
        imageUrl: Card1,
@@ -85,42 +122,6 @@ function Home() {
          "Prevención de amenazas en línea",
        ],
        link: "/flashstart",
-     },
-     {
-       title: "Servidores Dedicados",
-       imageUrl: Card4,
-       content:
-         "Nuestros servidores dedicados ofrecen rendimiento y confiabilidad excepcionales. Impulsa tu infraestructura de TI con nuestros servidores de alto rendimiento.",
-       list: [
-         "Rendimiento excepcional",
-         "Confiabilidad garantizada",
-         "Infraestructura de TI potenciada",
-       ],
-       link: "/servidores-dedicados",
-     },
-     {
-       title: "Servidores VPS",
-       imageUrl: Card5,
-       content:
-         "Los servidores VPS te brindan flexibilidad y control. Escala recursos según tus necesidades con nuestros servidores virtuales.",
-       list: [
-         "Flexibilidad y control",
-         "Escalabilidad de recursos",
-         "Administración de servidores virtuales",
-       ],
-       link: "/servidores-vps",
-     },
-     {
-       title: "Servicios TI",
-       imageUrl: Card6,
-       content:
-         "Nuestros servicios de TI ofrecen soporte integral para tu empresa. Optimiza tu infraestructura tecnológica con nuestra experiencia.",
-       list: [
-         "Soporte integral de TI",
-         "Optimización de infraestructura",
-         "Experiencia en servicios tecnológicos",
-       ],
-       link: "/servicios-ti",
      },
    ];
 
@@ -195,7 +196,7 @@ function Home() {
         <section className="cards-section">
           <motion.div initial="hidden" animate="visible" variants={headerVariants}>
             <Typography variant="h4">
-              <b>¿Qué más hacemos? </b>
+              <b>¿Que mas hacemos? </b>
             </Typography>
             <br />
           </motion.div>

@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, Grid, TextField, Typography } from "@mui/material";
+import { Button, Card, CardContent,TextField } from "@mui/material";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import "./Contacto.css";
@@ -11,6 +11,7 @@ import {
   Instagram,
 } from "@mui/icons-material";
 import Map from "../../Components/Map/Map";
+import ContactoBanner from "../../assets/images/Contacto.png";
 
 function Contacto() {
   return (
@@ -19,12 +20,9 @@ function Contacto() {
       <br />
       <br />
       <div className="container">
-        <Grid item xs={12}>
-          <Typography variant="h3">
-            <b>Contacto</b>
-          </Typography>
-        </Grid>
-
+        <img src={ContactoBanner} alt="Banner" style={{ width: "100%" }} />
+        <br />
+        <br />
         {/* Tarjetas (Cards) */}
         <div className="card-container">
           <Card className="card">
@@ -51,25 +49,13 @@ function Contacto() {
               <Twitter />
               <Instagram />
               <p>Redes Sociales:</p>
-              <a
-                href="https://www.facebook.com/ejemplo"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://www.facebook.com/ejemplo" target="_blank" rel="noopener noreferrer">
                 <Facebook />
               </a>
-              <a
-                href="https://www.twitter.com/ejemplo"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://www.twitter.com/ejemplo" target="_blank" rel="noopener noreferrer">
                 <Twitter />
               </a>
-              <a
-                href="https://www.instagram.com/ejemplo"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://www.instagram.com/ejemplo" target="_blank" rel="noopener noreferrer">
                 <Instagram />
               </a>
             </CardContent>
@@ -80,18 +66,8 @@ function Contacto() {
         <div className="form-and-map-container">
           {/* Formulario de contacto */}
           <form className="contact-form">
-            <TextField
-              label="Nombre"
-              variant="outlined"
-              fullWidth
-              margin="normal"
-            />
-            <TextField
-              label="Email"
-              variant="outlined"
-              fullWidth
-              margin="normal"
-            />
+            <TextField label="Nombre" variant="outlined" fullWidth margin="normal" />
+            <TextField label="Email" variant="outlined" fullWidth margin="normal" />
             <TextField
               label="Mensaje"
               variant="outlined"
