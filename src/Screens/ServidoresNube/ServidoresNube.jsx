@@ -18,7 +18,7 @@ function ServidoresNube({ servidor }) {
   const [storageType, setStorageType] = useState("ssd");
   const preciosSSD = [0, 12, 50, 100, 200];
   const preciosSATA = [0, 6, 12, 18, 25, 37, 43];
-  const [backup, setBackup] = useState("500 GB");
+  const [backup, setBackup] = useState("100 GB");
   const [primaryHardDriveSize, setPrimaryHardDriveSize] = useState("480 GB");
   const [primaryHardDrivePrice, setPrimaryHardDrivePrice] = useState(preciosSSD[0]);
   const [secondHardDriveSize, setSecondHardDriveSize] = useState("");
@@ -60,6 +60,7 @@ function ServidoresNube({ servidor }) {
       },
     },
     Backups: {
+      "100 GB": 0,
       "500 GB": 39,
       "1000 GB": 79,
       "1500 GB": 119,

@@ -42,7 +42,6 @@ function Soporte() {
         return;
       }
 
-      // Agregar a Firebase
       const firebaseResponse = await db.collection("supportRequests").add({
         contact: contact,
         username: username,
@@ -53,7 +52,7 @@ function Soporte() {
 
       // Enviar correo
       const correoResponse = await enviarCorreo({
-        destinatario: "danielalejandrosalgadoleon@gmail.com",
+        destinatario: "soporte@tecnotics.com",
         asunto: "Envío de Ticket",
         mensaje: `Detalles del Ticket:
         - Nombre de la empresa: ${company}

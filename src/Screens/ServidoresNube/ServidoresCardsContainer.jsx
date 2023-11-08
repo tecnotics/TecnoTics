@@ -20,7 +20,7 @@ const servidores = [
     nombre: "4-CORE-XEON",
     locations: ["Atlanta", "Miami", "Chicago", "Tampa", "Dallas"],
     memoryOptions: ["16 GB", "32 GB", "64 GB"],
-    precio: 40,
+    precio: 130,
   },
   {
     id: "6-CORE-RYZEN",
@@ -28,7 +28,7 @@ const servidores = [
     nombre: "6-CORE-RYZEN",
     locations: ["Atlanta", "Miami", "Chicago", "Tampa", "Dallas"],
     memoryOptions: ["32 GB", "64 GB", "128 GB"],
-    precio: 99,
+    precio: 260,
   },
   {
     id: "16-CORE-EPYC",
@@ -36,7 +36,7 @@ const servidores = [
     nombre: "16-CORE-EPYC",
     locations: ["Atlanta", "Miami", "Chicago", "Tampa", "Dallas"],
     memoryOptions: ["16 GB", "32 GB", "64 GB"],
-    precio: 149,
+    precio: 520,
   },
   {
     id: "32-CORE-XEON",
@@ -44,7 +44,7 @@ const servidores = [
     nombre: "32-CORE-XEON",
     locations: ["Atlanta", "Miami", "Chicago", "Tampa", "Dallas"],
     memoryOptions: ["16 GB", "32 GB", "64 GB"],
-    precio: 189,
+    precio: 1040,
   },
 ];
 
