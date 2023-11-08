@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Link from "@mui/material/Link";
+const urlBackend = import.meta.env.VITE_URL_BACKEND;
 
 function Soporte() {
   const [contact, setContact] = useState("");
@@ -84,7 +85,7 @@ function Soporte() {
 
   const enviarCorreo = async (formData) => {
     try {
-      const response = await fetch("http://localhost:3000/correo/enviar_correo", {
+      const response = await fetch(`${urlBackend}/correo/enviar_correo`, {
         headers: {
           "Content-Type": "application/json",
         },
