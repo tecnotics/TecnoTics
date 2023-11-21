@@ -30,6 +30,7 @@ function Footer() {
     display: "grid",
     gridTemplateColumns: "repeat(3, 1fr)",
     gridGap: "20px",
+    justifyItems: "center",
   };
 
   const linkStyle = {

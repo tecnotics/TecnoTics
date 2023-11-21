@@ -1,0 +1,21 @@
+/* Liston.css */
+.lsiton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #1976d2; /* A professional blue shade */
+  color: white;
+  padding: 5px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%); /* Creates the ribbon cut effect */
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.2); /* Adds a subtle shadow for depth */
+}
+
+/* Optional: Adjust the ribbon for small screens */
+@media (max-width: 768px) {
+  .lsiton {
+    font-size: 12px;
+    padding: 3px 10px;
+  }
+}

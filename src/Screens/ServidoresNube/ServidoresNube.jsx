@@ -26,6 +26,7 @@ function ServidoresNube({ servidor }) {
   const [thirdHardDriveSize, setThirdHardDriveSize] = useState("");
   const [thirdHardDrivePrice, setThirdHardDrivePrice] = useState(preciosSSD[0]);
   const urlBackend = import.meta.env.VITE_URL_BACKEND;
+  const remitenteCorreo = import.meta.env.VITE_CORREO;
 
   const configuracion = {
     ubicaciones: {
@@ -123,7 +124,7 @@ function ServidoresNube({ servidor }) {
     }
 
     const formData = {
-      destinatario: ["Alejandro@tecnotics.com",correo],
+      destinatario: [remitenteCorreo, correo],
       asunto: "Cotizacion de Servidor",
       mensaje: `Detalles de la Cotización:
       - Nombre del Servidor: ${servidorSeleccionado.nombre}

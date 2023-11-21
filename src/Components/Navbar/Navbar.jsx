@@ -85,7 +85,7 @@ function Navbar() {
             display: "flex",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center" }}>
+          <div style={{ display: "flex", alignItems: "center", marginTop: "15px"}}>
             <img
               src={Favicon}
               alt="Icono"
@@ -104,7 +104,13 @@ function Navbar() {
               <MenuIcon sx={{ color: "black" }} />
             </IconButton>
           ) : (
-            <div className="menu">
+              <div className="menu" style={{
+                marginTop: "15px",
+                marginLeft: "15px",
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "center"
+              }}>
               {menuItems.map((item, index) => (
                 <Button
                   key={index}
@@ -118,6 +124,8 @@ function Navbar() {
                     "&:hover": {
                       color: "#007acc",
                     },
+                    display: "flex",
+                    alignItems: "center"
                   }}
                 >
                   <span

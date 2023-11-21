@@ -89,7 +89,7 @@ function Home() {
          "Beneficios para tu negocio",
          "Colaboración en línea",
        ],
-       link: "/acronis2",
+       link: "/cotizador-office",
      },
      {
        title: "Outsourcing",
