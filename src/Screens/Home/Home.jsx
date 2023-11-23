@@ -14,12 +14,12 @@ import ServiciosCloud from "../../../src/assets/images/ServiciosCloud.png";
 import SolucionesCorporativas from "../../../src/assets/images/SolucionesCorporativas.png";
 import Card1 from "../../../src/assets/images/AcronisCard1.webp";
 import Card2 from "../../../src/assets/images/CardOffice.png";
-import Card3 from "../../../src/assets/images/Outsourcing/DALL·E 2023-10-31 17.08.58 - Photo banner for a website with a futuristic city skyline at dusk. Neon lights reflect off modern skyscrapers. Overlayed on the skyline is the text 'O.png";
-import Card4 from "../../../src/assets/images/TI/DALL·E 2023-10-31 17.07.01 - Foto_ Una sala de servidores iluminada con luces azules y verdes. Filas de racks con equipos parpadeantes indican actividad y procesamiento. En primer.png";
-import Card5 from "../../../src/assets/images/TI/DALL·E 2023-11-01 14.31.01 - Close-up photo of a high-quality VPS server within a rack. Light reflects off the server's metallic surface, highlighting its robust and high-quality .png";
-import Card6 from "../../../src/assets/images/TI/DALL·E 2023-11-01 14.33.40 - A photo capturing a group of diverse software developers wearing black hoodies, engaged in their work on Microsoft Office 365. They are seated around .png";
-import Card7 from "../../../src/assets/images/Cloud/DALL·E 2023-11-01 14.56.17 - Illustration depicting the advanced cybersecurity and online threat prevention capabilities of FlashStart for network and device protection. In the ce.png";
-import Card8 from "../../../src/assets/images/Cloud/DALL·E 2023-11-01 15.01.34 - Graphic illustration of 'Karsperski', a green antivirus program, fending off an aggressive ransomware attack in a virtual space. The antivirus is visu.png";
+import Card3 from "../../../src/assets/images/Outsourcing/dall-e24-outsorcing imagen.png";
+import Card4 from "../../../src/assets/images/TI/dall-e37-cientificos en servidores.png";
+import Card5 from "../../../src/assets/images/TI/dall-e38-servidores estadistica.png";
+import Card6 from "../../../src/assets/images/TI/dall-e39-hackers reunidos.png";
+import Card7 from "../../../src/assets/images/Cloud/dall-e10-equipo trabajando frente a servidores.png";
+import Card8 from "../../../src/assets/images/Cloud/dall-e9-escudo verde contra hackers.png";
 import Vanguardia from "../../assets/images/Vanguard.png"
 import { Typography,Button, Card, CardContent, CardMedia } from "@mui/material";
 import Carrousel from "../../Components/Carrousels/Carrousel";
