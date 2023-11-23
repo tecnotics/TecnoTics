@@ -1,0 +1,8 @@
+.marca-img{
+    transition: 0.3s all ease;
+    cursor: pointer;
+}
+
+.marca-img:hover{
+    transform: scale(1.2);
+}

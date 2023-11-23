@@ -1,0 +1,21 @@
+
+
+.content {
+  font-size: 18px;
+  line-height: 1.5;
+  color: #666;
+}
+
+
+.image {
+  max-width: 100%; 
+  height: auto; 
+}
+
+.outsourcing-container {
+  background-color: #f9f9f9; 
+  padding: 20px;
+  border-radius: 5px; 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
+}
+
