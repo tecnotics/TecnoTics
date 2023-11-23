@@ -95,11 +95,6 @@ function Clientes() {
 
   return (
     <>
-      <Navbar />
-      <br />
-      <br />
-      <br />
-      <br />
       <Container>
         <Grid container spacing={2}>
           <Grid item xs={12}>
@@ -107,7 +102,9 @@ function Clientes() {
               <div className="shape"></div>
               <div className="shape"></div>
               <form className="login-form" onSubmit={handleSubmit}>
-                <h3>TecnoTics</h3>
+                <h3>
+                  <b>TecnoTics </b>
+                </h3>
                 {message && <p className={isError ? "error" : "success"}>{message}</p>}
                 <label htmlFor="username">Nombre de Usuario</label>
                 <input

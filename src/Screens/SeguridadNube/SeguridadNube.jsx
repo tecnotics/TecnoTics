@@ -1,9 +1,18 @@
-import { Grid, Typography, Container, Card, CardContent } from "@mui/material";
+import {
+  Grid,
+  Typography,
+  Container,
+  Card,
+  CardContent,
+  CardActionArea,
+  CardMedia,
+} from "@mui/material";
 import { motion } from "framer-motion";
 import Footer from "../../Components/Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import chip from "../../assets/images/chip.jpg";
 import MoreInfoButton from "../../Components/MoreInfo/MoreInfo";
+import SeguridadNubeBanner from "../../assets/images/SeguridadenlaNube.png";
 
 const contentData = [
   {
@@ -47,12 +56,10 @@ const SeguridadNube = () => {
       <br />
       <br />
       <Container>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Typography className="title" variant="h3">
-              <b>Seguridad en la Nube</b>
-            </Typography>
-          </Grid>
+        <img src={SeguridadNubeBanner} alt="Banner" style={{ width: "100%" }} />
+        <br />
+        <br />
+        <Grid container spacing={4} >
           <Grid item xs={12}>
             <motion.div
               className="content"
@@ -60,32 +67,41 @@ const SeguridadNube = () => {
               initial="hidden"
               animate="visible"
             >
-              <Grid container spacing={2}>
+              <Grid container spacing={2} >
                 {contentData.map((item, index) => (
-                  <Grid key={index} item xs={12} md={6}>
-                    <Card elevation={3}>
-                      <CardContent>
-                        <Typography variant="h4">{item.title}</Typography>
-                        <Typography variant="body1">{item.text}</Typography>
-                      </CardContent>
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        style={{ maxWidth: "100%" }}
-                      />
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          padding: "16px",
-                        }}
-                      >
-                        <MoreInfoButton />
-                      </div>
+                  <Grid item xs={12} sm={6} key={index}>
+                    <Card
+                      sx={{
+                        width: "500px",
+                        transition: "0.3s",
+                        "&:hover": {
+                          transform: "scale(1.05)",
+                        },
+                        marginBottom: 2,
+                      }}
+                      elevation={3}
+                    >
+                      <CardActionArea>
+                        <CardMedia
+                          component="img"
+                          height="140"
+                          image={item.image}
+                          alt={item.title}
+                        />
+                        <CardContent>
+                          <Typography gutterBottom variant="h5" component="div">
+                            {item.title}
+                          </Typography>
+                          <Typography variant="body2" color="textSecondary">
+                            {item.text}
+                          </Typography>
+                        </CardContent>
+                      </CardActionArea>
                     </Card>
                   </Grid>
                 ))}
               </Grid>
+              <MoreInfoButton />
             </motion.div>
           </Grid>
         </Grid>

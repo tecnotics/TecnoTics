@@ -60,7 +60,7 @@ function ServidoresNube({ servidor }) {
         "Windows Datacenter": 187,
       },
     },
-    Backups: {
+    backups: {
       "100 GB": 0,
       "500 GB": 39,
       "1000 GB": 79,
@@ -85,6 +85,10 @@ function ServidoresNube({ servidor }) {
 
     if (configuracion.ubicaciones[location]) {
       precioCalculado += configuracion.ubicaciones[location];
+    }
+
+    if (configuracion.backups[backup]) {
+      precioCalculado += configuracion.backups[backup];
     }
 
     if (configuracion.memorias[memory]) {
@@ -126,8 +130,74 @@ function ServidoresNube({ servidor }) {
     const formData = {
       destinatario: [remitenteCorreo, correo],
       asunto: "Cotizacion de Servidor",
-      mensaje: `Detalles de la Cotización:
-      - Nombre del Servidor: ${servidorSeleccionado.nombre}
+      html: `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cotización de Servicio</title>
+  <style>
+    /* Estilos base */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; }
+
+    /* Reinicia estilos */
+    img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    table { border-collapse: collapse !important; }
+    body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
+
+    /* Estilos para clientes de correo electrónico de Microsoft */
+    .ExternalClass { width: 100%; }
+    .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div { line-height: 100%; }
+    .ReadMsgBody { width: 100%; background-color: #f4f4f4; }
+
+    /* Estilos para botones */
+    .button-td, .button-a {
+      transition: all 100ms ease-in;
+    }
+    .button-td:hover, .button-a:hover {
+      background: #555555 !important;
+      border-color: #555555 !important;
+    }
+
+    /* Media Queries */
+    @media screen and (max-width: 600px) {
+      .email-container { width: 100% !important; }
+      .fluid { max-width: 100% !important; height: auto !important; margin-left: auto !important; margin-right: auto !important; }
+      .stack-column, .stack-column-center { display: block !important; width: 100% !important; max-width: 100% !important; direction: ltr !important; }
+      .stack-column-center { text-align: center !important; }
+      .center-on-narrow { text-align: center !important; display: block !important; margin-left: auto !important; margin-right: auto !important; float: none !important; }
+      table.center-on-narrow { display: inline-block !important; }
+    }
+  </style>
+</head>
+<body width="100%" style="margin: 0; padding: 0; background-color: #f4f4f4; font-family: Arial, sans-serif;" bgcolor="#f4f4f4">
+  <center style="width: 100%; background-color: #f4f4f4;">
+    <div style="max-width: 600px; margin: auto;" class="email-container">
+      <!-- Header -->
+      <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
+        <tr>
+          <td bgcolor="#0d6efd" style="padding: 40px 0; text-align: center; color: #ffffff;">
+            <img src="https://tecnotics.com/assets/favicon-fa79ae63.ico" alt="Tecnotics Logo" width="100" style="margin-bottom: 20px;">
+            <h1>TecnoTics</h1>
+          </td>
+        </tr>
+      </table>
+      <!-- Email Body -->
+      <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
+        <tr>
+          <td style="background-color: #ffffff; padding: 40px 30px;">
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                <td style="color: #153643; font-size: 24px; margin-bottom: 20px;">
+                  <strong>Detalles de la cotización</strong>
+                </td>
+              </tr>
+              <tr>
+                <td style="color: #153643; font-size: 16px; line-height: 24px; padding: 20px 0;">
+                - Nombre del Servidor: ${servidorSeleccionado.nombre}
       - Correo Electrónico: ${correo}
       - Memoria: ${memory}
       - Ubicación: ${location}
@@ -140,6 +210,23 @@ function ServidoresNube({ servidor }) {
         secondHardDriveSize ? secondHardDriveSize : "No lleva un segundo disco"
       }
       - Third Hard Drive: ${thirdHardDriveSize ? thirdHardDriveSize : "No lleva un tercer disco"}
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#0d6efd" style="padding: 30px; text-align: center; color: #ffffff;">
+            <h2>Contactanos</h2>
+            <p>Email: <a href="mailto:dwdwdw@ffefd.com" style="color: #ffffff;">Soporte@tecnotics.com</a><br>
+            Teléfono: <a href="tel:111111" style="color: #ffffff;">318 5078721</a></p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </center>
+</body>
+</html>
       `,
     };
 
@@ -193,6 +280,7 @@ function ServidoresNube({ servidor }) {
     secondHardDriveSize,
     thirdHardDrivePrice,
     operatingSystemVersion,
+    backup,
   ]);
 
   if (!servidorSeleccionado) {
@@ -215,7 +303,6 @@ function ServidoresNube({ servidor }) {
         <ButtonGroup fullWidth variant="outlined">
           <Button>{servidorSeleccionado.nombre}</Button>
         </ButtonGroup>
-
         <Typography variant="body1" gutterBottom>
           <b>Primary Hard Drive </b>
         </Typography>
@@ -410,13 +497,13 @@ function ServidoresNube({ servidor }) {
           <b>Daily Backup & Rapid Restore</b>
         </Typography>
         <ButtonGroup fullWidth>
-          {Object.keys(configuracion.Backups).map((i) => (
+          {Object.keys(configuracion.backups).map((i) => (
             <Button
               key={i}
               variant={backup === i ? "contained" : "outlined"}
               onClick={() => setBackup(i)}
             >
-              {i} (${configuracion.Backups[i]})
+              {i} (${configuracion.backups[i]})
             </Button>
           ))}
         </ButtonGroup>

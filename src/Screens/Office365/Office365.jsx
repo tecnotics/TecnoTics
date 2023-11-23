@@ -20,8 +20,8 @@ const servicios = [
     image: Office,
     serviceOption:
       "Mensajería básica y plan de calendario con correo electrónico web y acceso POP, cada usuario obtiene un buzón con 2 GB",
-    precioMes: 23,
-    precioAño: 2.12,
+    precioMes: 2.12,
+    precioAño: 23,
   },
   {
     id: "Exchange Online (Plan 1)",
@@ -29,8 +29,8 @@ const servicios = [
     image: Office,
     serviceOption:
       "Plan de mensajería, calendario y archivo de correo electrónico accesible desde Outlook en PC, Internet y dispositivos móviles. Cada usuario dispone de un buzón con 50 GB de espacio de almacenamiento y puede enviar mensajes de hasta 150 MB de tamaño",
-    precioMes: 46,
-    precioAño: 4.25,
+    precioMes: 4.25,
+    precioAño: 46,
   },
   {
     id: "Microsoft 365 Business Basic",
@@ -38,8 +38,8 @@ const servicios = [
     image: Office,
     serviceOption:
       "Versiones en línea de Office con correo electrónico, mensajería instantánea, videoconferencia HD, más 1 TB de almacenamiento y uso compartido de archivos personales. No incluye Office suite para PC o Mac. Para organizaciones con hasta 300 usuarios.",
-    precioMes: 67,
-    precioAño: 5.64,
+    precioMes: 5.64,
+    precioAño: 67,
   },
   {
     id: "Microsoft 365 Business Standard",
@@ -47,9 +47,8 @@ const servicios = [
     image: Office,
     serviceOption:
       "La suite Office para PC y Mac con aplicaciones para tabletas y teléfonos, además de correo electrónico, mensajería instantánea, videoconferencia HD, almacenamiento y uso compartido de archivos personales de 1 TB. Para organizaciones con hasta 300 usuarios.",
-    precioMes: 142,
-    precioAño: 11.85,
-    plan: ""
+    precioMes: 11.85,
+    precioAño: 142,
   },
 ];
 
@@ -59,9 +58,8 @@ const Office365 = () => {
 
   const handleServiceSelection = (service) => {
     const plan = activeTab === 0 ? "Anual" : "Mensual";
-    setSelectedService({...service, plan });
+    setSelectedService({ ...service, plan });
   };
-
 
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
@@ -189,10 +187,13 @@ const Office365 = () => {
         </Grid>
         <br />
       </Container>
-      <div className="container" style={{width: "100%", display: "flex", justifyContent: "center"}}>
-      {selectedService && (
-        <CotizadorOffice servicio={selectedService} plan={selectedService.plan} />
-      )}
+      <div
+        className="container"
+        style={{ width: "100%", display: "flex", justifyContent: "center" }}
+      >
+        {selectedService && (
+          <CotizadorOffice servicio={selectedService} plan={selectedService.plan} />
+        )}
       </div>
       <br />
       <Footer />

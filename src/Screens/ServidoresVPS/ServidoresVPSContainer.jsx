@@ -12,36 +12,45 @@ import { useState } from "react";
 import intel from "../../assets/images/Intellogo.png";
 import amd from "../../assets/images/amd.png";
 import Footer from "../../Components/Footer/Footer";
-import ServidoresNube from "../ServidoresNube/ServidoresNube";
 import ServidoresVps from "../../assets/images/ServidoresVPS.png";
+import ServidoresVPS from "./ServidoresVPS";
 
 const servidoresvps = [
   {
     id: "vps-xxs-intel",
     image: intel,
     nombre: "vps.xxs.intel",
-    precioPorGBSSD: 0.8,
-    locations: ["Atlanta", "Miami", "Chicago", "Tampa", "Dallas"],
-    memoryOptions: ["16 GB", "32 GB", "64 GB"],
     precio: 4,
+    sistemaOperativo: "Ubuntu 22.04", // Ejemplo de sistema operativo predeterminado
+    dataCenterLocation: "LAX2 (Los Angeles, CA)", // Ejemplo de ubicación predeterminada
+    processor: "1 vCPU", // Ejemplo de procesador predeterminado
+    memory: "16 GB", // Tomando la primera opción de memoryOptions
+    primaryHardDrive: "20GB", // Ejemplo de unidad de disco duro primaria
+    bandwidth: "10TB on 1Gbps port", // Ejemplo de ancho de banda
   },
   {
     id: "vps-md-amd",
     image: amd,
     nombre: "vps.md.amd",
-    precioPorGBSSD: 0.8,
-    locations: ["Atlanta", "Miami", "Chicago", "Tampa", "Dallas"],
-    memoryOptions: ["16 GB", "32 GB", "64 GB"],
     precio: 27,
+    sistemaOperativo: "Ubuntu 22.04", // Ejemplo de sistema operativo predeterminado
+    dataCenterLocation: "LAX2 (Los Angeles, CA)", // Ejemplo de ubicación predeterminada
+    processor: "1 vCPU", // Ejemplo de procesador predeterminado
+    memory: "16 GB", // Tomando la primera opción de memoryOptions
+    primaryHardDrive: "20GB", // Ejemplo de unidad de disco duro primaria
+    bandwidth: "10TB on 1Gbps port", // Ejemplo de ancho de banda
   },
   {
     id: "vps-lg-intel",
     image: intel,
     nombre: "vps.lg.intel",
-    precioPorGBSSD: 0.8,
-    locations: ["Atlanta", "Miami", "Chicago", "Tampa", "Dallas"],
-    memoryOptions: ["16 GB", "32 GB", "64 GB"],
     precio: 49,
+    sistemaOperativo: "Ubuntu 22.04", // Ejemplo de sistema operativo predeterminado
+    dataCenterLocation: "LAX2 (Los Angeles, CA)", // Ejemplo de ubicación predeterminada
+    processor: "1 vCPU", // Ejemplo de procesador predeterminado
+    memory: "16 GB", // Tomando la primera opción de memoryOptions
+    primaryHardDrive: "20GB", // Ejemplo de unidad de disco duro primaria
+    bandwidth: "10TB on 1Gbps port", // Ejemplo de ancho de banda
   },
 ];
 
@@ -126,12 +135,6 @@ export default function ServerVPSCards() {
                         {servidor.nombre}
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        Memory Options: {servidor.memoryOptions.join(", ")}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Locations: {servidor.locations.join(", ")}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
                         Price: $ {servidor.precio} /mo.
                       </Typography>
                     </CardContent>
@@ -143,7 +146,7 @@ export default function ServerVPSCards() {
         </Grid>
       </Container>
       <br />
-      {selectedServer && <ServidoresNube servidor={selectedServer} />}
+      {selectedServer && <ServidoresVPS servidorVPS={selectedServer} />}
       <br />
       <Footer />
     </>
