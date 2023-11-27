@@ -20,8 +20,8 @@ import Card5 from "../../../src/assets/images/TI/dall-e38-servidores estadistica
 import Card6 from "../../../src/assets/images/TI/dall-e39-hackers reunidos.png";
 import Card7 from "../../../src/assets/images/Cloud/dall-e10-equipo trabajando frente a servidores.png";
 import Card8 from "../../../src/assets/images/Cloud/dall-e9-escudo verde contra hackers.png";
-import Vanguardia from "../../assets/images/Vanguard.png"
-import { Typography,Button, Card, CardContent, CardMedia } from "@mui/material";
+import Vanguardia from "../../assets/images/Vanguard.png";
+import { Typography, Button, Card, CardContent, CardMedia } from "@mui/material";
 import Carrousel from "../../Components/Carrousels/Carrousel";
 import { Link } from "react-router-dom";
 import "./Home.css";
@@ -34,97 +34,96 @@ function Home() {
     setCurrentSlide(index);
   };
 
-   const cardsContent = [
-     {
-       title: "Servidores Dedicados",
-       imageUrl: Card4,
-       content:
-         "Nuestros servidores dedicados ofrecen rendimiento y confiabilidad excepcionales. Impulsa tu infraestructura de TI con nuestros servidores de alto rendimiento.",
-       list: [
-         "Rendimiento excepcional",
-         "Confiabilidad garantizada",
-         "Infraestructura de TI potenciada",
-       ],
-       link: "/ver-mas-servidor-nube",
-     },
-     {
-       title: "Servidores VPS",
-       imageUrl: Card5,
-       content:
-         "Los servidores VPS te brindan flexibilidad y control. Escala recursos según tus necesidades con nuestros servidores virtuales.",
-       list: [
-         "Flexibilidad y control",
-         "Escalabilidad de recursos",
-         "Administración de servidores virtuales",
-       ],
-       link: "/ver-mas-servidor-vps",
-     },
-     {
-       title: "Servicios TI",
-       imageUrl: Card6,
-       content:
-         "Nuestros servicios de TI ofrecen soporte integral para tu empresa. Optimiza tu infraestructura tecnológica con nuestra experiencia.",
-       list: [
-         "Soporte integral de TI",
-         "Optimización de infraestructura",
-         "Experiencia en servicios tecnológicos",
-       ],
-       link: "/servicios-ti",
-     },
-     {
-       title: "Acronis",
-       imageUrl: Card1,
-       content:
-         "Ofrecemos soluciones de respaldo y recuperación de datos líderes en la industria a través de Acronis. Mantén tus datos seguros y respaldados con nuestra experiencia en Acronis",
-       list: ["Soluciones de respaldo", "Recuperación de datos", "Experiencia en Acronis"],
-       link: "/acronis1",
-     },
-     {
-       title: "Office 365",
-       imageUrl: Card2,
-       content:
-         "Office 365 te ofrece una suite de herramientas de productividad en la nube. Descubre sus beneficios para tu negocio.",
-       list: [
-         "Suite de productividad en la nube",
-         "Beneficios para tu negocio",
-         "Colaboración en línea",
-       ],
-       link: "/cotizador-office",
-     },
-     {
-       title: "Outsourcing",
-       imageUrl: Card3,
-       content:
-         "Nuestros servicios de outsourcing te permiten enfocarte en lo que realmente importa. Deja la tecnología en nuestras manos.",
-       list: ["Enfoque en lo que importa", "Tecnología gestionada", "Eficiencia empresarial"],
-       link: "/acronis3",
-     },
-     {
-       title: "Kaspersky",
-       imageUrl: Card8,
-       content:
-         "Kaspersky ofrece soluciones de seguridad informática de confianza. Protege tus sistemas y datos con nuestras herramientas.",
-       list: [
-         "Seguridad informática confiable",
-         "Protección de sistemas y datos",
-         "Prevención de amenazas",
-       ],
-       link: "/kaspersky",
-     },
-     {
-       title: "FlashStart",
-       imageUrl: Card7,
-       content:
-         "Descubre cómo FlashStart puede ayudarte a proteger tu red y dispositivos contra amenazas en línea. Seguridad cibernética avanzada al alcance de tu mano.",
-       list: [
-         "Protección de red y dispositivos",
-         "Seguridad cibernética avanzada",
-         "Prevención de amenazas en línea",
-       ],
-       link: "/flashstart",
-     },
-   ];
-
+  const cardsContent = [
+    {
+      title: "Servidores Dedicados",
+      imageUrl: Card4,
+      content:
+        "Nuestros servidores dedicados ofrecen rendimiento y confiabilidad excepcionales. Impulsa tu infraestructura de TI con nuestros servidores de alto rendimiento.",
+      list: [
+        "Rendimiento excepcional",
+        "Confiabilidad garantizada",
+        "Infraestructura de TI potenciada",
+      ],
+      link: "/ver-mas-servidor-nube",
+    },
+    {
+      title: "Servidores VPS",
+      imageUrl: Card5,
+      content:
+        "Los servidores VPS te brindan flexibilidad y control. Escala recursos según tus necesidades con nuestros servidores virtuales.",
+      list: [
+        "Flexibilidad y control",
+        "Escalabilidad de recursos",
+        "Administración de servidores virtuales",
+      ],
+      link: "/ver-mas-servidor-vps",
+    },
+    {
+      title: "Servicios TI",
+      imageUrl: Card6,
+      content:
+        "Nuestros servicios de TI ofrecen soporte integral para tu empresa. Optimiza tu infraestructura tecnológica con nuestra experiencia.",
+      list: [
+        "Soporte integral de TI",
+        "Optimización de infraestructura",
+        "Experiencia en servicios tecnológicos",
+      ],
+      link: "/servicios-ti",
+    },
+    {
+      title: "Acronis",
+      imageUrl: Card1,
+      content:
+        "Ofrecemos soluciones de respaldo y recuperación de datos líderes en la industria a través de Acronis. Mantén tus datos seguros y respaldados con nuestra experiencia en Acronis",
+      list: ["Soluciones de respaldo", "Recuperación de datos", "Experiencia en Acronis"],
+      link: "/cotizador-acronis",
+    },
+    {
+      title: "Office 365",
+      imageUrl: Card2,
+      content:
+        "Office 365 te ofrece una suite de herramientas de productividad en la nube. Descubre sus beneficios para tu negocio.",
+      list: [
+        "Suite de productividad en la nube",
+        "Beneficios para tu negocio",
+        "Colaboración en línea",
+      ],
+      link: "/cotizador-office",
+    },
+    {
+      title: "Outsourcing",
+      imageUrl: Card3,
+      content:
+        "Nuestros servicios de outsourcing te permiten enfocarte en lo que realmente importa. Deja la tecnología en nuestras manos.",
+      list: ["Enfoque en lo que importa", "Tecnología gestionada", "Eficiencia empresarial"],
+      link: "/acronis3",
+    },
+    {
+      title: "Kaspersky",
+      imageUrl: Card8,
+      content:
+        "Kaspersky ofrece soluciones de seguridad informática de confianza. Protege tus sistemas y datos con nuestras herramientas.",
+      list: [
+        "Seguridad informática confiable",
+        "Protección de sistemas y datos",
+        "Prevención de amenazas",
+      ],
+      link: "/kaspersky",
+    },
+    {
+      title: "FlashStart",
+      imageUrl: Card7,
+      content:
+        "Descubre cómo FlashStart puede ayudarte a proteger tu red y dispositivos contra amenazas en línea. Seguridad cibernética avanzada al alcance de tu mano.",
+      list: [
+        "Protección de red y dispositivos",
+        "Seguridad cibernética avanzada",
+        "Prevención de amenazas en línea",
+      ],
+      link: "/flashstart",
+    },
+  ];
 
   const carouselImages = [
     Acronis,
@@ -134,14 +133,13 @@ function Home() {
     Karspersky,
     ServidoresNube,
     ServiciosCloud,
-    SolucionesCorporativas
+    SolucionesCorporativas,
   ];
 
   const headerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
   };
-
 
   return (
     <>

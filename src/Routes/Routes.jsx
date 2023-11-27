@@ -24,6 +24,7 @@ import RegistroUsuario from "../Screens/Clientes/RegistroUsuario";
 import RecuperarContraseña from "../Screens/Clientes/RecuperarContraseña";
 import Soporte from "../Screens/Clientes/Soporte";
 import Office365 from "../Screens/Office365/Office365";
+import AcronisContainer from "../Screens/AcronisCotizador/AcronisContainer";
 
 export default function Rutas() {
   return (
@@ -39,6 +40,7 @@ export default function Rutas() {
         <Route path="/soluciones-corporativas" element={<SolucionesCorp />} />
         <Route path="/servicios-ti" element={<ServiciosNube />} />
         <Route path="/cotizador-office" element={<Office365 />} />
+        <Route path="/cotizador-acronis" element={<AcronisContainer />} />
         <Route path="/outsourcing-ti" element={<Outsourcing />} />
         <Route path="/quienes-somos" element={<QuienesSomos />} />
         <Route path="/ver-mas-servicio-seguridad" element={<SeguridadNube />} />
