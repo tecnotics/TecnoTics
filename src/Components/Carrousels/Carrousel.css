@@ -1,0 +1,55 @@
+/* Estilos base del carrusel */
+.mySwiper {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* Estilos personalizados para cada slide */
+.swiper-slide-custom {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: transform 0.7s ease-out; /* Transición más suave para el hover */
+}
+
+.swiper-slide-custom:hover {
+  transform: scale(1.02); /* Zoom muy sutil al pasar el mouse */
+}
+
+/* Estilo de las imágenes dentro de los slides */
+.carousel-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: opacity 0.7s ease-out; /* Transición más suave de la opacidad */
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 1024px) {
+  .mySwiper {
+    height: 600px;
+  }
+}
+
+/* Estilos para la navegación y paginación */
+
+
+/* Personalización de la paginación */
+.swiper-pagination-bullet {
+  background-color: rgba(255, 255, 255, 0.7);
+  transition: background-color 0.5s ease-out;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #000;
+}
+
+/* Ajustes para mejorar la accesibilidad */
+.swiper-button-next:focus,
+.swiper-button-prev:focus,
+.swiper-pagination-bullet:focus {
+  outline: 2px solid #000;
+}

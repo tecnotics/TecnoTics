@@ -41,11 +41,6 @@ function Navbar() {
       icon: <PeopleIcon fontSize="string" />,
     },
     {
-      text: "Servicios Especializados de TI",
-      link: "/outsourcing-ti",
-      icon: <BusinessIcon fontSize="string" />,
-    },
-    {
       text: "Servicios Cloud",
       link: "/servicios-ti",
       icon: <CloudIcon fontSize="string" />,

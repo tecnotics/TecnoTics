@@ -5,13 +5,18 @@ import servicioVoIP from "../../assets/images/Cloud/dall-e13-computador con un s
 import servicioSeguridad from "../../assets/images/Cloud/dall-e5-nube y servidores.png";
 import telefoniaIP from "../../assets/images/Cloud/Dall-e4-Equipo viendo servidor grande.png";
 import servicioMigracion from "../../assets/images/Cloud/dall-e14-compañeros trabajando juntos.png";
-import acronisfondo from "../../assets/images/AcronisAbout.webp";
+import acronisfondo from "../../assets/images/AcronisAbout.webp"; 
+import RedesDatos from "../../assets/images/RedesDatos/dall-e40-Redes de Datos.png";
 import acronis1 from "../../assets/images/AcronisCard1.webp";
 import acronis2 from "../../assets/images/AcronisCard2.webp";
 import acronis3 from "../../assets/images/AcronisCard3.webp";
 import acronis4 from "../../assets/images/AcronisCard4.webp";
 import acronis5 from "../../assets/images/AcronisCard5.webp";
 import acronis6 from "../../assets/images/AcronisCard6.webp";
+import Card4 from "../../../src/assets/images/TI/dall-e37-cientificos en servidores.png";
+import Card5 from "../../../src/assets/images/TI/dall-e38-servidores estadistica.png";
+import Card6 from "../../../src/assets/images/TI/dall-e39-hackers reunidos.png";
+import Card7 from "../../../src/assets/images/Cloud/dall-e10-equipo trabajando frente a servidores.png";
 
 export const acronisServices = {
   title: "Acronis",
@@ -73,48 +78,72 @@ export const tecnoTicsServices = {
     {
       title: "Servidores Nube",
       description:
-        "Infraestructura de TI sólida y confiable para empresas en servidores en la nube.",
+        "Optimiza tu negocio con nuestra infraestructura de TI en la nube, ofreciendo soluciones sólidas, confiables y escalables para empresas de cualquier tamaño.",
       imageUrl: serviciocloud,
       moreLink: "/ver-mas-servidor-nube",
     },
     {
       title: "Servidores VPS",
-      description: "Servidores VPS de maxima calidad y eficiencia",
+      description:
+        "Experimenta la flexibilidad y potencia de los Servidores VPS, perfectos para empresas que buscan un equilibrio entre control, rendimiento y eficiencia en la gestión de recursos.",
       imageUrl: serviciovps,
       moreLink: "/ver-mas-servidor-vps",
     },
     {
-      title: "Servicios DNS",
-      description: "Gestión, optimización y seguridad de registros DNS para servicios en línea.",
+      title: "Seguridad Perimetral",
+      description:
+        "Maximiza la seguridad de tu presencia en línea con nuestra gestión avanzada de registros DNS, asegurando la protección y optimización de tus servicios web.",
       imageUrl: servicioDNS,
       moreLink: "/ver-mas-servicio-dns",
     },
     {
-      title: "Telefonía IP",
-      description: "Modernización de comunicaciones empresariales con telefonía IP en la nube.",
+      title: "Central Virtual",
+      description:
+        "Transforma las comunicaciones de tu empresa con nuestra solución de telefonía IP en la nube, integrando tecnología moderna para una colaboración eficaz y sin fronteras.",
       imageUrl: telefoniaIP,
       moreLink: "/ver-mas-servicio-telefonia",
     },
     {
-      title: "Servicios VoIP",
+      title: "Troncal SIP",
       description:
-        "Portal de usuario, panel administrativo, panel de llamadas, grabación de llamadas y números internacionales para mejorar las comunicaciones empresariales.",
+        "Eleva tus comunicaciones empresariales con nuestro servicio Troncal SIP, incluyendo un portal de usuario avanzado, paneles administrativos, grabación de llamadas y opciones de números internacionales.",
       imageUrl: servicioVoIP,
       moreLink: "/ver-mas-servicio-voip",
     },
     {
       title: "Seguridad en la Nube",
       description:
-        "Protección avanzada de aplicaciones y datos en línea, incluyendo firewall, detección de intrusiones y cifrado de datos.",
+        "Defiende tus aplicaciones y datos en línea con nuestra protección avanzada, que incluye firewall de última generación, sistemas de detección de intrusiones y cifrado robusto de datos.",
       imageUrl: servicioSeguridad,
       moreLink: "/ver-mas-servicio-seguridad",
     },
     {
       title: "Migración a la Nube",
       description:
-        "Asesoramiento y asistencia en la migración eficiente y segura de aplicaciones y datos a la nube, con evaluación, planificación y optimización.",
+        "Facilitamos tu transición hacia la nube con asesoramiento experto y asistencia técnica para una migración de datos y aplicaciones eficiente, segura y sin interrupciones.",
       imageUrl: servicioMigracion,
       moreLink: "/ver-mas-servicio-migracion",
+    },
+    {
+      title: "Servidores Dedicados",
+      imageUrl: Card4,
+      description:
+        "Descubre el poder y la confiabilidad de nuestros servidores dedicados, diseñados para impulsar tu infraestructura de TI con un rendimiento excepcional y personalización completa.",
+      moreLink: "/ver-mas-servidor-nube",
+    },
+    {
+      title: "FlashStart",
+      imageUrl: Card7,
+      description:
+        "Descubre cómo FlashStart puede ayudarte a proteger tu red y dispositivos contra amenazas en línea. Seguridad cibernética avanzada al alcance de tu mano.",
+      moreLink: "/flashstart",
+    },
+    {
+      title: "Redes de datos",
+      imageUrl: RedesDatos,
+      description:
+        "Asegura y mejora tu red de datos, ofreciendo una protección superior contra ciberamenazas y optimizando el rendimiento de tu infraestructura de red.",
+      moreLink: "/redes-de-datos",
     },
   ],
 };

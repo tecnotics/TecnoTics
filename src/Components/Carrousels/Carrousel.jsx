@@ -1,36 +1,46 @@
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Parallax, Pagination, Navigation, Autoplay } from "swiper/modules";
+import "./Carrousel.css"; // Importa tu hoja de estilos
+import { useNavigate } from "react-router-dom";
 
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+const Carrousel = ({ slides }) => {
+  const navigate = useNavigate();
 
-function Carrousel({
-  selectedItem,
-  onChange,
-  showThumbs,
-  infiniteLoop,
-  autoPlay,
-  interval,
-  images,
-}) {
-  const renderSlides = () => {
-    return images.map((image, index) => (
-      <div key={index} className="carousel__slide">
-        <img src={image} alt={`Slide ${index}`} />
-      </div>
-    ));
+  const handleSlideClick = (path) => {
+    navigate(path);
   };
 
   return (
-    <Carousel
-      selectedItem={selectedItem}
-      onChange={onChange}
-      showThumbs={showThumbs}
-      infiniteLoop={infiniteLoop}
-      autoPlay={autoPlay}
-      interval={interval}
+    <Swiper
+      style={{
+        "--swiper-navigation-color": "#fff",
+        "--swiper-pagination-color": "#fff",
+      }}
+      speed={600}
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
+      }}
+      parallax={true}
+      pagination={{ clickable: true }}
+      navigation={true}
+      modules={[Parallax, Pagination, Navigation, Autoplay]}
+      className="mySwiper"
     >
-      {renderSlides()}
-    </Carousel>
+      {slides.map((slide, index) => (
+        <SwiperSlide
+          key={index}
+          className="swiper-slide-custom"
+          onClick={() => handleSlideClick(slide.path)}
+        >
+          <img src={slide.imageUrl} alt={`Slide ${index + 1}`} className="carousel-image" />
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
-}
+};
 
 export default Carrousel;

@@ -20,7 +20,6 @@ import Card5 from "../../../src/assets/images/TI/dall-e38-servidores estadistica
 import Card6 from "../../../src/assets/images/TI/dall-e39-hackers reunidos.png";
 import Card7 from "../../../src/assets/images/Cloud/dall-e10-equipo trabajando frente a servidores.png";
 import Card8 from "../../../src/assets/images/Cloud/dall-e9-escudo verde contra hackers.png";
-import Vanguardia from "../../assets/images/Vanguard.png";
 import { Typography, Button, Card, CardContent, CardMedia } from "@mui/material";
 import Carrousel from "../../Components/Carrousels/Carrousel";
 import { Link } from "react-router-dom";
@@ -126,14 +125,38 @@ function Home() {
   ];
 
   const carouselImages = [
-    Acronis,
-    FlashStart,
-    Office,
-    Outsourcing,
-    Karspersky,
-    ServidoresNube,
-    ServiciosCloud,
-    SolucionesCorporativas,
+    {
+      imageUrl: Acronis,
+      path: "cotizador-acronis",
+    },
+    {
+      imageUrl: FlashStart,
+      path: "cotizador-office",
+    },
+    {
+      imageUrl: Office,
+      path: "cotizador-office",
+    },
+    {
+      imageUrl: Outsourcing,
+      path: "cotizador-acronis",
+    },
+    {
+      imageUrl: Karspersky,
+      path: "cotizador-acronis",
+    },
+    {
+      imageUrl: ServidoresNube,
+      path: "ver-mas-servidor-nube",
+    },
+    {
+      imageUrl: ServiciosCloud,
+      path: "servicios-ti",
+    },
+    {
+      imageUrl: SolucionesCorporativas,
+      path: "cotizador-acronis",
+    },
   ];
 
   const headerVariants = {
@@ -144,27 +167,9 @@ function Home() {
   return (
     <>
       <Navbar />
-      <br />
-      <br />
-      <br />
       <div className="landing-page">
         <section className="carousel-section">
-          <motion.div
-            className="carousel-wrapper"
-            initial="hidden"
-            animate="visible"
-            variants={headerVariants}
-          >
-            <Carrousel
-              selectedItem={currentSlide}
-              onChange={handleSlideChange}
-              showThumbs={false}
-              infiniteLoop={true}
-              autoPlay={true}
-              interval={5000}
-              images={carouselImages}
-            />
-          </motion.div>
+          <Carrousel slides={carouselImages} />
         </section>
         <section className="quienes-somos-section">
           <div className="quienes-somos-content">

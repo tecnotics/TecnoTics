@@ -12,6 +12,8 @@ import {
   Table,
   TableHead,
   TableBody,
+  Tabs,
+  Tab,
 } from "@mui/material";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
@@ -21,6 +23,11 @@ function AcronisContainer() {
   const [correo, setCorreo] = useState("");
   const urlBackend = import.meta.env.VITE_URL_BACKEND;
   const remitenteCorreo = import.meta.env.VITE_CORREO;
+  const [activeTab, setActiveTab] = useState(0);
+
+  const handleTabChange = (event, newValue) => {
+    setActiveTab(newValue);
+  };
 
   const [serviciosState, setServiciosState] = useState([
     {
@@ -110,19 +117,20 @@ function AcronisContainer() {
     {
       nombre:
         "Almacenamiento Acronis Cloud en Centro de Datos de Acronis (modelo por Carga de Trabajo)",
-      seleccionado: false,
+      seleccionado: true,
       cantidad: 0,
       precioUnidad: 0.04,
       costoTotal: null,
     },
-    {
-      nombre: "Almacenamiento Acronis Cloud en Centro de Datos de Acronis (modelo por GB)",
-      seleccionado: true,
-      cantidad: 0,
-      precioUnidad: 0.108,
-      costoTotal: null,
-    },
   ]);
+
+  const modeloGiga = {
+    nombre: "Almacenamiento Acronis Cloud en Centro de Datos de Acronis (modelo por GB)",
+    seleccionado: true,
+    cantidad: 0,
+    precioUnidad: 0.108,
+    costoTotal: null,
+  };
 
   const indiceAlmacenamientoGB = serviciosState.findIndex(
     (servicio) =>
@@ -150,7 +158,7 @@ function AcronisContainer() {
     const serviciosActualizados = serviciosState.map((servicio, i) => {
       if (i === index) {
         const costoTotalCalculado = servicio.precioUnidad
-          ? ((servicio.precioUnidad * cantidadNumerica) / 0.9).toLocaleString(undefined, {
+          ? ((servicio.precioUnidad * cantidadNumerica) / 0.8).toLocaleString(undefined, {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })
@@ -173,27 +181,32 @@ function AcronisContainer() {
   };
 
   const enviarInformacion = () => {
-    // Filtrar los servicios que han sido seleccionados y calcular el costo total si es necesario
-    const serviciosSeleccionados = serviciosState.filter((s) => s.seleccionado && s.cantidad > 0);
+    let listaServiciosHtml;
 
-    // Crear una lista de HTML para los servicios seleccionados
-    const listaServiciosHtml = serviciosSeleccionados
-      .map(
-        (servicio) => `
-    <b>${servicio.nombre}</b><br>
-    - Cantidad: ${servicio.cantidad}<br>
-    - Costo Total: $${servicio.costoTotal}<br>
-  `
-      )
-      .join("");
+    if (activeTab === 0) {
+      const serviciosSeleccionados = serviciosState.filter((s) => s.seleccionado && s.cantidad > 0);
 
-    if (serviciosSeleccionados.length === 0) {
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: "No ha seleccionado ningún servicio para cotizar.",
-      });
-      return;
+      if (serviciosSeleccionados.length === 0) {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "No ha seleccionado ningún servicio para cotizar.",
+        });
+        return;
+      }
+
+      listaServiciosHtml = serviciosSeleccionados
+        .map(
+          (servicio) => `
+          <b>${servicio.nombre}</b><br>
+          - Cantidad: ${servicio.cantidad}<br>
+          - Costo Total: $${servicio.costoTotal}<br>
+        `
+        )
+        .join("");
+    } else if (activeTab === 1) {
+      // Manejar la lógica para la pestaña 1 (Por GIGA)
+      listaServiciosHtml = `Cantidad Almacenamiento Acronis Cloud en Centro de Datos de Acronis: ${cantidadSeleccionada[indiceAlmacenamientoGB]} GB`;
     }
 
     const formData = {
@@ -331,83 +344,125 @@ function AcronisContainer() {
         <Typography variant="h5" gutterBottom textAlign="center">
           <b>Cotizador Acronis</b>
         </Typography>
-        <TableContainer component={Paper} sx={{ mt: 2 }}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell align="center" style={{ fontWeight: "bold" }}>
-                  Servicio
-                </TableCell>
-                <TableCell align="center" style={{ fontWeight: "bold", width: "200px" }}>
-                  Precio por Unidad
-                </TableCell>
-                <TableCell align="center" style={{ fontWeight: "bold", width: "200px" }}>
-                  Cantidad
-                </TableCell>
-                <TableCell align="center" style={{ fontWeight: "bold", width: "200px" }}>
-                  Costo Total
-                </TableCell>
-                <TableCell align="center" style={{ fontWeight: "bold", width: "200px" }}>
-                  Seleccionar
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {serviciosState.map((servicio, index) => (
-                <TableRow key={index} hover>
-                  <TableCell align="center">{servicio.nombre}</TableCell>
-                  <TableCell align="center">
-                    {servicio.precioUnidad !== null ? `$${servicio.precioUnidad}` : "N/A"}
+        <Tabs
+          value={activeTab}
+          onChange={handleTabChange}
+          indicatorColor="primary"
+          textColor="primary"
+          centered
+        >
+          <Tab label="Carga de trabajo" />
+          <Tab label="Por GIGA" />
+        </Tabs>
+
+        {activeTab === 0 && (
+          <TableContainer component={Paper} sx={{ mt: 2 }}>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell align="center" style={{ fontWeight: "bold" }}>
+                    Servicio
                   </TableCell>
-                  <TableCell align="center">
-                    {servicio.nombre ===
-                    "Almacenamiento Acronis Cloud en Centro de Datos de Acronis (modelo por GB)" ? (
-                      <ButtonGroup color="primary" aria-label="outlined primary button group">
-                        {[100, 200, 300, 500, 1000].map((value) => (
-                          <Button
-                            key={value}
-                            onClick={() => handleCantidadChange(index, value)}
-                            variant={
-                              cantidadSeleccionada[index] === value ||
-                              (cantidadSeleccionada[index] === undefined && value === 100)
-                                ? "contained"
-                                : "outlined"
-                            }
-                          >
-                            {value} GB
-                          </Button>
-                        ))}
-                      </ButtonGroup>
-                    ) : (
-                      servicio.seleccionado && (
-                        <TextField
-                          size="small"
-                          type="number"
-                          value={servicio.cantidad}
-                          onChange={(e) => handleCantidadChange(index, e.target.value)}
-                          inputProps={{ min: "0", style: { textAlign: "center" } }}
-                        />
-                      )
-                    )}
+                  <TableCell align="center" style={{ fontWeight: "bold", width: "200px" }}>
+                    Precio por Unidad
                   </TableCell>
-                  <TableCell align="center">
-                    {servicio.costoTotal !== null ? `$${servicio.costoTotal}` : "N/A"}
+                  <TableCell align="center" style={{ fontWeight: "bold", width: "200px" }}>
+                    Cantidad
                   </TableCell>
-                  <TableCell align="center">
-                    <Button
-                      variant={servicio.seleccionado ? "contained" : "outlined"}
-                      color="primary"
-                      onClick={() => handleSeleccion(index, !servicio.seleccionado)}
-                    >
-                      {servicio.seleccionado ? "Sí" : "No"}
-                    </Button>
+                  <TableCell align="center" style={{ fontWeight: "bold", width: "200px" }}>
+                    Costo Total
+                  </TableCell>
+                  <TableCell align="center" style={{ fontWeight: "bold", width: "200px" }}>
+                    Seleccionar
                   </TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-
+              </TableHead>
+              <TableBody>
+                {serviciosState.map((servicio, index) => (
+                  <TableRow key={index} hover>
+                    <TableCell align="center">{servicio.nombre}</TableCell>
+                    <TableCell align="center">
+                      {servicio.precioUnidad !== null ? `$${servicio.precioUnidad}` : "N/A"}
+                    </TableCell>
+                    <TableCell align="center">
+                      {servicio.nombre ===
+                      "Almacenamiento Acronis Cloud en Centro de Datos de Acronis (modelo por GB)" ? (
+                        <ButtonGroup color="primary" aria-label="outlined primary button group">
+                          {[100, 200, 300, 500, 1000].map((value) => (
+                            <Button
+                              key={value}
+                              onClick={() => handleCantidadChange(index, value)}
+                              variant={
+                                cantidadSeleccionada[index] === value ||
+                                (cantidadSeleccionada[index] === undefined && value === 100)
+                                  ? "contained"
+                                  : "outlined"
+                              }
+                            >
+                              {value} GB
+                            </Button>
+                          ))}
+                        </ButtonGroup>
+                      ) : (
+                        servicio.seleccionado && (
+                          <TextField
+                            size="small"
+                            type="number"
+                            value={servicio.cantidad}
+                            onChange={(e) => handleCantidadChange(index, e.target.value)}
+                            inputProps={{ min: "0", style: { textAlign: "center" } }}
+                          />
+                        )
+                      )}
+                    </TableCell>
+                    <TableCell align="center">
+                      {servicio.costoTotal !== null ? `$${servicio.costoTotal}` : "N/A"}
+                    </TableCell>
+                    <TableCell align="center">
+                      <Button
+                        variant={servicio.seleccionado ? "contained" : "outlined"}
+                        color="primary"
+                        onClick={() => handleSeleccion(index, !servicio.seleccionado)}
+                      >
+                        {servicio.seleccionado ? "Sí" : "No"}
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        )}
+        {activeTab === 1 && (
+          <TableContainer component={Paper} sx={{ mt: 2 }}>
+            <Table>
+              <TableHead>{/* ... Tus otros TableCells del encabezado */}</TableHead>
+              <TableBody>
+                <TableRow hover>
+                  <TableCell align="center">{modeloGiga.nombre}</TableCell>
+                  {/* ... Tus otros TableCells */}
+                  <TableCell align="center">
+                    <ButtonGroup color="primary" aria-label="outlined primary button group">
+                      {[100, 200, 300, 500, 1000].map((value, index) => (
+                        <Button
+                          key={value}
+                          onClick={() => handleCantidadChange(serviciosState.length, value)} // Asumiendo que quieres usar el último índice + 1 para el modeloGiga
+                          variant={
+                            cantidadSeleccionada[serviciosState.length] === value // Deberías calcular el estado inicial de cantidadSeleccionada teniendo en cuenta modeloGiga
+                              ? "contained"
+                              : "outlined"
+                          }
+                        >
+                          {value} GB
+                        </Button>
+                      ))}
+                    </ButtonGroup>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+        )}
         <TextField
           fullWidth
           margin="normal"

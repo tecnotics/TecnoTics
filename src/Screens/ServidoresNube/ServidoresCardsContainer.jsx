@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
-
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -98,7 +96,7 @@ export default function ServerCards() {
                     />
                     <CardContent>
                       <Typography gutterBottom variant="h5" component="div">
-                        {servidor.nombre}
+                        <b>{servidor.nombre} </b>
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
                         Locations: {servidor.locations.join(", ")}

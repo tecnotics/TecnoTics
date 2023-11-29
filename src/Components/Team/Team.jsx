@@ -11,6 +11,7 @@ import avatar2 from "../../assets/images/profile-pic2.png";
 import avatar3 from "../../assets/images/profile-pic3.png";
 import avatar4 from "../../assets/images/profile-pic4.png";
 import avatar5 from "../../assets/images/profile-pic5.png";
+import avatar6 from "../../assets/images/profile-pic6.jpg";
 
 function Team() {
   const [selectedMember, setSelectedMember] = useState(null);
@@ -27,7 +28,6 @@ function Team() {
       avatarUrl: avatar5,
       position: "Desarrollador de Software",
       info: "Daniel tiene  3 años de experiencia siendo desarrollador bajo MERN.",
-
     },
     {
       name: "Danilo Tabares",
@@ -46,6 +46,12 @@ function Team() {
       avatarUrl: avatar4,
       position: "Analista de Soporte",
       info: "Jaime es un experto en Soporte TI.",
+    },
+    {
+      name: "Samuel Vasquez",
+      avatarUrl: avatar6,
+      position: "Desarrollador de Software",
+      info: "Samuel tiene  3 años de experiencia siendo desarrollador bajo MERN.",
     },
   ];
 
@@ -80,7 +86,7 @@ function Team() {
         <b>Nuestro Equipo</b>
       </Typography>
       <br />
-      <Grid container spacing={2}>
+      <Grid container spacing={4} sx={{}}>
         {teamMembers.map((member, index) => (
           <Grid item xs={12} sm={6} md={3} key={index}>
             <motion.div

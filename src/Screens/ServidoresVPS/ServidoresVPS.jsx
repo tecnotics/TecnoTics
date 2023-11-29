@@ -6,6 +6,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  Paper,
   TextField,
   Typography,
 } from "@mui/material";
@@ -17,10 +18,6 @@ function ServidoresVPS({ servidorVPS }) {
   const [correo, setCorreo] = useState("");
   const [sistemaOperativo, setSistemaOperativo] = useState(servidorVPS.sistemaOperativo);
   const [dataCenterLocation, setDataCenterLocation] = useState(servidorVPS.dataCenterLocation);
-  const [processor, setProcessor] = useState(servidorVPS.processor);
-  const [memory, setMemory] = useState(servidorVPS.memory);
-  const [primaryHardDrive, setPrimaryHardDrive] = useState(servidorVPS.primaryHardDrive);
-  const [bandwidth, setBandwidth] = useState(servidorVPS.bandwidth);
   const urlBackend = import.meta.env.VITE_URL_BACKEND;
   const remitenteCorreo = import.meta.env.VITE_CORREO;
 
@@ -116,12 +113,12 @@ function ServidoresVPS({ servidorVPS }) {
                 <td style="color: #153643; font-size: 16px; line-height: 24px; padding: 20px 0;">
                 - Nombre del Servidor: ${servidorSeleccionado.nombre}
                 - Correo Electrónico: ${correo}
-                - Memoria: ${memory}
-                - Ubicación: ${dataCenterLocation}
+                - Memoria: ${servidorSeleccionado.memory}
+                - Ubicación: ${servidorSeleccionado.dataCenterLocation}
                 - Sistema Operativo: ${sistemaOperativo}
-                - Procesador: ${processor}
-                - Disco Duro: ${primaryHardDrive}
-                - Ancho de Banda: ${bandwidth}
+                - Procesador: ${servidorSeleccionado.processor}
+                - Disco Duro: ${servidorSeleccionado.primaryHardDrive}
+                - Ancho de Banda: ${servidorSeleccionado.bandwidth}
                 </td>
               </tr>
             </table>
@@ -179,9 +176,6 @@ function ServidoresVPS({ servidorVPS }) {
     <>
       <Navbar />
       <Container fullWidth>
-        <Typography variant="h3" gutterBottom textAlign="center" fontWeight="bold">
-          Cotizador de VPS
-        </Typography>
         <ButtonGroup fullWidth variant="outlined">
           <Button>{servidorSeleccionado.nombre}</Button>
         </ButtonGroup>
@@ -193,13 +187,19 @@ function ServidoresVPS({ servidorVPS }) {
             />
           </ListItem>
           <ListItem style={{ backgroundColor: "#f5f5f5", padding: "10px", marginBottom: "10px" }}>
-            <ListItemText primary="Processor:" secondary={`${processor} $0/mo.`} />
+            <ListItemText
+              primary="Processor:"
+              secondary={`${servidorSeleccionado.processor} $0/mo.`}
+            />
           </ListItem>
           <ListItem style={{ backgroundColor: "#f5f5f5", padding: "10px", marginBottom: "10px" }}>
-            <ListItemText primary="Memory:" secondary={`${memory} $0/mo.`} />
+            <ListItemText primary="Memory:" secondary={`${servidorSeleccionado.memory} $0/mo.`} />
           </ListItem>
           <ListItem style={{ backgroundColor: "#f5f5f5", padding: "10px", marginBottom: "10px" }}>
-            <ListItemText primary="Primary Hard Drive:" secondary={`${primaryHardDrive} $0/mo.`} />
+            <ListItemText
+              primary="Primary Hard Drive:"
+              secondary={`${servidorSeleccionado.primaryHardDrive} $0/mo.`}
+            />
           </ListItem>
           <ListItem style={{ backgroundColor: "#f5f5f5", padding: "10px", marginBottom: "10px" }}>
             <ListItemText
@@ -207,26 +207,54 @@ function ServidoresVPS({ servidorVPS }) {
               secondary={`Linux/Other: ${sistemaOperativo} $0/mo.`}
             />
           </ListItem>
+          <br />
+          <ButtonGroup fullWidth>
+            {["Ubuntu 22.04", "Debian 12", "Almalinux 9", "Rocky Linux 9"].map((so) => (
+              <Button
+                key={so}
+                variant={sistemaOperativo === so ? "contained" : "outlined"}
+                onClick={() => setSistemaOperativo(so)}
+              >
+                {so}
+              </Button>
+            ))}
+          </ButtonGroup>
+          <br />
+          <br />
           <ListItem style={{ backgroundColor: "#f5f5f5", padding: "10px", marginBottom: "10px" }}>
-            <ListItemText primary="Network Bandwidth:" secondary={`${bandwidth}`} />
+            <ListItemText
+              primary="Network Bandwidth:"
+              secondary={`${servidorSeleccionado.bandwidth}`}
+            />
           </ListItem>
         </List>
-
-        <Typography variant="h6" gutterBottom fontWeight="bold">
-          Linux/Other
-        </Typography>
-        <ButtonGroup fullWidth>
-          {["Ubuntu 22.04", "Debian 12", "Almalinux 9", "Rocky Linux 9"].map((so) => (
-            <Button
-              key={so}
-              variant={sistemaOperativo === so ? "contained" : "outlined"}
-              onClick={() => setSistemaOperativo(so)}
-            >
-              {so}
-            </Button>
-          ))}
-        </ButtonGroup>
-
+        {servidorSeleccionado && (
+          <Paper elevation={3} style={{ padding: "20px", marginTop: "20px" }}>
+            <Typography variant="h5" style={{ textAlign: "center" }}>
+              <b>Información del Servidor </b>
+            </Typography>
+            <br />
+            <img
+              src={servidorSeleccionado.image}
+              alt=""
+              style={{ objectFit: "contain", height: "200px", width: "100%" }}
+            />
+            <br />
+            <br />
+            <Typography variant="body1" style={{ textAlign: "center" }}>
+              <b>{servidorSeleccionado.nombre}</b>
+            </Typography>
+            <Typography variant="body1">Memory: {servidorSeleccionado.memory}</Typography>
+            <Typography variant="body1">Locacion: {dataCenterLocation}</Typography>
+            <Typography variant="body1">Sistema Operativo: {sistemaOperativo}</Typography>
+            <Typography variant="body1">
+              Primary Hard Drive: {servidorSeleccionado.primaryHardDrive}
+            </Typography>
+            <Typography variant="h6" gutterBottom style={{ marginTop: "20px" }}>
+              Precio Total: ${servidorSeleccionado.precio}
+            </Typography>
+          </Paper>
+        )}
         <TextField
           fullWidth
           margin="normal"

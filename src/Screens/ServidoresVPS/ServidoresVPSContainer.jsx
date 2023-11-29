@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Card,
   CardActionArea,
@@ -8,7 +9,6 @@ import {
   Typography,
 } from "@mui/material";
 import Navbar from "../../Components/Navbar/Navbar";
-import { useState } from "react";
 import intel from "../../assets/images/Intellogo.png";
 import amd from "../../assets/images/amd.png";
 import Footer from "../../Components/Footer/Footer";
@@ -19,38 +19,38 @@ const servidoresvps = [
   {
     id: "vps-xxs-intel",
     image: intel,
-    nombre: "vps.xxs.intel",
-    precio: 4,
-    sistemaOperativo: "Ubuntu 22.04", // Ejemplo de sistema operativo predeterminado
-    dataCenterLocation: "LAX2 (Los Angeles, CA)", // Ejemplo de ubicación predeterminada
-    processor: "1 vCPU", // Ejemplo de procesador predeterminado
-    memory: "16 GB", // Tomando la primera opción de memoryOptions
-    primaryHardDrive: "20GB", // Ejemplo de unidad de disco duro primaria
-    bandwidth: "10TB on 1Gbps port", // Ejemplo de ancho de banda
+    nombre: "VPS.XXS",
+    precio: 5,
+    sistemaOperativo: "Ubuntu 22.04",
+    dataCenterLocation: "LAX2 (Los Angeles, CA)",
+    processor: "1 vCPU",
+    memory: "1GB",
+    primaryHardDrive: "20GB SSD",
+    bandwidth: "10TB on 1Gbps port",
   },
   {
     id: "vps-md-amd",
-    image: amd,
-    nombre: "vps.md.amd",
-    precio: 27,
-    sistemaOperativo: "Ubuntu 22.04", // Ejemplo de sistema operativo predeterminado
-    dataCenterLocation: "LAX2 (Los Angeles, CA)", // Ejemplo de ubicación predeterminada
-    processor: "1 vCPU", // Ejemplo de procesador predeterminado
-    memory: "16 GB", // Tomando la primera opción de memoryOptions
-    primaryHardDrive: "20GB", // Ejemplo de unidad de disco duro primaria
-    bandwidth: "10TB on 1Gbps port", // Ejemplo de ancho de banda
+    image: intel,
+    nombre: "VPS.MD",
+    precio: 33,
+    sistemaOperativo: "Ubuntu 22.04",
+    dataCenterLocation: "LAX2 (Los Angeles, CA)",
+    processor: "4 vCPU",
+    memory: "8 GB",
+    primaryHardDrive: "160 GB SSD",
+    bandwidth: "10TB on 1Gbps port",
   },
   {
-    id: "vps-lg-intel",
+    id: "vps.lg.intel",
     image: intel,
-    nombre: "vps.lg.intel",
-    precio: 49,
-    sistemaOperativo: "Ubuntu 22.04", // Ejemplo de sistema operativo predeterminado
-    dataCenterLocation: "LAX2 (Los Angeles, CA)", // Ejemplo de ubicación predeterminada
-    processor: "1 vCPU", // Ejemplo de procesador predeterminado
-    memory: "16 GB", // Tomando la primera opción de memoryOptions
-    primaryHardDrive: "20GB", // Ejemplo de unidad de disco duro primaria
-    bandwidth: "10TB on 1Gbps port", // Ejemplo de ancho de banda
+    nombre: "VPS.LG",
+    precio: 54,
+    sistemaOperativo: "Ubuntu 22.04",
+    dataCenterLocation: "LAX2 (Los Angeles, CA)",
+    processor: "8 vCPUs",
+    memory: "16GB",
+    primaryHardDrive: "320GB SSD",
+    bandwidth: "10TB on 1Gbps port",
   },
 ];
 
@@ -117,7 +117,7 @@ export default function ServerVPSCards() {
           {servidoresvps.map((servidor) => (
             <Grid item key={servidor.id} xs={12} sm={6} md={4} lg={3}>
               <div onClick={() => handleServerSelection(servidor)}>
-                <Card sx={{ maxWidth: 345 }}>
+                <Card sx={{ maxWidth: 345, textAlign: "center" }}>
                   <CardActionArea>
                     <CardMedia
                       component="img"
@@ -128,6 +128,7 @@ export default function ServerVPSCards() {
                         objectFit: "contain",
                         height: "100px",
                         width: "100%",
+                        padding: "10px",
                       }}
                     />
                     <CardContent>
