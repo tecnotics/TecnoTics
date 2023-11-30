@@ -36,13 +36,14 @@ const Navbar = () => {
     setDrawerOpen(!drawerOpen);
   };
 
-  const handlePopoverOpen = (event) => {
-    setAnchorEl(event.currentTarget);
+ const handlePopoverOpen = (event) => {
+   setAnchorEl(event.currentTarget);
   };
-
+  
   const handlePopoverClose = () => {
     setAnchorEl(null);
   };
+
 
   const menuItems = [
     { text: "Inicio", link: "/", icon: <HomeIcon fontSize="s" /> },
@@ -116,7 +117,7 @@ const Navbar = () => {
     backgroundColor: "#FFF",
     zIndex: theme.zIndex.drawer + 1,
     boxShadow:
-      "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)",
+      "0px 2px 4px -1px rgba(0,0,0,0.1), 0px 1px 10px 0px rgba(0,0,0,0.1)",
   };
 
   const buttonStyles = {
@@ -128,12 +129,14 @@ const Navbar = () => {
       color: "#1976d2",
       transition: "color 0.3s ease-in-out, background-color 0.3s ease-in-out",
     },
+    gap: "5px"
   };
 
   const listItemStyles = {
     "&:hover": {
       backgroundColor: "#f0f0f0",
     },
+    gap: "5px",
   };
 
   const popoverStyles = {
@@ -196,7 +199,7 @@ const Navbar = () => {
                 </Button>
               ))}
               <Button
-                onMouseEnter={handlePopoverOpen}
+                onClick={handlePopoverOpen}
                 sx={{ color: "black", textTransform: "capitalize" }}
               >
                 <MoreHorizIcon />
@@ -223,7 +226,7 @@ const Navbar = () => {
                       component={Link}
                       to={service.link}
                       sx={{ color: "black", textTransform: "capitalize", display: "block" }}
-                      onClick={handlePopoverClose}
+                      onClick={handlePopoverOpen}
                     >
                       {service.text}
                     </Button>
@@ -277,7 +280,7 @@ const Navbar = () => {
                   component={Link}
                   to={service.link}
                   sx={{ color: "black", textTransform: "capitalize", display: "block" }}
-                  onClick={handlePopoverClose}
+                  onClick={handlePopoverOpen}
                 >
                   {service.text}
                 </Button>

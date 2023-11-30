@@ -5,8 +5,8 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import telefoniaIpBannner from "../../assets/images/TelefoniaIp.jpeg";
 import net2phoneMockUp from "../../assets/images/net2phone-mockup.png";
-import './TelefoniaIp.css'
-
+import "./TelefoniaIp.css";
+import Liston from "../../Components/Liston/Liston";
 import {
   telefoniaIpTarjetas,
   tarjetasVentajas,
@@ -103,11 +103,13 @@ function TelefoniaIP() {
                   width: "450px",
                   minheight: "350px",
                   boxShadow: "0 0 5px rgb(184 184 184);",
-                  padding: "15px",
                   borderRadius: "12px",
                   marginBottom: "12px",
                 }}
               >
+                <div style={{position: "relative"}}>
+                  <Liston mensaje="Calidad" />
+                </div>
                 <Typography
                   sx={{
                     fontWeight: "bold",
@@ -116,11 +118,12 @@ function TelefoniaIP() {
                     marginBottom: "20px",
                     marginTop: "20px",
                     textAlign: "center",
+                    margin: "20px"
                   }}
                 >
                   {tarjeta.titulo}
                 </Typography>
-                <div className="lista-ventaja">
+                <div className="lista-ventaja" >
                   {tarjeta.lista.map((item, index) => (
                     <p
                       style={{ marginBottom: "10px", marginLeft: "10px" }}
@@ -173,12 +176,34 @@ function TelefoniaIP() {
             </div>
           </Container>
           <Container>
-            <div className="imagenes-container" style={{display: "flex", flexDirection: "column", justifyContent: "center", width: "100%"}}>
+            <div
+              className="imagenes-container"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
               {imagenesMarcas.map((imagenes, index) => (
                 <Grid item key={index}>
-                  <div className="marcas-container" style={{display: "flex", gap: "10px", flexWrap: "wrap", justifyContent: "space-between"}}>
+                  <div
+                    className="marcas-container"
+                    style={{
+                      display: "flex",
+                      gap: "10px",
+                      flexWrap: "wrap",
+                      justifyContent: "space-between",
+                    }}
+                  >
                     {imagenes.imagenes.map((imagen, index) => (
-                      <img className="marca-img" style={{width: "80px"}} key={index} src={imagen} alt="net2phbe marcas" />
+                      <img
+                        className="marca-img"
+                        style={{ width: "80px" }}
+                        key={index}
+                        src={imagen}
+                        alt="net2phbe marcas"
+                      />
                     ))}
                   </div>
                 </Grid>

@@ -45,20 +45,24 @@ const Outsourcing = () => {
       title: "In-House",
       description:
         "Contamos con un equipo de TI dedicado que trabaja directamente en tus instalaciones.",
+      white: true,
     },
     {
       title: "Tiempo Completo",
       description:
         "Ofrecemos servicios de tiempo completo para cubrir todas tus necesidades de TI.",
+      white: false,
     },
     {
       title: "Medio Tiempo",
       description: "También brindamos opciones de medio tiempo para adaptarnos a tu presupuesto.",
+      white: false,
     },
     {
       title: "Bolsa de Horas",
       description:
         "Flexibilidad adicional con una bolsa de horas que puedes utilizar según tus necesidades.",
+      white: true,
     },
   ];
 
@@ -72,7 +76,7 @@ const Outsourcing = () => {
     ],
   };
 
-  const cardColors = ["#FFC107", "#03A9F4", "#8BC34A", "#FF5722"];
+  const cardColors = ["#2b8db5", "#b3ddd5", "#b4eeea", "#217ca6"];
 
   const outsourcingBenefits = [
     "Reducción de costos operativos.",
@@ -104,13 +108,7 @@ const Outsourcing = () => {
 
   return (
     <>
-      <Navbar />
-      <br />
-      <br />
-      <br />
-      <br />
       <Container>
-        <img src={ServiciosETI} alt="Banner" style={{ width: "100%" }} />
         <br />
         <br />
         <Grid container spacing={3}>
@@ -150,7 +148,7 @@ const Outsourcing = () => {
                             backgroundColor: "transparent",
                           }}
                         >
-                          <Icon style={{ fontSize: "44px", color: "#ff5733" }}>
+                          <Icon style={{ fontSize: "44px", color: "#1565C0" }}>
                             {iconos[index]}
                           </Icon>
                           <Typography variant="body2" align="center">
@@ -228,7 +226,9 @@ const Outsourcing = () => {
                   onClick={() => handleCardClick(index)}
                 >
                   <Card style={{ backgroundColor: cardColors[index % cardColors.length] }}>
-                    <CardContent className="outsourcing-card-content">
+                    <CardContent className="outsourcing-card-content" sx={{
+                      color: service.white ? "white" : "black" 
+                    }}>
                       <Typography variant="h6">{service.title}</Typography>
                       <Typography variant="body2">{service.description}</Typography>
                     </CardContent>
@@ -249,7 +249,6 @@ const Outsourcing = () => {
           <MoreInfoButton />
         </div>
       </Container>
-      <Footer />
     </>
   );
 };

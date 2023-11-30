@@ -45,19 +45,16 @@ function Contacto() {
           </Card>
           <Card className="card">
             <CardContent>
-              <Facebook />
-              <Twitter />
-              <Instagram />
-              <p>Redes Sociales:</p>
-              <a href="https://www.facebook.com/ejemplo" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.facebook.com/ejemplo" target="_blank" rel="noopener noreferrer" style={{ color: "black" }}>
                 <Facebook />
               </a>
-              <a href="https://www.twitter.com/ejemplo" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.twitter.com/ejemplo" target="_blank" rel="noopener noreferrer" style={{ color: "black" }}>
                 <Twitter />
               </a>
-              <a href="https://www.instagram.com/ejemplo" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/ejemplo" target="_blank" rel="noopener noreferrer" style={{color: "black"}}>
                 <Instagram />
               </a>
+              <p>Redes Sociales</p>
             </CardContent>
           </Card>
         </div>

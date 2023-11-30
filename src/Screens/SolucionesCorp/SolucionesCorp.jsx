@@ -7,6 +7,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import MoreInfoButton from "../../Components/MoreInfo/MoreInfo";
 import Soluciones from "../../assets/images/SLNCR.png";
+import Outsourcing from "../Outsourcing/Outsourcing"
 
 function SolucionesCorp() {
   return (
@@ -15,8 +16,9 @@ function SolucionesCorp() {
 
       <Container sx={{ marginTop: 8 }}>
         <img src={Soluciones} alt="Banner" style={{ width: "100%" }} />
-        <Grid container spacing={4} alignItems="center" justifyContent="center">
-          {/* Aquí inicia la primera fila de Cards */}
+        <br />
+        <br />
+        <Grid container spacing={2} alignItems="center" justifyContent="center">
           <Grid item xs={12} md={6}>
             <Card variant="outlined" sx={{ mb: 2 }}>
               <CardContent>
@@ -76,6 +78,7 @@ function SolucionesCorp() {
           <Grid container justifyContent="center" sx={{ mt: 4 }}>
             <MoreInfoButton />
           </Grid>
+          <Outsourcing />
         </Grid>
         <br />
         <br />

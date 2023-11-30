@@ -1,8 +1,12 @@
-.marca-img{
-    transition: 0.3s all ease;
-    cursor: pointer;
+.marca-img {
+  transition: 0.3s all ease;
+  cursor: pointer;
 }
 
-.marca-img:hover{
-    transform: scale(1.2);
+.marca-img:hover {
+  transform: scale(1.2);
+}
+
+.lista-ventaja {
+  margin: 0 10px 30px 10px;
 }
