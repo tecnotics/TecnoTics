@@ -76,10 +76,10 @@ export const tecnoTicsServices = {
   title: "Nuestros Servicios",
   services: [
     {
-      title: "Servidores Nube",
+      title: "Servidores Dedicados",
+      imageUrl: Card4,
       description:
-        "Optimiza tu negocio con nuestra infraestructura de TI en la nube, ofreciendo soluciones sólidas, confiables y escalables para empresas de cualquier tamaño.",
-      imageUrl: serviciocloud,
+        "Descubre el poder y la confiabilidad de nuestros servidores dedicados, diseñados para impulsar tu infraestructura de TI con un rendimiento excepcional y personalización completa.",
       moreLink: "/ver-mas-servidor-nube",
     },
     {
@@ -123,13 +123,6 @@ export const tecnoTicsServices = {
         "Facilitamos tu transición hacia la nube con asesoramiento experto y asistencia técnica para una migración de datos y aplicaciones eficiente, segura y sin interrupciones.",
       imageUrl: servicioMigracion,
       moreLink: "/ver-mas-servicio-migracion",
-    },
-    {
-      title: "Servidores Dedicados",
-      imageUrl: Card4,
-      description:
-        "Descubre el poder y la confiabilidad de nuestros servidores dedicados, diseñados para impulsar tu infraestructura de TI con un rendimiento excepcional y personalización completa.",
-      moreLink: "/ver-mas-servidor-nube",
     },
     {
       title: "FlashStart",

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   AppBar,
-  Button,
   Toolbar,
   Typography,
   IconButton,
@@ -9,28 +8,40 @@ import {
   List,
   ListItem,
   ListItemText,
+  Button,
   useMediaQuery,
   useTheme,
-  CssBaseline,
+  Popover,
+  Box,
 } from "@mui/material";
-import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
-import Favicon from "../../../src/assets/icons/favicon.ico";
+import Favicon from "../../../src/assets/icons/favicon.ico"; // Asegúrate de que la ruta a tu favicon sea correcta
+import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import PeopleIcon from "@mui/icons-material/People";
-import BusinessIcon from "@mui/icons-material/Business";
 import CloudIcon from "@mui/icons-material/Cloud";
 import WorkIcon from "@mui/icons-material/Work";
 import PersonIcon from "@mui/icons-material/Person";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
 
-function Navbar() {
+const Navbar = () => {
   const theme = useTheme();
   const isMobileOrTablet = useMediaQuery(theme.breakpoints.down("md"));
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
 
   const toggleMobileMenu = () => {
     setDrawerOpen(!drawerOpen);
+  };
+
+  const handlePopoverOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handlePopoverClose = () => {
+    setAnchorEl(null);
   };
 
   const menuItems = [
@@ -62,33 +73,108 @@ function Navbar() {
     },
   ];
 
+  const cloudServices = [
+    {
+      text: "Servidores Dedicados",
+      link: "/ver-mas-servidor-nube",
+    },
+    {
+      text: "Servidores VPS",
+      link: "/ver-mas-servidor-vps",
+    },
+    {
+      text: "Seguridad Perimetral",
+      link: "/ver-mas-servicio-dns",
+    },
+    {
+      text: "Central Virtual",
+      link: "/ver-mas-servicio-telefonia",
+    },
+    {
+      text: "Troncal SIP",
+      link: "/ver-mas-servicio-voip",
+    },
+    {
+      text: "Seguridad en la Nube",
+      link: "/ver-mas-servicio-seguridad",
+    },
+    {
+      text: "Migración a la Nube",
+      link: "/ver-mas-servicio-migracion",
+    },
+    {
+      text: "FlashStart",
+      link: "/flashstart",
+    },
+    {
+      text: "Redes de datos",
+      link: "/redes-de-datos",
+    },
+  ];
+
+  const appBarStyles = {
+    backgroundColor: "#FFF",
+    zIndex: theme.zIndex.drawer + 1,
+    boxShadow:
+      "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)",
+  };
+
+  const buttonStyles = {
+    color: "black",
+    margin: "0 10px",
+    textTransform: "capitalize",
+    "&:hover": {
+      backgroundColor: "#f0f0f0",
+      color: "#1976d2",
+      transition: "color 0.3s ease-in-out, background-color 0.3s ease-in-out",
+    },
+  };
+
+  const listItemStyles = {
+    "&:hover": {
+      backgroundColor: "#f0f0f0",
+    },
+  };
+
+  const popoverStyles = {
+    ".MuiPopover-root": {
+      ".MuiPaper-root": {
+        borderRadius: 3,
+        boxShadow: "0 6px 25px rgba(0, 0, 0, 0.15)",
+        border: "1px solid rgba(0, 0, 0, 0.15)",
+        overflow: "hidden",
+        backgroundColor: "#fff",
+        marginTop: "5px",
+      },
+    },
+    ".MuiButton-root": {
+      justifyContent: "flex-start",
+      padding: "10px 20px",
+      textTransform: "none",
+      fontSize: "1rem",
+      fontWeight: 400,
+      lineHeight: 1.5,
+      letterSpacing: "0.00938em",
+      color: "rgba(0, 0, 0, 0.87)",
+      "&:hover": {
+        backgroundColor: "#f5f5f5",
+        color: "#1976d2",
+      },
+      "&:not(:last-child)": {
+        borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
+      },
+    },
+  };
+
   return (
     <div>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{
-          backgroundColor: "#FFF",
-          zIndex: theme.zIndex.drawer + 1,
-          marginBottom: "20px",
-          boxShadow: "none",
-        }}
-      >
-        <Toolbar
-          sx={{
-            justifyContent: "space-between",
-            display: "flex",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", marginTop: "15px"}}>
+      <AppBar position="fixed" sx={appBarStyles}>
+        <Toolbar sx={{ justifyContent: "space-between" }}>
+          <div style={{ display: "flex", alignItems: "center", marginTop: "15px" }}>
             <img
               src={Favicon}
               alt="Icono"
-              style={{
-                width: "40px",
-                height: "40px",
-                marginLeft: "5px",
-              }}
+              style={{ width: "40px", height: "40px", marginLeft: "5px" }}
             />
             <Typography variant="h6" sx={{ color: "black" }}>
               TecnoTics
@@ -99,82 +185,109 @@ function Navbar() {
               <MenuIcon sx={{ color: "black" }} />
             </IconButton>
           ) : (
-              <div className="menu" style={{
-                marginTop: "15px",
-                marginLeft: "15px",
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "center"
-              }}>
+            <div
+              className="menu"
+              style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
+            >
               {menuItems.map((item, index) => (
-                <Button
-                  key={index}
-                  component={Link}
-                  to={item.link}
-                  sx={{
-                    color: "black",
-                    margin: "0 0px",
-                    fontSize: "13px",
-                    textTransform: "capitalize",
-                    "&:hover": {
-                      color: "#007acc",
-                    },
-                    display: "flex",
-                    alignItems: "center"
-                  }}
-                >
-                  <span
-                    style={{
-                      marginRight: "4px",
-                      fontSize: "small",
-                      verticalAlign: "middle",
-                    }}
-                  >
-                    {item.icon}
-                  </span>
+                <Button key={index} component={Link} to={item.link} sx={buttonStyles}>
+                  {item.icon}
                   {item.text}
                 </Button>
               ))}
+              <Button
+                onMouseEnter={handlePopoverOpen}
+                sx={{ color: "black", textTransform: "capitalize" }}
+              >
+                <MoreHorizIcon />
+                Descubre Más
+              </Button>
+              <Popover
+                open={open}
+                anchorEl={anchorEl}
+                onClose={handlePopoverClose}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                sx={popoverStyles}
+              >
+                <Box sx={{ p: 2 }}>
+                  {cloudServices.map((service, index) => (
+                    <Button
+                      key={index}
+                      component={Link}
+                      to={service.link}
+                      sx={{ color: "black", textTransform: "capitalize", display: "block" }}
+                      onClick={handlePopoverClose}
+                    >
+                      {service.text}
+                    </Button>
+                  ))}
+                </Box>
+              </Popover>
             </div>
           )}
         </Toolbar>
       </AppBar>
-      <div style={{ marginTop: isMobileOrTablet ? "64px" : "0" }}></div>
-      {isMobileOrTablet && (
-        <Drawer anchor="right" open={drawerOpen} onClose={toggleMobileMenu}>
-          <div
-            role="presentation"
-            onClick={toggleMobileMenu}
-            onKeyDown={toggleMobileMenu}
-            style={{ width: 250 }}
+      <Drawer anchor="right" open={drawerOpen} onClose={toggleMobileMenu}>
+        <br />
+        <br />
+        <br />
+        <List style={{ width: 250 }}>
+          {menuItems.map((item, index) => (
+            <ListItem
+              button
+              key={index}
+              component={Link}
+              to={item.link}
+              onClick={toggleMobileMenu}
+              sx={listItemStyles}
+            >
+              {item.icon}
+              <ListItemText primary={item.text} />
+            </ListItem>
+          ))}
+          <ListItem button onClick={handlePopoverOpen}>
+            <MoreHorizIcon />
+            <ListItemText primary="Descubre Más" />
+          </ListItem>
+          <Popover
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handlePopoverClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            sx={popoverStyles}
           >
-            <br />
-            <br />
-            <List>
-              {menuItems.map((item, index) => (
-                <ListItem
-                  button
+            <Box sx={{ p: 2 }}>
+              {cloudServices.map((service, index) => (
+                <Button
                   key={index}
                   component={Link}
-                  to={item.link}
-                  onClick={toggleMobileMenu}
+                  to={service.link}
+                  sx={{ color: "black", textTransform: "capitalize", display: "block" }}
+                  onClick={handlePopoverClose}
                 >
-                  <span
-                    style={{
-                      marginRight: "5px",
-                    }}
-                  >
-                    {item.icon}
-                  </span>
-                  <ListItemText primary={item.text} />
-                </ListItem>
+                  {service.text}
+                </Button>
               ))}
-            </List>
-          </div>
-        </Drawer>
-      )}
+            </Box>
+          </Popover>
+        </List>
+      </Drawer>
     </div>
   );
-}
+};
 
 export default Navbar;

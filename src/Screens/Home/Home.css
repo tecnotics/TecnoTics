@@ -1,67 +1,5 @@
-.carousel-wrapper {
-  max-width: 100%;
-  width: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-.carousel__slide img {
-  max-width: 100%;
-  height: 50%;
-  width: 100%;
-  display: block;
-  margin: 0 auto;
-  object-fit: cover;
-}
-
-.carousel__slide {
-  position: relative;
-  text-align: center;
-}
-
-.carousel__caption {
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-  right: 0;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 10px;
-  text-align: center;
-}
-
-.carousel__caption-title {
-  font-size: 18px;
-  font-weight: 700;
-  margin: 0;
-}
-
-.carousel__caption-credit {
-  font-size: 12px;
-  font-weight: 400;
-  margin: 0;
-  opacity: 0.8;
-}
-
-.carousel__indicators {
-  text-align: center;
-  margin-top: 10px;
-}
-
-.carousel__indicator {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #ccc;
-  border: none;
-  margin: 5px;
-  padding: 0;
-  cursor: pointer;
-}
-
-.carousel__indicator.selected {
-  background-color: #555;
+.carousel-section{
+  margin-top: 50px;
 }
 
 .quienes-somos-section {
@@ -89,29 +27,12 @@
 }
 
 .cards-section {
-  padding: 40px;
+  padding: 10px;
   margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-}
-
-@media screen and (max-width: 768px) {
-  .carousel-wrapper {
-    height: auto;
-  }
-
-  .carousel__slide {
-    min-height: 200px;
-  }
-
-  .carousel__slide img {
-    width: 100%;
-    background-color: black;
-    height: 250px;
-    object-fit: contain;
-  }
 }
 
 .image {
@@ -153,4 +74,11 @@
 
 .CardMedia {
   object-fit: cover !important;
+}
+
+@media(max-width:768px) {
+
+.carousel-section{
+  margin-top: 20%;
+}
 }

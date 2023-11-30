@@ -91,14 +91,6 @@ function Home() {
       link: "/cotizador-office",
     },
     {
-      title: "Outsourcing",
-      imageUrl: Card3,
-      content:
-        "Nuestros servicios de outsourcing te permiten enfocarte en lo que realmente importa. Deja la tecnología en nuestras manos.",
-      list: ["Enfoque en lo que importa", "Tecnología gestionada", "Eficiencia empresarial"],
-      link: "/acronis3",
-    },
-    {
       title: "Kaspersky",
       imageUrl: Card8,
       content:
