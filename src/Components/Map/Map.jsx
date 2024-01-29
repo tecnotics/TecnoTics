@@ -19,22 +19,18 @@ function Map() {
   return (
     <div className="map-container">
       <MapContainer
-        center={[6.20951249495493, -75.57264281813593]}
+        center={[6.21645, -75.58727]}
         zoom={20}
         scrollWheelZoom={false}
         className="mapa"
         zoomControl={false}
       >
         <ZoomControl position="bottomright" />{" "}
-      
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker
-          position={[6.20951249495493, -75.57264281813593]}
-          icon={customIcon}
-        >
+        <Marker position={[6.21645, -75.58727]} icon={customIcon}>
           <Popup>
             Tecnotics <br /> Soluciones Corporativas
           </Popup>

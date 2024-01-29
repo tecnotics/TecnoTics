@@ -28,7 +28,7 @@ function Contacto() {
           <Card className="card">
             <CardContent>
               <LocationOn />
-              <p>Dirección: Carrera 43c 7d 37-El Poblado-Medellín</p>
+              <p>Dirección: Carrera 64C No. 78-580</p>
             </CardContent>
           </Card>
           <Card className="card">
@@ -45,13 +45,28 @@ function Contacto() {
           </Card>
           <Card className="card">
             <CardContent>
-              <a href="https://www.facebook.com/ejemplo" target="_blank" rel="noopener noreferrer" style={{ color: "black" }}>
+              <a
+                href="https://www.facebook.com/ejemplo"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "black" }}
+              >
                 <Facebook />
               </a>
-              <a href="https://www.twitter.com/ejemplo" target="_blank" rel="noopener noreferrer" style={{ color: "black" }}>
+              <a
+                href="https://www.twitter.com/ejemplo"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "black" }}
+              >
                 <Twitter />
               </a>
-              <a href="https://www.instagram.com/ejemplo" target="_blank" rel="noopener noreferrer" style={{color: "black"}}>
+              <a
+                href="https://www.instagram.com/ejemplo"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "black" }}
+              >
                 <Instagram />
               </a>
               <p>Redes Sociales</p>

@@ -36,23 +36,17 @@ function Team() {
       info: "Danilo es un Analista con experiencia en ...",
     },
     {
-      name: "Sebastian Ocampo",
-      avatarUrl: avatar3,
-      position: "Analista de Soporte",
-      info: "Sebastian es un Analista de soporte con mas de 5 años de experiencia en calidad de soporte.",
-    },
-    {
       name: "Jaime Durango",
       avatarUrl: avatar4,
       position: "Analista de Soporte",
       info: "Jaime es un experto en Soporte TI.",
     },
-    {
-      name: "Samuel Vasquez",
-      avatarUrl: avatar6,
-      position: "Desarrollador de Software",
-      info: "Samuel tiene  3 años de experiencia siendo desarrollador bajo MERN.",
-    },
+    // {
+    //   name: "Samuel Vasquez",
+    //   avatarUrl: avatar6,
+    //   position: "Desarrollador de Software",
+    //   info: "Samuel tiene  3 años de experiencia siendo desarrollador bajo MERN.",
+    // },
   ];
 
   const openModal = (member) => {

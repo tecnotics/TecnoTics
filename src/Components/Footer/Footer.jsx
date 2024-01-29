@@ -50,7 +50,7 @@ function Footer() {
             <RoomIcon style={iconStyle} />
             <strong>Dirección</strong>
             <br />
-            Carrera 43c 7d 37-El Poblado-Medellín
+            Carrera 64C No. 78-580 - Terminal del Sur
           </Typography>
           <Typography variant="body1" style={sectionStyle}>
             <PhoneIcon style={iconStyle} />
@@ -121,8 +121,7 @@ function Footer() {
       </Toolbar>
       <Typography variant="body1" style={copyrightStyle}>
         <strong>Derechos de Autor</strong>
-        <br /> © {new Date().getFullYear()} TecnoTics. Todos los derechos
-        reservados.
+        <br /> © {new Date().getFullYear()} TecnoTics. Todos los derechos reservados.
       </Typography>
     </AppBar>
   );
